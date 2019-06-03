@@ -1,0 +1,54 @@
+
+html, body, :global(#root) {
+  /*height: 100%;*/
+}
+
+#slider {
+  position: absolute;
+  left: 50%;
+  top: 60px;
+  /*top: 50%;*/
+  background-color: #D3D3D3;
+  width: 5px;
+  height: 100%;
+  z-index: 9999;
+}
+
+#slider:hover {
+  cursor: ew-resize;
+}
+
+#verificationlayersbox {
+}
+
+#rsdataconstractbox, #verificationlayersbox {
+  position: absolute;
+  right: 10px;
+  bottom: 20px;
+  font-size: 12px;
+  background-color: transparent;
+  width: 100px;
+  height: 100px;
+  z-index: 9999;
+  color: #fff
+}
+
+#rsdataTabbtn {
+  position: fixed;
+  top: 128px;
+  right: 10px;
+  background: transparent;
+  border: 1px solid #00ff99;
+  color: #00ff99;
+  border-radius: 5px;
+}
+
+#locationbtn {
+  position: fixed;
+  top: 128px;
+  right: 115px;
+  background: transparent;
+  border: 1px solid #00ff99;
+  color: #00ff99;
+  border-radius: 5px;
+}

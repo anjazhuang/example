@@ -1,0 +1,365 @@
+.leftFixedbox {
+  position: fixed;
+  left: 0;
+  display: block;
+  //width: 300px;
+  //border: 1px solid #13c2c2;
+  box-shadow: 0 0 10px 1px #13c2c2;
+  background: rgba(0, 51, 58, .6);
+  @media screen {
+    @media (max-width: 1920px) {
+      top: 62px;
+      :global {
+        .ant-tree li {
+          font-size: 14px;
+          padding: 1px 0;
+        }
+      }
+    }
+    min-width: 310px;
+    @media (min-width: 1923px) {
+      top: 62px;
+      :global {
+        .ant-tree li {
+          font-size: 16px;
+          padding: 1px 0;
+        }
+      }
+    }
+
+    @media (max-width: 1366px) {
+      font-size: 10px;
+      top: 52px;
+      min-width: 200px;
+      :global {
+        .ant-tree li {
+          font-size: 8px;
+        }
+      }
+    }
+  }
+
+  .searchbtn{
+    float: right;
+    position: relative;
+    top:12px;
+    right: 10px;
+    cursor: pointer;
+  }
+
+  .searchbox {
+    color: #fff;
+    padding-top: 10px;
+    border-bottom: 1px solid #13c2c2;
+  }
+
+  .btn {
+    background: rgba(0, 253, 36, .3);
+    color: #fff;
+    width: 50px;
+    border: 1px solid #00ffff;
+    //margin-left: 20px;
+    text-align: center;
+    padding: 0;
+    margin-bottom: 10px;
+    margin-left: 15px;
+
+    &:hover {
+      background: rgba(0, 253, 36, 1);
+    }
+  }
+  .header {
+    color: #fff;
+    //background: rgba(24, 68, 66, .8);
+    background: -webkit-linear-gradient(90deg, #194747 0%, #1a4848 100%);
+    background: -o-linear-gradient(90deg, #194747 0%, #1a4848 100%);
+    background: -mos-linear-gradient(90deg, #194747 0%, #1a4848 100%);
+    background: -moz-linear-gradient(90deg, #194747 0%, #1a4848 100%);
+    background: linear-gradient(90deg, #194747 0%, #1a4848 100%);
+
+    line-height: 40px;
+    text-align: center;
+    border-bottom: 1px solid #13c2c2;
+
+    @media screen {
+      font-size: 15px;
+      @media (max-width: 1366px) {
+        font-size: 13px;
+      }
+    }
+  }
+
+  .treebox {
+    min-height: 60px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    @media screen {
+      max-height: 700px;
+      &::-webkit-scrollbar {
+        width: 9px;
+        height: 16px;
+        background-color: rgba(0, 51, 58, .6);
+      }
+      @media (max-width: 1366px) {
+        max-height: 560px;
+        &::-webkit-scrollbar {
+          width: 4px;
+          height: 16px;
+          background-color: rgba(0, 51, 58, .6);
+        }
+      }
+    }
+
+
+
+    /*定义滚动条的轨道，内阴影及圆角*/
+    &::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+      border-radius: 20px;
+      //background-color:  rgba(0, 51, 58, .6);
+    }
+
+    /*定义滑块，内阴影及圆角*/
+    &::-webkit-scrollbar-thumb {
+      height: 20px;
+      border-radius: 20px;
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+      background-color: #13c2c2;
+    }
+
+  }
+
+  .caretLeft {
+    position: absolute;
+    top: 45%;
+    width: 25px;
+    right: -24px;
+    height: 50px;
+    display: inline-block;
+    border: 1px solid #13c2c2;
+    border-left: none;
+    line-height: 50px;
+    text-align: center;
+    background: rgba(0, 51, 58, .6);
+    color: #13c2c2;
+    cursor: pointer;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    /*background: -webkit-linear-gradient(120deg, #307280 0%, #326779 100%);
+    background: -o-linear-gradient(120deg, #307280 0%, #326779 100%);
+    background: -mos-linear-gradient(120deg, #307280 0%, #326779 100%);
+    background: -moz-linear-gradient(120deg, #307280 0%, #326779 100%);
+    background: linear-gradient(120deg, #307280 0%, #326779 100%);*/
+  }
+
+  :global {
+    li.ant-tree-treenode-disabled > span:not(.ant-tree-switcher), li.ant-tree-treenode-disabled > .ant-tree-node-content-wrapper, li.ant-tree-treenode-disabled > .ant-tree-node-content-wrapper span {
+      color: #fafafa;
+    }
+    .ant-tree {
+      /*background: -webkit-linear-gradient(120deg, #21556a 0%, #326779 100%);
+      background: -o-linear-gradient(120deg, #21556a 0%, #326779 100%);
+      background: -mos-linear-gradient(120deg, #21556a 0%, #326779 100%);
+      background: -moz-linear-gradient(120deg, #21556a 0%, #326779 100%);
+      background: linear-gradient(120deg, #21556a 0%, #326779 100%);*/
+
+      li {
+        padding: 2px 0;
+
+        .ant-tree-child-tree {
+          padding-left: 0 !important;
+          .ant-tree-switcher {
+            margin-left: 14px;
+          }
+          ul {
+            //margin-left: 2px;
+            li {
+              //margin-left: 2px;
+              .ant-tree-switcher {
+                margin-left: 21px;
+              }
+
+              .ant-tree-child-tree {
+                .ant-tree-switcher {
+                  margin-left: 25px;
+                }
+
+                .ant-tree-child-tree {
+                  .ant-tree-switcher {
+                    margin-left: 30px;
+                  }
+
+                  .ant-tree-child-tree {
+                    .ant-tree-switcher {
+                      margin-left: 30px;
+                    }
+                  }
+                }
+              }
+
+            }
+          }
+        }
+      }
+    }
+
+    .ant-tree li .ant-tree-node-content-wrapper {
+      &:hover {
+        background-color: transparent;
+      }
+    }
+
+    .ant-tree-treenode-selected {
+      background-color: #183843;
+
+      .ant-tree-node-selected {
+        background-color: #183843 !important;
+
+        .ant-tree-title {
+          color: #01ffff;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+      }
+    }
+
+    .ant-menu-submenu > .ant-menu {
+      border: none;
+    }
+    .ant-tree-node-content-wrapper {
+      &:hover {
+        background-color: transparent;
+      }
+    }
+
+    .ant-tree-treenode-checkbox-checked {
+      //background-color: #183843;
+      //border-bottom:1px solid #13c2c2;
+      .ant-tree-title {
+        //background-color: #bae7ff;
+        color: #01ffff;
+        //padding: 3px 3px;
+      }
+    }
+    .ant-tree li span.ant-tree-switcher, .ant-tree li span.ant-tree-iconEle {
+      width: 11px;
+    }
+    .ant-menu-item {
+      font-size: 12px;
+    }
+
+    .ant-tree li span.ant-tree-switcher, .ant-tree li span.ant-tree-iconEle {
+      color: #fff;
+    }
+    .ant-checkbox {
+      margin-right: 10px;
+    }
+
+    .ant-tree-title {
+      color: #fff;
+      display: block;
+      width: 200px;
+      &:hover {
+        color: #01ffff;
+        background: transparent;
+      }
+    }
+    .ant-menu-vertical .ant-menu-item:after, .ant-menu-vertical-left .ant-menu-item:after, .ant-menu-vertical-right .ant-menu-item:after, .ant-menu-inline .ant-menu-item:after {
+      border: none;
+    }
+
+    .ant-tree-checkbox-checked .ant-tree-checkbox-inner, .ant-tree-checkbox-indeterminate .ant-tree-checkbox-inner {
+      background-color: #13c2c2;
+      border-color: #13c2c2;
+    }
+
+    .ant-menu-submenu .ant-menu-submenu-title:hover {
+      .ant-menu-submenu-arrow {
+        border-color: #13c2c2;
+        background-color: #13c2c2;
+      }
+    }
+
+    .ant-menu-inline, .ant-menu-vertical, .ant-menu-vertical-left {
+      border-color: transparent;
+    }
+
+    .ant-tree-checkbox-inner {
+      position: relative;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 16px;
+      height: 16px;
+      border-width: 1px;
+      border-style: solid;
+      border-radius: 100px;
+      border-color: #06f9fc;
+      background-color: transparent !important;
+      -webkit-transition: all 0.1s;
+      transition: all 0.1s;
+    }
+    .ant-tree-checkbox-checked .ant-tree-checkbox-inner:after {
+      -webkit-transform: scale(0.8);
+      transform: scale(0.8);
+      opacity: 1;
+      transition: all 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+      -ms-transform: scale(0.8);
+      position: absolute;
+      border: 0;
+      width: 10px;
+      height: 10px;
+      left: 2px;
+      top: 2px;
+      border-radius: 50%;
+      display: table;
+      border-top: 0;
+      border-left: 0;
+      content: ' ';
+      background-color: #06f9fc;
+    }
+  }
+}
+
+.leftFixedboxhidden {
+  position: fixed;
+  left: 0px;
+  width: 50px;
+  height: 30px;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 0 10px 1px #13c2c2;
+  background: rgba(0, 51, 58, .6);
+  padding-top: 3px;
+
+  @media screen {
+    top: 62px;
+    @media (max-width: 1366px) {
+      top: 52px;
+    }
+  }
+}
+
+.addtaskhidden {
+  display: none;
+}
+
+.loading {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.3);
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  //padding-top:50%;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+
+  :global {
+    .ant-spin {
+      color: #22ee22;
+      margin-top: 30%;
+    }
+  }
+}
+

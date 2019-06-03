@@ -1,0 +1,63 @@
+.btn{
+  background: rgba(0,253,36,.3);
+  color: #fff;
+  width: 50px;
+  border: 1px solid #00ffff;
+  margin-left: 20px;
+  text-align: center;
+  padding: 0;
+
+  &:hover{
+    background: rgba(0,253,36,1);
+  }
+}
+
+.bigbtn {
+  background: rgba(0,253,36,.3);
+  color: #fff;
+  width: 100px;
+  border: 1px solid #00ffff;
+  margin-left: 20px;
+  text-align: center;
+  padding: 0;
+
+  &:hover{
+    background: rgba(0,253,36,1);
+  }
+}
+
+:global {
+  .upload-list-inline .ant-upload-list-item {
+    float: left;
+    width: 200px;
+    margin-right: 8px;
+    color: #fff;
+  }
+  .upload-list-inline .ant-upload-animate-enter {
+    animation-name: uploadAnimateInlineIn;
+  }
+  .upload-list-inline .ant-upload-animate-leave {
+    animation-name: uploadAnimateInlineOut;
+  }
+  .ant-upload-list-picture .anticon-cross, .ant-upload-list-picture-card .anticon-cross{
+    color: #fff;
+  }
+  .ant-upload-list-item-name{
+    color: #fff;
+    font-size: 12px;
+  }
+  .ant-upload-list-item-info .anticon-loading, .ant-upload-list-item-info .anticon-paper-clip{
+    color: #fff;
+    font-size: 12px;
+  }
+}
+
+.list{
+  top:200px!important;
+  width: 700px!important;
+  @media screen {
+    @media (max-width: 1366px) {
+      top:100px!important;
+    }
+  }
+}

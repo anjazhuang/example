@@ -1,0 +1,133 @@
+.btn {
+  background: rgba(0, 253, 36, .3);
+  color: #fff;
+  width: 50px;
+  border: 1px solid #00ffff;
+  margin-left: 20px;
+  text-align: center;
+  padding: 0;
+
+  &:hover {
+    background: rgba(0, 253, 36, 1);
+  }
+}
+
+.list {
+  :global {
+    .ant-btn:hover, .ant-btn:focus {
+      color: #333 !important;
+    }
+
+    .ant-upload-list-item:hover .ant-upload-list-item-info {
+      background-color: transparent !important;
+    }
+
+    .ant-upload-list-item .anticon-cross {
+      color: #fafafa !important;
+    }
+
+    .ant-modal-footer {
+      background-color: #00333a;
+      border-top-color: #00ffff;
+    }
+
+    .ant-upload-list-item-name {
+      color: #999;
+    }
+  }
+
+}
+
+.bigbtn {
+  background: rgba(0, 253, 36, .3);
+  color: #fff;
+  width: 100px;
+  border: 1px solid #00ffff;
+  margin-left: 20px;
+  text-align: center;
+  padding: 0;
+
+  &:hover {
+    background: rgba(0, 253, 36, .3);
+    color: #fff;
+    width: 100px;
+    border: 1px solid #00ffff;
+    margin-left: 20px;
+    text-align: center;
+    padding: 0;
+  }
+  &:focus {
+    background: rgba(0, 253, 36, .3);
+    color: #fff;
+    width: 100px;
+    border: 1px solid #00ffff;
+    margin-left: 20px;
+    text-align: center;
+    padding: 0;
+  }
+
+}
+
+.changeBox {
+  //border: 1px solid #00ffff;
+  //border-bottom: 1px solid #00ffff;
+  //padding: 5px;
+  //padding-bottom: 5px;
+  margin-top: 5px;
+  //background-color: rgba(10, 95, 95, .3);
+  :global {
+    .ant-input-number {
+      margin-bottom: 5px !important;
+    }
+  }
+  .changetype {
+    display: inline-block;
+    width: 80px;
+    background: rgba(24, 68, 66, .8);
+    color: #13c2c2;
+    text-align: center;
+    line-height: 25px;
+    border: 1px solid #13c2c2;
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}
+
+.loading {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  position: absolute;
+  padding-top: 20%;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+}
+
+.shapelist {
+  @media screen {
+    left: 3%;
+    width: 1800px ;
+    @media (max-width: 1366px) {
+      left: 30%;
+      width: 600px;
+    }
+  }
+
+  :global {
+    .ant-table-fixed {
+      .borderLine {
+        border-right: 1px solid #22ee22 !important;
+      }
+
+      .borderTopLine {
+        border-right: 1px solid #22ee22 !important;
+        border-bottom: 1px solid #22ee22 !important;
+      }
+    }
+
+  }
+}

@@ -1,0 +1,102 @@
+.btn {
+   background: rgba(0, 253, 36, .3);
+   color: #fff;
+   width: 50px;
+   border: 1px solid #00ffff;
+   //margin-left: 20px;
+   text-align: center;
+   padding: 0;
+   margin-bottom: 10px;
+   margin-left: 5px;
+
+   &:hover {
+     background: rgba(0, 253, 36, 1);
+   }
+ }
+
+.btn2 {
+  background: rgba(0, 253, 36, .3);
+  color: #fff;
+  width: 32px;
+  display: inline-block;
+  line-height: 30px;
+  border: 1px solid #00ffff;
+  //margin-left: 20px;
+  text-align: center;
+  padding: 0;
+  margin-bottom: 10px;
+  margin-left: 5px;
+
+  &:hover {
+    background: rgba(0, 253, 36, .3);
+  }
+}
+
+.list {
+  @media screen {
+    left: 28%;
+    width: 860px!important;
+    @media (max-width: 1366px) {
+      left: 25%
+    }
+  }
+
+  :global {
+    //.ant-btn {
+    //  &:focus {
+    //    color: #333;
+    //  }
+    //}
+
+    .ant-btn:hover, .ant-btn:focus {
+      background: rgba(0, 253, 36, .3);
+      color: #fff;
+      width: 50px;
+      border: 1px solid #00ffff;
+      text-align: center;
+      padding: 0;
+    }
+   .ant-input{
+     border: 1px solid #13c2c2;
+   }
+  }
+
+}
+
+.list2 {
+  @media screen {
+    left: 25%;
+    width: 1150px ;
+    @media (max-width: 1366px) {
+      left: 20%;
+      width: 580px ;
+    }
+  }
+  .iframe {
+    background: #fff;
+    @media screen {
+      height: 600px;
+      @media (max-width: 1366px) {
+        height: 300px;
+      }
+    }
+    width: 100%;
+  }
+
+  .download {
+    display: inline-block;
+    background: rgba(0, 253, 36, .3);
+    color: #fff;
+    width: 50px;
+    line-height: 30px;
+    border-radius: 5px;
+    border: 1px solid #00ffff;
+    //margin-left: 20px;
+    text-align: center;
+    height: 30px;
+    padding: 0;
+    margin-bottom: 10px;
+  }
+
+}
+

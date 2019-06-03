@@ -1,0 +1,130 @@
+.ant-btn {
+  background: rgba(0, 253, 36, .3);
+  color: #fff;
+  width: 50px;
+  border: 1px solid #00ffff;
+  margin-left: 20px;
+  text-align: center;
+  padding: 0;
+
+  &:hover {
+    background: rgba(0, 253, 36, 1);
+  }
+}
+
+.name {
+  color: #13c2c2;
+}
+
+.choselist {
+  width: 190px;
+  border: 1px solid #13c2c2;
+  margin-left: 22%;
+  color: #aaa;
+  font-size: 12px;
+  padding: 3px 5px;
+
+  &:after {
+    clear: both;
+    content: '.';
+    display: block;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .num {
+    float: right;
+
+  }
+}
+
+.textarea {
+  width: 198px;
+  vertical-align: top !important;
+  background: transparent;
+  border: 1px solid #13c2c2;
+  color: #aaa;
+}
+
+.list {
+  top: 125px;
+  @media screen {
+    @media (max-width: 1366px) {
+      top: 93px
+    }
+  }
+  .detailp {
+    line-height: 25px;
+  }
+  :global {
+    .ant-btn {
+      background: rgba(0, 253, 36, .3);
+      color: #fff;
+      width: 50px;
+      border: 1px solid #00ffff;
+      margin-left: 20px;
+      text-align: center;
+      padding: 0;
+
+      &:hover {
+        background: rgba(0, 253, 36, 1);
+      }
+    }
+  }
+}
+
+.detailist {
+  height: 500px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    height: 8px;
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    background: #22ee22;
+  }
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: none;
+    border-radius: 0;
+    background: #191f28;
+  }
+}
+
+.tasklist {
+  padding-left: 3px;
+  padding-top: 16px;
+  font-size: 13px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  //&:hover{
+  //  background: rgba(34,238,34,.1);
+  //}
+  p {
+    margin: 0;
+    //color: #13c2c2;
+  }
+
+  strong {
+    color: #13c2c2;
+  }
+
+  .tuban {
+    margin-top: 3px;
+    width: 300px;
+  }
+}
+
+.search_btn {
+  padding-top: 19px;
+  padding-left: 44%;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #fff;
+}

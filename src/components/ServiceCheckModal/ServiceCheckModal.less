@@ -1,0 +1,42 @@
+.btn{
+  background: rgba(0,253,36,.3);
+  color: #fff;
+  width: 50px;
+  border: 1px solid #00ffff;
+  margin-left: 20px;
+  text-align: center;
+  padding: 0;
+
+  &:hover{
+    background: rgba(0,253,36,1);
+  }
+}
+
+
+.list {
+  @media screen {
+    left: 87%;
+    top: 125px;
+    width: 250px;
+    @media (max-width: 1366px) {
+      top: 93px;
+      width:220px;
+      left: 80%;
+    }
+  }
+  :global {
+    .ant-row {
+      cursor: pointer;
+      &:hover {
+        background: rgba(91, 192, 222, 0.2);
+        .name1 {
+          color: #22ee22;
+        }
+      }
+    }
+  }
+  .name {
+    color: #13c2c2;
+  }
+}
+

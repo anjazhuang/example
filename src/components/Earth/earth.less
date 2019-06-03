@@ -1,0 +1,118 @@
+.cesiumContent {
+  height: 100%;
+  margin-top: 50px;
+  //display: none;
+  //background: url("../../../public/images/icon/image.png");
+
+  :global {
+    #popup {
+      position: fixed;
+      display: none;
+      background-color: rgba(0, 0, 0, 0.4);
+      color: #fff;
+      width: 200px;
+      min-height: 200px;
+      z-index: 10;
+      border: 1px solid #13c2c2;
+      //border-radius: 5px;
+      padding: 5px 5px;
+      p {
+        margin: 0;
+      }
+
+      img {
+        width: 100%;
+        height: 190px;
+      }
+
+      #fanda {
+        position: absolute;
+        right: 10px;
+        cursor: pointer;
+        bottom: 0;
+        display: none;
+      }
+    }
+
+    #arrow {
+      display: block;
+      width: 0;
+      height: 0;
+      border-width: 10px;
+      border-style: solid;
+      border-color: #13c2c2 transparent transparent transparent;
+      position: absolute;
+      top: 100%;
+      left: 46%;
+      //border-top: 15px solid rgba(0, 0, 0, 0.7);
+      //border-right: 15px solid rgba(0, 0, 0, 0);
+      //border-bottom: 15px solid rgba(0, 0, 0, 0);
+      //border-left: 15px solid rgba(0, 0, 0, 0);
+
+      &:after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        border-width: 10px;
+        border-style: solid;
+        border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
+        position: absolute;
+        top: -10px;
+        left: -9px;
+      }
+    }
+
+    #popup2 {
+      position: fixed;
+      display: none;
+      background-color: rgba(255, 255, 255, 0.5);
+      color: #fff;
+      width: 80px;
+      min-height: 44px;
+      z-index: 10;
+      border-radius: 5px;
+      padding: 5px 5px;
+    }
+
+    #arrow2 {
+      width: 0px;
+      height: 0px;
+      position: absolute;
+      bottom: -20px;
+      left: 35%;
+      border-top: 10px solid rgba(255, 255, 255, 0.6);
+      border-right: 10px solid rgba(255, 255, 255, 0);
+      border-bottom: 10px solid rgba(255, 255, 255, 0);
+      border-left: 10px solid rgba(255, 255, 255, 0);
+    }
+  }
+
+
+}
+
+.photoSeeList{
+  @media screen {
+    left: 25%;
+    width: 800px ;
+
+    .imgbox{
+     img{
+       height: 600px;
+       @media (max-width: 1366px) {
+         height: 500px;
+       }
+     }
+    }
+
+    @media (max-width: 1366px) {
+      left: 20%;
+      width: 480px ;
+    }
+  }
+}
+
+
+
+
+

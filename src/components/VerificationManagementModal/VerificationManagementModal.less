@@ -1,0 +1,65 @@
+.btn {
+  background: rgba(0, 253, 36, .3);
+  color: #fff;
+  width: 50px;
+  border: 1px solid #00ffff;
+  margin-left: 20px;
+  text-align: center;
+  padding: 0;
+
+  &:hover {
+    background: rgba(0, 253, 36, 1);
+  }
+}
+
+.list {
+  @media screen {
+    left: 22%;
+    width: 1100px;
+    @media (max-width: 1366px) {
+      left: 15%;
+      width: 800px;
+    }
+  }
+
+  :global {
+    .ant-btn:hover, .ant-btn:focus {
+      background: rgba(0, 253, 36, .3);
+      color: #fff;
+      width: 50px;
+      border: 1px solid #00ffff;
+      //margin-left: 20px;
+      text-align: center;
+      padding: 0;
+    }
+
+    .ant-modal-min {
+      right: 73px
+    }
+
+    .ant-table-content{
+      @media screen {
+        height:320px;
+        @media (max-width: 1366px) {
+          height: 400px;
+        }
+      }
+    }
+  }
+}
+
+.list2 {
+  @media screen {
+    top: 52%;
+
+    @media (max-width: 1366px) {
+      top: 30%;
+    }
+  }
+
+  .detailp{
+    line-height: 30px;
+  }
+}
+
+

@@ -1,0 +1,11 @@
+@import  "/iconfont/iconfont.css";
+
+/* 设置使用字体的优先级 anticon-user 高 */
+:global(.anticon) {  /* :global() 是为了覆盖全局class .anticon 的样式 */
+  &:before {
+    font-family: "anticon", "anticon-user" !important;
+    /* 默认样式是这样
+        font-family: "anticon" !important;
+    */
+  }
+}
