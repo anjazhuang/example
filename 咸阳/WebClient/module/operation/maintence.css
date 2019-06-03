@@ -1,0 +1,177 @@
+/*维修流程维修单列表下方显示维修状态*/
+.repairstatusbox {
+    margin-top: 10px;
+}
+
+/*维修流程维修单列表下方显示维修状态*/
+.repairstatus {
+    display: inline-block;
+    width: 80px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/*维修流程维修单列表下方显示维修状态*/
+.repairstatus img {
+    margin-right: 10px;
+}
+
+/*接单，派单按钮样式*/
+.order {
+    background: #5fc29d;
+    color: #fff;
+    margin-right: 5px;
+}
+
+/*按钮鼠标悬停样式*/
+.btn-sm:hover, .btn-sm:active, .btn-sm:focus {
+    color: #f0f0f0;
+}
+
+/*维修操作按钮样式*/
+.repairbtn {
+    background: #5fb0e6;
+    color: #fff;
+    margin-right: 5px;
+}
+
+/*结束维修按钮样式*/
+.finishrepair {
+    background: #ffd50c;
+    color: #fff;
+    margin-right: 5px;
+}
+
+/*详情按钮样式*/
+.detailbtn {
+    background: #5fb0e6;
+    color: #fff;
+    margin-right: 5px;
+}
+
+/*弹窗样式*/
+.orderlayer, .repaired, .repaireddetail, .customized {
+    padding: 10px 10px;
+    text-align: left;
+}
+
+.setorder {
+    /*text-align: left;*/
+}
+
+/*派单弹窗下拉框样式*/
+.setorder select {
+    width: 200px;
+    border-radius: 5px;
+    height: 30px;
+    margin: 5px 0;
+}
+
+/*维修操作弹窗维修备注标题样式*/
+.remarksbox h5 {
+    border: 1px solid #e1e1e1;
+    border-bottom: none;
+    margin: 0;
+    font-weight: bold;
+    line-height: 30px;
+    text-align: center;
+}
+
+/*维修操作弹窗维修备注框样式*/
+.remarksbox textarea {
+    width: 100%;
+    border: 1px solid #e1e1e1;
+    height: 100px;
+}
+
+/*维修操作弹窗选择图片按钮样式*/
+.repaired button {
+    background: #316AC5;
+    color: #fff;
+    border-radius: 3px;
+    border: none;
+    line-height: 25px;
+}
+
+/*维修操作弹窗上传图片样式*/
+.photos {
+    margin-top: 10px;
+}
+
+/*维修操作弹窗上传图片按钮样式*/
+.addbtn {
+    color: #ccc;
+    display: inline-block;
+    width: 90px;
+    height: 90px;
+    line-height: 90px;
+    text-align: center;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/*维修操作弹窗维上传图片按钮样式*/
+#addpic {
+    position: absolute;
+    top: -71px;
+    opacity: 0;
+    z-index: 3;
+    left: 0;
+    height: 150px;
+    cursor: pointer;
+}
+
+/*维修单详情弹窗进度条样式*/
+.process {
+    background: #f9f9f9;
+    padding: 10px 15px
+}
+
+/*维修单详情弹窗进度条样式*/
+.process .child {
+    border-left: 5px solid #316AC5;
+    padding-left: 30px;
+    position: relative;
+    height: 45px;
+}
+
+/*维修单详情弹窗进度条样式*/
+.process .child:last-child {
+    border: none;
+    padding-left: 35px;
+}
+
+/*维修单详情弹窗进度条样式*/
+.process .child p {
+    margin: 0;
+}
+
+/*维修单详情弹窗进度条样式*/
+.process .child .state {
+    color: #316AC5;
+    font-size: 15px;
+}
+
+/*维修单详情弹窗进度条样式*/
+.process .child span {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background: #316AC5;
+    border-radius: 50%;
+    position: absolute;
+    top: -3px;
+    left: -10px;
+}
+
+/*维修单详情弹窗进度条样式*/
+.process .child:last-child span {
+    left: -5px;
+}
+
+/*维修单详情弹窗图片列表样式*/
+.img-list img {
+    width: 30.33%;
+    margin-right: 3px;
+}

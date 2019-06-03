@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>监测数据</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../libraries/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" href="../../css/select2/select2.min.css"/>
+    <link rel="stylesheet" href="../../css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <link rel="stylesheet" href="../../css/datatable/jquery.dataTables.css" type="text/css">
+    <link rel="stylesheet" href="../../css/datatable/fixedColumns.dataTables.css" type="text/css">
+    <link rel="stylesheet" href="../../css/common.css" type="text/css">
+    <link rel="stylesheet" href="monitor.css">
+    <style>
+        #click-output {
+            margin-bottom: 1em;
+            padding: 1em;
+            background-color: #f6f6f6;
+            border: 1px solid #999;
+            border-radius: 3px;
+            height: 100px;
+            overflow: auto;
+        }
+
+        table.dataTable thead th,
+        table.dataTable thead td {
+            padding: 10px 0;
+            border-bottom: 1px solid #ccc;
+            background: #eee;
+        }
+
+        .disabled0 li {
+            pointer-events: none;
+            cursor: not-allowed !important;
+        }
+
+    </style>
+</head>
+<body>
+<div class="content-box clearfix">
+    <section class="leftNav">
+        <h4>查询条件</h4>
+        <div class="chooseBox">
+            <ul class="list-inline list-unstyled">
+                <li class="active text-center">行政区域</li>
+                <li class="text-center">流域</li>
+            </ul>
+            <div class="queryparam">
+                <div>
+                    <label>监测站点:</label>
+                    <select id="stcode">
+                    </select></div>
+                <div>
+                    <label>报汛等级:</label>
+                    <select id="bxlevel">
+                        <option value="">全部</option>
+                        <option value="1">中央报汛站</option>
+                        <option value="2">省级重点报汛站</option>
+                        <option value="3">省级一般报汛站</option>
+                        <option value="4">其它报汛站</option>
+                    </select></div>
+                <div>
+                    <label>测站类型:</label>
+                    <select id="cztp">
+                        <option value="">全部</option>
+                        <option value="PP">雨量站</option>
+                        <option value="ZQ">河道水位站</option>
+                        <option value="ZZ">河道水文站</option>
+                        <option value="RR">水库水文站</option>
+                        <option value="SS">墒情站</option>
+                    </select>
+                </div>
+            </div>
+            <div class="tab">
+                <div class="tab0 active">
+                    <!--<label id="searchAction">搜索</label>-->
+                    <!--<input onkeydown='if (event.keyCode == 13) { keydownSearch(); }' type="text" id="searchTxt"/>-->
+                    <div class="ztreeBox">
+                        <ul id="treeDemoCity" class="ztree"></ul>
+                    </div>
+                </div>
+                <div class="tab0">
+                    <!--<label id="searchAction1">搜索</label>-->
+                    <!--<input onkeydown='if (event.keyCode == 13) { keydownSearch1(); }' type="text" id="searchTxt1"/>-->
+                    <div class="ztreeBox">
+                        <ul id="treeDemoRiver" class="ztree"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="selectGroup">
+            <div>
+                <label>查询类型:</label>
+                <select class="form-control" id="selType">
+                </select></div>
+            <div>
+                <label>开始时间:</label>
+                <div class="input-group date" id="s-date">
+                    <input type="text" class="form-control input-sm"><span
+                        class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                </div>
+                <label>结束时间:</label>
+                <div class="input-group date" id="e-date">
+                    <input type="text" class="form-control input-sm"><span
+                        class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                </div>
+            </div>
+            <div class="text-center btnGroup">
+                <button class="btn btn-query  btn-block" id="tongji"><span class="glyphicon glyphicon-search"></span>&nbsp;查询
+                </button>
+                <button class="btn btn-export btn-block" id="exportFile"><span
+                        class=" glyphicon glyphicon-download-alt"></span>&nbsp;导出
+                </button>
+            </div>
+        </div>
+    </section>
+    <div class="rightTab">
+        <div>
+            <div class="navtab">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#datalist" data-toggle="tab"><span style="vertical-align: -8%;"
+                                                                    class="glyphicon glyphicon-list-alt"></span>&nbsp;数据列表</a>
+                    </li>
+                    <li>
+                        <a href="#chart0" data-toggle="tab"><span style="vertical-align: -8%;"
+                                                                  class="glyphicon glyphicon-signal"></span>&nbsp;图形报表</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content">
+
+                <div class="tab-pane fade in active" id="datalist">
+                    <div id="rivertab">
+                        <h4>河道水情</h4>
+                        <table id="river-tab" class="stripe row-border order-column nowrap table-bordered text-center"
+                               width="100%"
+                               cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th style="text-align: center">序号</th>
+                                <th style="text-align: center">时间</th>
+                                <th style="text-align: center">测站编码</th>
+                                <th style="text-align: center">测站名称</th>
+                                <th style="text-align: center">流域</th>
+                                <th style="text-align: center">水系</th>
+                                <th style="text-align: center">河流</th>
+                                <th style="text-align: center">水位(m)</th>
+                                <th style="text-align: center">流量(mm)</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div id="reservoirtab" class="hidden">
+                        <h4>水库水情</h4>
+                        <table id="reservoir-tab"
+                               class="stripe row-border order-column nowrap table-bordered text-center"
+                               width="100%" cellspacing="0" align="center">
+                            <thead>
+                            <tr>
+                                <th style="text-align: center">序号</th>
+                                <th style="text-align: center">时间</th>
+                                <th style="text-align: center">测站编码</th>
+                                <th style="text-align: center">测站名称</th>
+                                <th style="text-align: center">流域</th>
+                                <th style="text-align: center">水系</th>
+                                <th style="text-align: center">河流</th>
+                                <th style="text-align: center">水位(m)</th>
+                                <th style="text-align: center">入库流量(mm)</th>
+                                <th style="text-align: center">出库流量(mm)</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div id="raintab" class="hidden">
+                        <h4>雨情</h4>
+                        <table id="rain-tab" class="stripe row-border order-column nowrap table-bordered text-center"
+                               width="100%"
+                               cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th style="text-align: center">序号</th>
+                                <th style="text-align: center">时间</th>
+                                <th style="text-align: center">测站编码</th>
+                                <th style="text-align: center">测站名称</th>
+                                <th style="text-align: center">行政区域</th>
+                                <th style="text-align: center">流域</th>
+                                <th style="text-align: center">河流</th>
+                                <th style="text-align: center">水系</th>
+                                <th style="text-align: center">雨量(mm)</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div id="soiltab" class="hidden">
+                        <h4>墒情</h4>
+                        <table id="soil-tab" class="stripe row-border order-column nowrap table-bordered text-center"
+                               width="100%"
+                               cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th style="text-align: center" rowspan="2">序号</th>
+                                <th style="text-align: center;" rowspan="2">时间</th>
+                                <th style="text-align: center" rowspan="2">测站编码</th>
+                                <th style="text-align: center" rowspan="2">测站名称</th>
+                                <th style="text-align: center" rowspan="2">行政区域</th>
+                                <th style="text-align: center" rowspan="2">流域</th>
+                                <th style="text-align: center" rowspan="2">水系</th>
+                                <th style="text-align: center" rowspan="2">河流</th>
+                                <th style="text-align: center" colspan="4" rowspan="1">重量含水量（%）</th>
+                            </tr>
+                            <tr>
+                                <th style="text-align: center" rowspan="1">10cm</th>
+                                <th style="text-align: center" rowspan="1">20cm</th>
+                                <th style="text-align: center" rowspan="1">40cm</th>
+                                <th style="text-align: center" rowspan="1">均值</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="chart0">
+                    <div class="clearfix datatype"><label>数据类型:</label>
+                        <select id="dataType" class="RIVER">
+                            <option value='水位(m)'>水位</option>
+                            <option value='流量(mm)'>流量</option>
+                        </select>
+                    </div>
+                    <div>
+                        <div id="chart" class="chart-style"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../../libraries/jquery-1.11.1.min.js"></script>
+<script src="../../libraries/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../libraries/ztree/jquery.ztree.core-3.5.min.js"></script>
+<script type="text/javascript" src="../../libraries/ztree/jquery.ztree.excheck-3.5.min.js"></script>
+<script type="text/javascript" src="../../libraries/ztree/jquery.ztree.exedit-3.5.min.js"></script>
+<script src="../../libraries/jquery.cookie.js"></script>
+<script src="../../libraries/moment-2.8.3/moment.min.js"></script>
+<script src="../../libraries/datatable/jquery.dataTables.js"></script>
+<script src="../../libraries/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script src="../../libraries/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../../libraries/echarts/echarts.min.js"></script>
+<script src="../../libraries/layer/layer.js"></script>
+<script src="../../libraries/Select2/js/select2.min.js"></script>
+<script src="../../js/config/server-config.js"></script>
+<script src="../../js/common.js"></script>
+<script src="../../js/chose.js"></script>
+<script type="text/javascript" src="../../js/monitor/monitor.js"></script>
+</body>
+</html>

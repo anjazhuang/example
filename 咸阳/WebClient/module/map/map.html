@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../libraries/ol/ol.css" type="text/css">
+    <link rel="stylesheet" href="../../css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <link rel="stylesheet" href="../../libraries/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css"/>
+    <link rel="stylesheet" href="../../css/select2/select2.min.css" type="text/css">
+    <link rel="stylesheet" href="../../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../../css/datatable/jquery.dataTables.css" type="text/css">
+    <link rel="stylesheet" href="map.css">
+    <link rel="stylesheet" href="../../css/loading.css">
+    <title>地图模式</title>
+</head>
+<body>
+<div id="map" class="map">
+</div>
+
+<div class="mapmode_laybody">
+    <div class="mapmode_layerbutton_div">
+        <button id="warning_btn" class="btn station_btn_visable station_btn">报警</button>
+        <button id="rainlstation_btn" class="btn station_btn_visable station_btn">雨量站</button>
+        <button id="waterstation_btn" class="btn station_btn_visable station_btn">河道水位站</button>
+        <button id="hydrologystation_btn" class="btn station_btn_visable station_btn">河道水文站</button>
+        <button id="reservoirhydrology_btn" class="btn station_btn_visable station_btn station_btn_hide">水库水文站</button>
+        <button id="soilstation_btn" class="btn station_btn_visable station_btn station_btn_hide">墒情站</button>
+        <button id="floodstation_btn" class="btn station_btn_visable station_btn station_btn_hide">山洪站</button>
+        <button id="towns_btn" class="btn station_btn_visable station_btn">区县</button>
+        <button id="villages_btn" class="btn station_btn_visable station_btn">乡镇</button>
+        <button id="country_btn" class="btn station_btn_visable station_btn station_btn_hide">村庄</button>
+        <button id="road_btn" class="btn station_btn_visable station_btn station_btn_hide">公路</button>
+        <button id="stream_btn" class="btn station_btn_visable station_btn">河流</button>
+        <button id="river_btn" class="btn station_btn_visable station_btn">水系</button>
+        <button id="terrain_btn" class="btn station_btn_visable station_btn station_btn_hide">地形</button>
+    </div>
+</div>
+
+<div class="mapmode_left">
+    <div class="mapmode_left_button_div">
+        <button id="fullScreen_btn" class="btn btn-primary"><span class="glyphicon glyphicon-fullscreen"></span>
+        </button>
+        <button id="back_center" class="btn btn-primary" style="position: relative;right: 10px;" title="移至地图中心"><span
+                class="glyphicon glyphicon-screenshot"></span>
+        </button>
+        <button id="up" class="btn btn-primary" style="position: relative;right: 18px;" title="向上"><span
+                class="glyphicon glyphicon-arrow-up"></span>
+        </button>
+        <button id="down" class="btn btn-primary" style="position: relative;right: 26px;" title="向下"><span
+                class="glyphicon glyphicon-arrow-down"></span>
+        </button>
+        <button id="left" class="btn btn-primary" style="position: relative;right: 34px;" title="向左"><span
+                class="glyphicon glyphicon-arrow-left"></span>
+        </button>
+        <button id="right" class="btn btn-primary" style="position: relative;right: 42px;" title="向右"><span
+                class="glyphicon glyphicon-arrow-right"></span>
+        </button>
+        <span id="zoomSet" style="position:fixed;bottom: 0;left: 5px">报汛等级：<i style="font-style: normal">中央报汛站</i></span>
+
+    </div>
+</div>
+
+<div class="mapmode_body">
+    <div class="mapmode_button_div">
+        <button id="rainfall_btn" class="btn btn-primary rainBtn">实时雨情</button>
+        <button id="waterregime_btn" class="btn btn-primary waterBtn">实时水情</button>
+        <button id="soilmoisture_btn" class="btn btn-primary soilBtn">实时墒情</button>
+        <button id="detectiondevice_btn" class="btn btn-primary ywBtn">运维监控</button>
+        <button id="alarm_btn" class="btn btn-primary warnBtn">报警信息</button>
+        <button id="analysis_btn" class="btn btn-primary analysisBtn">等值分析</button>
+    </div>
+</div>
+
+<div class="legend_body">
+    <img src="../../img/legend.jpg">
+</div>
+
+
+<script src="../../libraries/jquery-1.11.1.min.js"></script>
+<script src="../../libraries/bootstrap.min.js"></script>
+<script src="../../libraries/ol/ol2.js" type="text/javascript"></script>
+<script src="../../libraries/ol/ol.js" type="text/javascript"></script>
+<!--<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>-->
+<script src="../../libraries/layer/layer.js"></script>
+<script src="../../libraries/jquery.cookie.js"></script>
+<script type="text/javascript" src="../../libraries/ztree/jquery.ztree.core-3.5.min.js"></script>
+<script type="text/javascript" src="../../libraries/ztree/jquery.ztree.excheck-3.5.min.js"></script>
+<script type="text/javascript" src="../../libraries/ztree/jquery.ztree.exedit-3.5.min.js"></script>
+<script type="text/javascript" src="../../libraries/datatable/jquery.dataTables.js"></script>
+<!--<script type="text/javascript" src="../../libraries/datatable/dataTables.bootstrap.js"></script>-->
+<script type="text/javascript" src="../../libraries/echarts/echarts.min.js"></script>
+<script type="text/javascript" src="../../js/config/server-config.js"></script>
+<script src="../../libraries/jquery.fileDownload.js"></script>
+<script type="text/javascript" src="../../js/datatables-init.js"></script>
+<script src="../../libraries/moment-2.8.3/moment.min.js"></script>
+<script src="../../libraries/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script src="../../libraries/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../../libraries/Select2/js/select2.min.js"></script>
+<!--<script src="../../js/chose.js"></script>-->
+<script src="../../js/common.js"></script>
+<script src="../../libraries/print/jspdf.min.js"></script>
+<script src="../../js/map/mapdata.js"></script>
+<script src="../../js/map/map.js"></script>
+</body>
+
+<!--实时雨情-->
+<div id="d_rain" class="mapmode_item_div">
+    <div class="mapmode_item_tab">
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a href="#rainfall_content" data-toggle="tab">雨情</a>
+            </li>
+            <li>
+                <a href="#statistics_content" data-toggle="tab">量级统计</a>
+            </li>
+            <li>
+                <a href="#rain_count_content" data-toggle="tab">雨情统计</a>
+            </li>
+        </ul>
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane fade in active" id="rainfall_content">
+            <div class="mapmode_item_search">
+                <!--<span>搜索:</span>-->
+                <!--<input type="text">-->
+                <button class="btn btn-sm btn-query" id="rainrefresh"><span
+                        class="glyphicon glyphicon-search"></span>刷新
+                </button>
+            </div>
+            <div class="mapmode_item_table">
+                <div class="load-wrapp">
+                    <div class="load-4">
+                        <div class="ring-1"></div>
+                    </div>
+                </div>
+                <table class="stripe row-border order-column nowrap table-bordered" align="center" id="rianfall_table">
+                    <thead>
+                    <tr>
+                        <th>行政区域</th>
+                        <th>测站编码</th>
+                        <th>测站名称</th>
+                        <th>水系</th>
+                        <th>河流</th>
+                        <th>数据时间</th>
+                        <th>雨量（mm）</th>
+                        <th>日累计雨量（mm）</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="statistics_content">
+            <div class="mapmode_item_table">
+                <table class="stripe row-border order-column nowrap table-bordered" align="center"
+                       id="statistics_table">
+                    <thead>
+                    <tr>
+                        <th width="10%"></th>
+                        <th width="60%">量级</th>
+                        <th width="30%">数量</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="rain_count_content">
+            <div class="mapmode_item_search">
+                <button class="btn btn-sm btn-query" id="rain_countrefresh"><span
+                        class="glyphicon glyphicon-search"></span>刷新
+                </button>
+            </div>
+            <div class="mapmode_item_table">
+                <div class="load-wrapp">
+                    <div class="load-4">
+                        <div class="ring-1"></div>
+                    </div>
+                </div>
+                <table class="stripe row-border order-column nowrap table-bordered" align="center"
+                       id="water_regimen" style="margin-top: 40px" >
+                    <thead>
+                    <tr>
+                        <th>行政区划</th>
+                        <th>平均值(mm)</th>
+                        <th colspan="2">最大(mm)</th>
+                        <th colspan="2">次大(mm)</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--实时水情-->
+<div id="d_water" class="mapmode_item_div">
+    <div class="mapmode_item_tab">
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a href="#river_regime_content" data-toggle="tab">河道水情</a>
+            </li>
+            <li>
+                <a href="#reservoir_water_content" data-toggle="tab">水库水情</a>
+            </li>
+            <li>
+                <a href="#water_situation_content" data-toggle="tab">关注水情</a>
+            </li>
+        </ul>
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane fade in active" id="river_regime_content">
+            <div class="mapmode_item_search">
+                <!--<span>搜索:</span>-->
+                <!--<input type="text">-->
+                <button class="btn btn-sm btn-query" id="riverrefreshbtn"><span
+                        class="glyphicon glyphicon-search"></span>刷新
+                </button>
+            </div>
+            <div class="mapmode_item_table">
+                <div class="load-wrapp">
+                    <div class="load-4">
+                        <div class="ring-1"></div>
+                    </div>
+                </div>
+                <table class="stripe row-border order-column nowrap table-bordered" align="center" id="river_table">
+                    <thead>
+                    <tr>
+                        <th>行政区域</th>
+                        <th>测站编码</th>
+                        <th>测站名称</th>
+                        <th>水系</th>
+                        <th>河流</th>
+                        <th>数据时间</th>
+                        <th>水位（m）</th>
+                        <th>流量（m³/s）</th>
+                        <th>水势</th>
+                        <th>警戒流量（m³/s）</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="reservoir_water_content">
+            <div class="mapmode_item_search">
+                <button class="btn btn-sm btn-query" id="reservoirrefreshbtn"><span
+                        class="glyphicon glyphicon-search"></span>刷新
+                </button>
+            </div>
+            <div class="mapmode_item_table">
+                <div class="load-wrapp">
+                    <div class="load-4">
+                        <div class="ring-1"></div>
+                    </div>
+                </div>
+                <table class="stripe row-border order-column nowrap table-bordered" align="center" id="reservoir_table">
+                    <thead>
+                    <tr>
+                        <th>行政区域</th>
+                        <th>水库编码</th>
+                        <th>水库名称</th>
+                        <th>水系</th>
+                        <th>河流</th>
+                        <th>数据时间</th>
+                        <th>库水位（m）</th>
+                        <th>入库流量（m³/s）</th>
+                        <th>出库流量（m³/s）</th>
+                        <th>蓄水量（百万立方米）</th>
+                        <th>汛限水位（m）</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="water_situation_content">
+            <div class="mapmode_item_search">
+                <button class="btn btn-sm btn-query" id="situationrefreshbtn"><span
+                        class="glyphicon glyphicon-search"></span>刷新
+                </button>
+            </div>
+            <div class="mapmode_item_table">
+                <div class="load-wrapp">
+                    <div class="load-4">
+                        <div class="ring-1"></div>
+                    </div>
+                </div>
+                <table class="stripe row-border order-column nowrap table-bordered" align="center" id="water_situation_table" style="margin-top: 40px">
+                    <thead>
+                    <tr>
+                        <th>测站名称</th>
+                        <th>时间</th>
+                        <th>水位(m)</th>
+                        <th>流量(m³/s)</th>
+                        <th>水势</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--实时墒情-->
+<div id="d_soil" class="mapmode_item_div">
+    <div class="mapmode_item_tab">
+        <ul class="nav nav-tabs">
+            <li class="active" style="width: 50%">
+                <a href="#soil_statistics" data-toggle="tab">墒情</a>
+            </li>
+            <li style="width: 50%">
+                <a href="#drought_statistics" data-toggle="tab">旱级统计</a>
+            </li>
+        </ul>
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane fade in active" id="soil_statistics">
+            <div class="mapmode_item_search">
+                <!--<span>搜索:</span>-->
+                <!--<input type="text">-->
+                <button class="btn btn-sm btn-query" id="soilrefreshbtn"><span
+                        class="glyphicon glyphicon-search"></span>刷新
+                </button>
+            </div>
+            <div class="mapmode_item_table">
+                <div class="load-wrapp">
+                    <div class="load-4">
+                        <div class="ring-1"></div>
+                    </div>
+                </div>
+                <table class="stripe row-border order-column nowrap table-bordered" align="center"
+                       id="soilmoisture_table">
+                    <thead>
+                    <tr>
+                        <th rowspan="2">行政区域</th>
+                        <th rowspan="2">测站编码</th>
+                        <th rowspan="2">测站名称</th>
+                        <th rowspan="2">数据时间</th>
+                        <th colspan="4">相对湿度均值（%）</th>
+                    </tr>
+                    <tr>
+                        <th>10cm</th>
+                        <th>20cm</th>
+                        <th>40cm</th>
+                        <th>均值</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="drought_statistics">
+            <div class="mapmode_item_table">
+                <table class="stripe row-border order-column nowrap table-bordered" align="center"
+                       id="drought_statistics_table">
+                    <thead>
+                    <tr>
+                        <th width="10%"></th>
+                        <th width="60%">旱级</th>
+                        <th width="30%">数量</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--运维监控-->
+<div id="d_device" class="mapmode_item_div">
+    <div class="mapmode_item_tab">
+        <ul class="nav nav-tabs three-tab">
+            <li class="active">
+                <a href="#detectiondevice_content" data-toggle="tab">监测站点</a>
+            </li>
+            <li>
+                <a href="#stationnetwork_statistics" data-toggle="tab">站网统计</a>
+            </li>
+            <li>
+                <a href="#stationerror_statistics" data-toggle="tab">报送率统计</a>
+            </li>
+        </ul>
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane fade in active" id="detectiondevice_content">
+            <div class="mapmode_item_search">
+                <button class="btn btn-sm btn-query" id="watchstation"><span
+                        class="glyphicon glyphicon-search"></span>刷新
+                </button>
+            </div>
+            <div class="mapmode_item_table">
+                <div class="load-wrapp">
+                    <div class="load-4">
+                        <div class="ring-1"></div>
+                    </div>
+                </div>
+                <table class="stripe row-border order-column nowrap table-bordered" align="center"
+                       id="detectiondevice_table">
+                    <thead>
+                    <tr>
+                        <th>测站编码</th>
+                        <th>测站名称</th>
+                        <th>行政区域</th>
+                        <th>水系</th>
+                        <th>河流</th>
+                        <th>报汛等级</th>
+                        <th>测站类型</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="stationnetwork_statistics">
+            <div class="mapmode_item_table">
+                <div class="mapmode_item_table_title">咸阳市站网统计</div>
+                <div class="row">
+                    <div class="col-xs-6 layer_content_item">
+                        <table class="stripe row-border order-column nowrap table-bordered" align="center"
+                               id="stationnetwork_statistics_table" style="width: 85%;">
+                            <thead>
+                            <!--<tr>
+                               <th colspan="2"  class="table_thead_bgcolor">咸阳市站网统计</th>
+                            </tr>-->
+                            <tr>
+                                <th>站点类型</th>
+                                <th>站点数量</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="col-xs-6" id="stationnetwork_pie_div">
+                        <div id="stationnetwork_pie"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mapmode_item_table_title">咸阳市历年测站数量变化趋势图</div>
+                    <div class="col-xs-12">
+                        <div id="stationnetwork_bar" style="overflow-x: auto"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="stationerror_statistics">
+            <div class="mapmode_item_table">
+                <div class="mapmode_item_table_title"><span id="AreaName"></span>今日报送率统计</div>
+                <div id="stationerror_bar"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--报警信息-->
+<div id="d_alarm" class="mapmode_item_div">
+    <div class="mapmode_item_tab">
+        <ul class="nav nav-tabs">
+            <li class="active" style="width: 50%;">
+                <a href="#alarm_content" data-toggle="tab">报警信息</a>
+            </li>
+            <li style="width: 50%;">
+                <a href="#type_statistics" data-toggle="tab">类型统计</a>
+            </li>
+        </ul>
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane fade in active" id="alarm_content">
+            <div class="mapmode_item_search">
+                <!--<span>搜索:</span>-->
+                <!--<input type="text">-->
+                <button class="btn btn-sm btn-query" id="warn_refresh"><span
+                        class="glyphicon glyphicon-search"></span>刷新
+                </button>
+            </div>
+            <div class="mapmode_item_table">
+                <div class="load-wrapp">
+                    <div class="load-4">
+                        <div class="ring-1"></div>
+                    </div>
+                </div>
+                <table class="stripe row-border order-column nowrap table-bordered" align="center" id="alarm_table">
+                    <thead>
+                    <tr>
+                        <th>报警时间</th>
+                        <th>测站编码</th>
+                        <th>测站名称</th>
+                        <th>报汛等级</th>
+                        <th>测站类型</th>
+                        <th>报警类型</th>
+                        <th>异常数据</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="type_statistics">
+            <div class="mapmode_item_table">
+                <table class="stripe row-border order-column nowrap table-bordered" align="center" id="alarmtype_table">
+                    <thead>
+                    <tr>
+                        <!--<th width="10%"></th>-->
+                        <th width="55%">报警类型</th>
+                        <th width="45%">站点数量</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--等值分析-->
+<div id="d_analysis" class="mapmode_item_div d_analysis_div">
+    <div class="tab-content">
+        <!--<div style="margin-top: 6px;height: 34px;border-bottom: 1px solid #ccc;padding-bottom: 34px;padding-left: 10px;">-->
+        <div class="analysisi_chose">
+            <label>开始时间:</label>
+            <div class="analysis_time_div input-group date" id="starttime">
+                <input type="text" class="form-control input-sm">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+            </div>
+        </div>
+        <div class="analysisi_chose">
+            <label>结束时间:</label>
+            <div class="analysis_time_div input-group date" id="endtime">
+                <input type="text" class="form-control input-sm">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+            </div>
+        </div>
+        <div style="display: inline-block;margin-left: 52px">
+            <button id="analy_btn">
+                生成等值分析图
+            </button>
+            <button id="export_btn">
+                导出
+            </button>
+        </div>
+        <!--</div>-->
+        <div class="load-wrapp hidden" style="top:53px">
+            <div class="load-4">
+                <div class="ring-1" style="margin: 28% auto 0 auto"></div>
+            </div>
+        </div>
+        <div id="printpdf" style="background: white">
+            <div id="isoTitle"
+                 style="font-weight: bold; font-size: 15px;padding-top: 14px;padding-left: 25%;border-top: 1px solid #ccc;"></div>
+            <div id="anlymap" class="anlymap"></div>
+            <div id="legend"
+                 style="width:232px;right:8px; float: right;position: absolute;bottom: 16px;margin-right: 0px;display:none;">
+                <div class="panel panel-default" style="width:234px;">
+                    <div style="background-color:#009d89;color:white;text-align:center;font-size:14px;font-weight:bold; border: 1px solid #eee; border-bottom: 0px;">
+                        图例
+                    </div>
+                    <div>
+                        <table style=" border: 1px solid #eee;width:230px;font-size: 12px">
+                            <tbody id="legend_body">
+                            <tr>
+                                <td>特大暴雨(><span id="RAIN_LEVEL6"></span>mm)</td>
+                                <!--<td id="dry-level1">0~10</td>-->
+                                <!--<td><span class="label" style="background-color:#003a95;padding:.1em .8em">&nbsp;</span></td>-->
+                                <td><span class="label" style="background-color:rgb(204,0,19);padding:.1em .8em;">&nbsp;</span></td>
+                            </tr>
+                            <tr>
+                                <td>大暴雨(<span id="RAIN_LEVEL5"></span>-<span id="RAIN_LEVEL55"></span>mm)</td>
+                                <!--<td id="dry-level1">0~10</td>-->
+                                <!--<td><span class="label" style="background-color:#3056b9;padding:.1em .8em">&nbsp;</span></td>-->
+                                <td><span class="label" style="background-color:rgb(249,4,245);padding:.1em .8em">&nbsp;</span></td>
+                            </tr>
+                            <tr>
+                                <td>暴雨(<span id="RAIN_LEVEL4"></span>-<span id="RAIN_LEVEL44"></span>mm)</td>
+                                <!--<td id="dry-level1">0~10</td>-->
+                                <!--<td><span class="label" style="background-color:#3056b9;padding:.1em .8em">&nbsp;</span></td>-->
+                                <td><span class="label" style="background-color:rgb(1,0,248);padding:.1em .8em">&nbsp;</span></td>
+                            </tr>
+                            <tr>
+                                <td>大雨(<span id="RAIN_LEVEL3"></span>-<span id="RAIN_LEVEL33"></span>mm)</td>
+                                <!--<td id="dry-level1">0~10</td>-->
+                                <!--<td><span class="label" style="background-color:#3056b9;padding:.1em .8em">&nbsp;</span></td>-->
+                                <td><span class="label" style="background-color:rgb(94,184,248);padding:.1em .8em">&nbsp;</span></td>
+                            </tr>
+                            <tr>
+                                <td>中雨(<span id="RAIN_LEVEL2"></span>-<span id="RAIN_LEVEL22"></span>mm)</td>
+                                <!--<td id="dry-level1">0~10</td>-->
+                                <!--<td><span class="label" style="background-color:#3056b9;padding:.1em .8em">&nbsp;</span></td>-->
+                                <td><span class="label" style="background-color:rgb(53,167,5);padding:.1em .8em">&nbsp;</span></td>
+                            </tr>
+                            <tr>
+                                <td>小雨(<span id="RAIN_LEVEL1"></span>-<span id="RAIN_LEVEL11"></span>mm)</td>
+                                <!--<td id="dry-level1">0~10</td>-->
+                                <!--<td><span class="label" style="background-color:#3056b9;padding:.1em .8em">&nbsp;</span></td>-->
+                                <td><span class="label" style="background-color:rgb(158,246,129);padding:.1em .8em">&nbsp;</span></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div></div>
+
+    </div>
+    <!--图例-->
+
+</div>
+</html>

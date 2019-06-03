@@ -1,0 +1,213 @@
+/*添加站点弹窗表格样式*/
+.layerform {
+    width: 90%;
+    margin: 10px auto 0 auto;
+}
+
+/*添加站点弹窗底部横线样式*/
+.formline {
+    margin: 5px 0;
+}
+
+/*添加站点弹窗表格样式*/
+.layertable tr td {
+    line-height: 30px !important;
+}
+
+/*添加站点弹窗下拉框样式*/
+.layertable select {
+    width: 100%;
+    padding: 6px 0;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+
+/*添加站点弹窗标签样式*/
+.layertable label {
+    width: 100%;
+    text-align: right;
+    padding-right: 5px;
+}
+
+/*添加站点弹窗输入框样式*/
+.layertable input[type=text] {
+    width: 92%;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    line-height: 25px;
+    padding-left: 3px;
+    background: white !important;
+}
+
+/*添加站点弹窗输入框样式*/
+.layertable input[type=password] {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    line-height: 25px;
+    padding-left: 3px;
+    background: white !important;
+}
+
+/*添加站点弹窗输入框样式*/
+.layertable input[type=number] {
+    width: 88%;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    line-height: 25px;
+    padding-left: 3px;
+    margin-right: 5px;
+}
+
+/*添加站点弹窗输入框样式*/
+.layertable input[type=radio] {
+    margin: 0 5px;
+}
+
+#devicetable {
+    text-align: left;
+}
+
+/*添加站点弹窗文本域样式*/
+.formline textarea {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    vertical-align: middle;
+    width: 175px;
+}
+
+/*添加站点弹窗输入框样式*/
+.form-control[readonly] {
+    background-color: #fff;
+}
+
+/*
+.input_date {
+    width: 100%!important;
+}*/
+
+/*添加站点添加图片按钮样式*/
+.addbtn {
+    color: #ccc;
+    display: inline-block;
+    width: 90px;
+    height: 90px;
+    line-height: 90px;
+    text-align: center;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/*添加站点添加图片按钮样式*/
+#addpic {
+    position: absolute;
+    top: -14px;
+    opacity: 0;
+    z-index: 3;
+    left: 0;
+    height: 141px;
+    cursor: pointer;
+}
+
+/*添加站点添加图片列表样式*/
+.smallpic {
+    width: 90px;
+    display: inline-block;
+    margin-right: 10px;
+    border: 1px solid #eee;
+    position: relative;
+    padding: 5px 5px;
+    cursor: pointer;
+}
+
+/*添加站点添加图片列表样式*/
+.smallpic img {
+    width: 100%;
+}
+
+/*添加站点添加图片列表样式*/
+.img-add {
+    /*display: inline-block;*/
+}
+
+/*添加站点删除图片按钮样式*/
+.delete {
+    position: absolute;
+    right: -8px;
+    top: -6px;
+    color: #666;
+    cursor: pointer;
+}
+
+/*添加站点添加图片列表样式*/
+.hidden-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .4);
+    z-index: 10;
+    padding: 30px 0 0 40px;
+}
+
+.hidden-layer img {
+    width: 700px;
+}
+
+.layui-layer-content {
+    text-align: center;
+}
+
+.layui-layer-content img {
+    width: 96%;
+    margin: 10px 0;
+}
+
+/*浏览器滚动条样式*/
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+/*浏览器滚动条样式*/
+::-webkit-scrollbar-track-piece {
+    background-color: #eee;
+    -webkit-border-radius: 6px;
+}
+
+/*浏览器滚动条样式*/
+::-webkit-scrollbar-thumb:vertical {
+    height: 5px;
+    background-color: #999;
+    -webkit-border-radius: 6px;
+}
+
+/*浏览器滚动条样式*/
+::-webkit-scrollbar-thumb:horizontal {
+    width: 5px;
+    background-color: #999;
+    -webkit-border-radius: 6px;
+}
+
+/*角色管理*/
+.treeRole {
+    border: 1px solid #ccc;
+    height: 190px;
+    overflow: auto;
+}
+
+.layerform h4 {
+    margin: 0;
+    padding: 10px 10px;
+    color: #fff;
+    font-size: 14px;
+    background: rgb(0, 157, 137);
+    font-weight: bold;
+}
+
+.detailplan img {
+    width: 30px;
+    margin: 0;
+}

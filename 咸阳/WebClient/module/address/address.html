@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>通讯录</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../css/datatable/jquery.dataTables.css" type="text/css">
+    <link rel="stylesheet" href="../../css/select2/select2.min.css" type="text/css">
+    <link rel="stylesheet" href="../../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../../libraries/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css"/>
+    <link rel="stylesheet" href="../../css/form.css"/>
+</head>
+<body>
+<div class="content-box clearfix">
+    <section class="leftNav">
+        <h4>查询条件</h4>
+        <div class="selectGroup">
+            <div>
+                <label>姓名:</label>
+                <div class="input-group" style="z-index: 0;">
+                    <input type="text" class="form-control" id="name_search">
+                </div>
+            </div>
+            <div>
+                <label>所属单位:</label>
+                <div class="input-group" style="z-index: 0;">
+                    <input type="text" class="form-control" id="department_search">
+                </div>
+            </div>
+            <div>
+                <label>联系电话:</label>
+                <div class="input-group" style="z-index: 0;">
+                    <input type="text" class="form-control" id="phone_search">
+                </div>
+            </div>
+            <div class="text-center btnGroup">
+                <button class="btn btn-query btn-block" id="searchBtn"><span class="glyphicon glyphicon-search"></span> 查询</button>
+                <button class="btn btn-put btn-block" id="address_add_btn"><span class="glyphicon glyphicon-plus"></span> 新增</button>
+            </div>
+        </div>
+    </section>
+    <div class="rightTab">
+        <h4>通讯录</h4>
+        <table id="address_table" class="stripe row-border order-column nowrap table-bordered" width="100%"
+               cellspacing="0">
+            <thead style="line-height: 30px;">
+            <tr class="text-center">
+                <th>序号</th>
+                <th>姓名</th>
+                <th>所属单位</th>
+                <th>联系电话</th>
+                <th style="width: 50%">备注</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+
+<form  class="layerform" style="display: none" id="add_address">
+    <table class="table table-bordered table-striped layertable">
+        <tbody>
+        <tr>
+            <td class="text-right"><label>姓名：</label></td>
+            <td><input type="text" style="width: 90%;" id="name_txt" name="姓名"><i style="color: red;padding-left: 3px">*</i></td>
+        </tr>
+        <tr>
+            <td class="text-right"><label>所属单位：</label></td>
+            <td><input type="text" style="width: 90%;" id="department_txt" name="所属单位"><i style="color: red;padding-left: 3px">*</i></td>
+        </tr>
+        <tr>
+            <td class="text-right"><label>联系电话：</label></td>
+            <td><input type="text" style="width: 90%;" id="phone_txt" name="联系电话"><i style="color: red;padding-left: 3px">*</i></td>
+        </tr>
+        <tr>
+            <td class="text-right"><label>备注：</label></td>
+            <td  colspan="3"><textarea id="remark_txt" style="width:100%;" rows="3" class="form-control"></textarea></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+
+<script src="../../libraries/jquery-1.11.1.min.js"></script>
+<script src="../../libraries/bootstrap.min.js"></script>
+<script src="../../libraries/jquery.cookie.js"></script>
+<script src="../../libraries/moment-2.8.3/moment.min.js"></script>
+<script src="../../libraries/datatable/jquery.dataTables.js"></script>
+<script src="../../libraries/datatable/dataTables.fixedColumns.js"></script>
+<script src="../../libraries/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script src="../../libraries/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../../libraries/layer/layer.js"></script>
+<script src="../../libraries/Select2/js/select2.min.js"></script>
+<script src="../../js/config/server-config.js"></script>
+<script src="../../js/common.js"></script>
+<script type="text/javascript" src="../../js/datatables-init.js"></script>
+<script type="text/javascript" src="../../js/address/address.js"></script>
+</body>
+</html>

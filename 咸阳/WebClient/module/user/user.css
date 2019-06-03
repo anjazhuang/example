@@ -1,0 +1,62 @@
+/*用户管理弹窗列表*/
+.layui-layer-btn {
+    border-top: 1px solid #E9E7E7
+}
+
+table.dataTable tbody th,
+table.dataTable tbody td {
+    /*padding: 8px 10px;*/
+    padding: 5px 5px;
+}
+
+table.dataTable thead th,
+table.dataTable thead td {
+    /*padding: 10px 18px;*/
+    padding: 10px 3px;
+}
+
+.btn-info:hover, .btn-info:active, .btn-info:focus {
+    background: rgba(0, 157, 137, .9);
+    border-color: rgb(0, 157, 137);
+}
+
+/*修改按钮样式*/
+.set {
+    background-color: #f0ad4e;
+    color: #fff;
+}
+
+/*修改按钮样式*/
+.set:hover, .set:active, .set:focus {
+    background: rgba(240, 173, 78, .9);
+    border-color: rgb(240, 173, 78);
+    color: #fff
+}
+
+/*删除按钮样式*/
+.btn-del {
+    background-color: red;
+    color: #fff;
+    margin-left: 3px;
+}
+
+/*删除按钮样式*/
+.btn-del:hover, .btn-del:active, .btn-del:focus {
+    background: rgba(255, 0, 12, .9);
+    border-color: red;
+    color: #fff
+}
+
+/*查询按钮样式*/
+.role .btn-query {
+    background: #1E9FFF;
+    border-color: rgb(30, 159, 255);
+    color: #fff;
+}
+
+/*查询按钮样式*/
+.role .btn-query:hover, .role .btn-query:active, .role .btn-query:focus {
+    background: rgba(30, 159, 255, .9);
+    border-color: rgb(30, 159, 255);
+    color: #fff;
+}

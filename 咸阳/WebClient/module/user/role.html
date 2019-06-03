@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>角色管理</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../css/datatable/jquery.dataTables.css" type="text/css">
+    <link rel="stylesheet" href="../../css/select2/select2.min.css" type="text/css">
+    <link rel="stylesheet" href="../../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../../css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <link rel="stylesheet" href="../../css/form.css"/>
+    <link rel="stylesheet" href="user.css">
+</head>
+<body>
+<div class="content-box clearfix role">
+    <section class="leftNav">
+        <h4>查询条件</h4>
+        <div class="selectGroup">
+            <div class="role-name">
+                <label>角色名:</label>
+                <input type="text" class="form-control roleName">
+            </div>
+            <div class="text-center btnGroup">
+                <button class="btn btn-query btn-block" id="queryRole"><span class="glyphicon glyphicon-search"></span>&nbsp;查询
+                </button>
+                <button class="btn btn-put btn-block" id="creatRole"><span class="glyphicon glyphicon-user"></span>&nbsp;创建角色
+                </button>
+            </div>
+        </div>
+    </section>
+    <div class="rightTab">
+        <h4>角色列表</h4>
+        <table id="example" class="stripe row-border order-column nowrap table-bordered" width="100%" cellspacing="0">
+            <thead>
+            <tr class="text-center">
+                <th>序号</th>
+                <th>角色名</th>
+                <th style="width: 65%">备注</th>
+                <th style="width: 100px">操作</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<!--弹窗-->
+<form class="layerform" style="display: none" id="layerform">
+    <table class="table table-bordered table-striped layertable">
+        <tbody>
+        <tr>
+            <td class="text-right"><label>角色名：</label></td>
+            <td><input type="text" id="roleName"></td>
+        </tr>
+        <tr>
+            <td class="text-right"><label>备注：</label></td>
+            <td><textarea style="width: 100%" rows="2" id="roleRem"></textarea></td>
+        </tr>
+        </tbody>
+    </table>
+    <h4>权限列表</h4>
+    <div class="treeRole">
+        <ul id="treeDemoRole" class="ztree"></ul>
+    </div>
+</form>
+<script src="../../libraries/jquery-1.11.1.min.js"></script>
+<script src="../../libraries/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../libraries/ztree/jquery.ztree.core-3.5.min.js"></script>
+<script type="text/javascript" src="../../libraries/ztree/jquery.ztree.excheck-3.5.min.js"></script>
+<script type="text/javascript" src="../../libraries/ztree/jquery.ztree.exedit-3.5.min.js"></script>
+<script src="../../libraries/moment-2.8.3/moment.min.js"></script>
+<script src="../../libraries/jquery.cookie.js"></script>
+<script src="../../libraries/datatable/jquery.dataTables.js"></script>
+<script src="../../libraries/datatable/dataTables.fixedColumns.js"></script>
+<script src="../../libraries/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script src="../../libraries/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../../libraries/Select2/js/select2.min.js"></script>
+<script type="text/javascript" src="../../js/common.js"></script>
+<script type="text/javascript" src="../../js/config/server-config.js"></script>
+<script src="../../libraries/layer/layer.js"></script>
+<script src="../../js/user/role.js"></script>
+</body>
+</html>

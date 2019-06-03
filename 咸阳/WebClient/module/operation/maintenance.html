@@ -1,0 +1,328 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>维修流程</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../css/datatable/jquery.dataTables.css" type="text/css">
+    <link rel="stylesheet" href="../../css/select2/select2.min.css" type="text/css">
+    <link rel="stylesheet" href="../../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../../css/form.css"/>
+    <link rel="stylesheet" href="maintence.css"/>
+</head>
+<body>
+<div class="content-box clearfix">
+    <section class="leftNav">
+        <h4>查询条件</h4>
+        <div class="selectGroup">
+            <div style="margin-bottom: 10px">
+                <label>开始时间:</label>
+                <div class="input-group date" id="s-date">
+                    <input type="text" class="form-control input-sm"><span
+                        class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                </div>
+                <label>结束时间:</label>
+                <div class="input-group date" id="e-date">
+                    <input type="text" class="form-control input-sm"><span
+                        class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                </div>
+            </div>
+            <div>
+                <label>行政区域:</label>
+                <select id="area" class="form-control adminArea">
+                    <!--<option value="">全部</option>-->
+                </select>
+            </div>
+            <div>
+                <label>维修状态:</label>
+                <select class="form-control" id="selectTaskStatus">
+                    <option value="">全部</option>
+                    <option value="0">报修，待指派</option>
+                    <option value="10">待接收</option>
+                    <option value="20">待维修</option>
+                    <option value="30">执行维修</option>
+                    <option value="60">维修完成</option>
+                </select>
+            </div>
+            <div>
+                <label>优先级:</label>
+                <select class="form-control" id="selectPriorityStatus">
+                    <option value="">全部</option>
+                    <option value="3">普通</option>
+                    <option value="2">优先</option>
+                    <option value="1">紧急</option>
+                </select>
+            </div>
+
+            <div class="text-center btnGroup">
+                <button class="btn btn-query btn-block" id="selectTask"><span
+                        class="glyphicon glyphicon-search"></span>&nbsp;查询
+                </button>
+                <button class="btn btn-put btn-block" onclick="customizedRepair()"><span
+                        class="glyphicon glyphicon-list-alt"></span>&nbsp;自定义维修单
+                </button>
+            </div>
+        </div>
+    </section>
+    <div class="rightTab">
+        <h4>维修单列表</h4>
+        <table id="repairlist" class="stripe row-border order-column nowrap table-bordered" width="100%"
+               cellspacing="0">
+            <thead>
+            <tr class="text-center">
+                <th>序号</th>
+                <th>维修单编号</th>
+                <th>测站编号</th>
+                <th>测站名称</th>
+                <th>行政区域</th>
+                <th>优先级</th>
+                <th>创建时间</th>
+                <th>报修描述</th>
+                <th>响应/修复</th>
+                <th>维修状态</th>
+                <th>运维人员</th>
+                <th>联系电话</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+        </table>
+
+
+        <!--<div class="repairstatusbox"><span class="repairstatus" title="未处理"><img src="../../img/undo.png"><span-->
+        <!--style="color: #ff0103">3</span></span><span-->
+        <!--class="repairstatus" title="正在处理"><img-->
+        <!--src="../../img/doing.png"><span style="color: #009ffd">4</span></span><span class="repairstatus"-->
+        <!--title="已完成"><img-->
+        <!--src="../../img/done.png"><span style="color: #5ce300">5</span></span>-->
+        <!--</div>-->
+
+    </div>
+</div>
+
+<!--派单弹窗-->
+<div class="orderlayer" style="display: none">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>维修单编号</th>
+            <td id="updateTaskNo">400100</td>
+            <th>行政区域</th>
+            <td id="updateAddvcd">市辖区</td>
+        </tr>
+        <tr>
+            <th>测站编号</th>
+            <td id="updateStcd">400100</td>
+
+            <th>测站名称</th>
+            <td id="updateStmn">站点一</td>
+        </tr>
+        <tr>
+            <th>报修描述</th>
+            <td id="updateContent" colspan="3">自动生成任务单（24小时未上报数据）</td>
+        </tr>
+    </table>
+    <div class="setorder">
+        <div><label>指派维修人员：</label>
+            <select id="serviceperson">
+                <option>请指派</option>
+            </select></div>
+
+        <div><label style="padding-left: 19px">设置优先级：</label><select id="updatePriority">
+            <!--<option>请选择</option>-->
+            <option value="3">普通</option>
+            <option value="2">优先</option>
+            <option value="1">紧急</option>
+        </select></div>
+
+    </div>
+</div>
+
+<!--打印div-->
+<div id="printDiv" style="display: none;width:500px;text-align:center">
+    <Label style="font-weight:bold;font-size:18px; ">维修日志</Label>
+    <div id="printBody"></div>
+</div>
+
+<!--维修操作弹窗-->
+<div class="repaired" style="display: none">
+    <div id="pDiv1" class="col-md-6 col-lg-6">
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th style="width: 100px">维修单编号</th>
+                <td id="operaterTaskNo"></td>
+            </tr>
+            <tr>
+                <th>行政区域</th>
+                <td id="operaterAddvcd">市辖区</td>
+            </tr>
+            <tr>
+                <th>测站编号</th>
+                <td id="operaterStcd"></td>
+            </tr>
+            <tr>
+                <th>测站名称</th>
+                <td id="operaterStmn"></td>
+            </tr>
+            <tr>
+                <th>维修人员</th>
+                <td id="operaterName"></td>
+            </tr>
+            <tr>
+                <th>优先级</th>
+                <td id="operaterPriorityName"></td>
+            </tr>
+            <tr>
+                <th colspan="2" class="text-center">报修描述</th>
+            </tr>
+            <tr>
+                <td id="operaterContent" colspan="2" class="text-center"></td>
+            </tr>
+        </table>
+    </div>
+    <div id="pDiv2" class="col-lg-6 col-md-6">
+        <div id="process" style="display: none" class="process">
+
+            <div class="child">
+                <span></span>
+                <p class="state">维修完成</p>
+                <p class="tm">2018-01-15 11:15:43</p>
+            </div>
+
+            <div class="child">
+                <span></span>
+                <p class="state">维修完成</p>
+                <p class="tm">2018-01-15 11:15:43</p>
+            </div>
+            <ul>
+                <li>
+                    <span>日志</span>
+                    <p><span>   2018-01-15 11:15:43</span>
+                </li>
+                <li><img class="img-list" src="../../img/rain.png"></li>
+            </ul>
+        </div>
+        <div id="operate">
+            <div class="remarksbox">
+                <h5>添加日志</h5>
+                <textarea id="journal" placeholder="添加日志"></textarea>
+            </div>
+            <button type="button"><span class="glyphicon glyphicon-plus"></span> 选择图片</button>
+            <div class="photos">
+                <span class="img-add"></span>
+                <span style="position: relative;" class="addbtnbox">
+                        <i class="glyphicon glyphicon-plus addbtn"></i><input type="file"
+                                                                              id="addpic"
+                                                                              multiple="multiple"
+                                                                              accept="image/*">
+                    </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--维修单详情-->
+<!--<div class="repaireddetail" style="display: none">-->
+<!--<div class="col-md-6 col-lg-6">-->
+<!--<table class="table table-bordered table-striped">-->
+<!--<tr>-->
+<!--<th style="width: 100px">维修单编号</th>-->
+<!--<td>001</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<th>行政区域</th>-->
+<!--<td id="operaterAddvcd">市辖区</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<th>测站编号</th>-->
+<!--<td id="operaterStcd">001</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<th>测站名称</th>-->
+<!--<td id="operaterStmn">站点一</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<th>维修人员</th>-->
+<!--<td id="operaterName">小明</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<th>优先级</th>-->
+<!--<td id="operaterPriorityName">普通</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<th  colspan="2" class="text-center">报修描述</th>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td  id="operaterContent" colspan="2" class="text-center">自动生成任务单(24小时未上报数据)</td>-->
+<!--</tr>-->
+<!--</table>-->
+<!--</div>-->
+<!--<div class="col-md-6 col-lg-6">-->
+<!--<div id="process" class="process">-->
+<!--<div class="child"><span></span>-->
+<!--<p class="state">报修，待指派</p>-->
+<!--<p class="tm">2018-01-15 11:15:43</p></div>-->
+<!--<div class="child"><span></span>-->
+<!--<p class="state">指派完成，待接收</p>-->
+<!--<p class="tm">2018-01-15 11:15:43</p></div>-->
+<!--<div class="child"><span></span>-->
+<!--<p class="state">接单，待维修</p>-->
+<!--<p class="tm">2018-01-15 11:15:43</p></div>-->
+<!--<div class="child"><span></span>-->
+<!--<p class="state">执行维修中</p>-->
+<!--<p class="tm">2018-01-15 11:15:43</p></div>-->
+<!--<div class="child"><span></span>-->
+<!--<p class="state">维修完成</p>-->
+<!--<p class="tm">2018-01-15 11:15:43</p></div>-->
+<!--<div class="child"><span></span>-->
+<!--<p class="state">维修完成</p>-->
+<!--<p class="tm">2018-01-15 11:15:43</p></div>-->
+
+<!--</div>-->
+<!--<div class="img-list">-->
+<!--<img src="../../img/rain.png"> <img src="../../img/rain.png"> <img src="../../img/rain.png">-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+
+<!--自定义维修单-->
+<div class="customized" style="display: none">
+    <table class="table table-bordered table-striped">
+        <!--<tr>-->
+        <!--<th>维修单编号</th>-->
+        <!--<td>001</td>-->
+        <!--</tr>-->
+        <tr>
+            <th>行政区域</th>
+            <td><select class="form-control adminArea">
+            </select></td>
+        </tr>
+        <tr>
+            <th>维修站点</th>
+            <td><select class="form-control" id="repairst">
+                <option>全部</option>
+            </select></td>
+        </tr>
+        <tr>
+            <th>报修描述</th>
+            <td><textarea id="content" style="width: 100%;height: 100px"></textarea></td>
+        </tr>
+    </table>
+</div>
+<script src="../../libraries/jquery-1.11.1.min.js"></script>
+<script src="../../libraries/bootstrap.min.js"></script>
+<script src="../../libraries/jquery.cookie.js"></script>
+<script src="../../libraries/moment-2.8.3/moment.min.js"></script>
+<script src="../../libraries/datatable/jquery.dataTables.js"></script>
+<script src="../../libraries/datatable/dataTables.fixedColumns.js"></script>
+<script src="../../libraries/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script src="../../libraries/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript" src="../../js/common.js"></script>
+<script type="text/javascript" src="../../js/config/server-config.js"></script>
+<script src="../../libraries/layer/layer.js"></script>
+<script src="../../libraries/Select2/js/select2.min.js"></script>
+<script src="../../js/operation/moment.js"></script>
+<script src="../../libraries/html2canvas.js"></script>
+<script src="../../js/operation/maintence.js"></script>
+</body>
+</html>

@@ -1,0 +1,482 @@
+/*页面整体背景样式*/
+body {
+    background: transparent;
+    overflow: hidden;
+}
+
+/*各个模块iframe样式*/
+.content-box {
+    color: #404040;
+    padding: 10px 10px;
+}
+
+/*左边菜单样式*/
+.leftNav {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    bottom: 10px;
+    padding: 10px 10px;
+    width: 225px;
+    background: #fefefe;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    /* height: 97vh;*/
+    overflow-y: auto;
+}
+
+/*@media screen and (min-width: 500px) and (max-width: 1900px) {*/
+/*.leftNav {*/
+/*height: 96vh;*/
+/*width: 206px;*/
+/*}*/
+/*}*/
+
+/*左边菜单标题样式*/
+.leftNav h4 {
+    color: white;
+    font-weight: bold;
+    margin: 0 0 5px 0;
+    text-align: center;
+    font-size: 16px;
+    background: rgb(0, 157, 137);
+    line-height: 30px;
+}
+
+/*左边条件查询区域样式*/
+.chooseBox {
+    border: 1px solid rgb(0, 157, 137);
+    /*margin-bottom: 10px;*/
+}
+
+/*左边条件查询区域样式*/
+.chooseBox .list-inline {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid rgb(0, 157, 137);
+}
+
+/*左边条件查询区域样式*/
+.chooseBox .list-inline li {
+    width: 48.8%;
+    cursor: pointer;
+    color: rgb(0, 157, 137);
+    line-height: 28px;
+}
+
+/*左边条件查询区域tab点击样式*/
+.chooseBox ul.list-inline li.active {
+    background-color: rgb(0, 157, 137);
+    color: #fff;
+}
+
+/*左边条件查询区域tab点击样式*/
+.chooseBox .tab {
+    height: 350px;
+    overflow: hidden;
+}
+
+/*左边条件查询区域tab点击样式*/
+.chooseBox .tab div.tab0 {
+    display: none;
+}
+
+/*左边条件查询区域tab点击样式*/
+.chooseBox .tab .tab0.active {
+    display: block;
+    position: relative;
+}
+
+/*左边条件查询区域树形节点样式*/
+.tab .ztreeBox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 345px;
+    overflow: auto
+}
+
+/*左边条件查询按钮样式*/
+.btnGroup button {
+    margin-top: 15px;
+    background: rgb(0, 157, 137);
+    border-color: rgb(0, 157, 137);
+}
+
+/*左边条件查询按钮样式*/
+.btnGroup button:hover, .btnGroup button:active, .btnGroup button:focus {
+    background: rgba(0, 157, 137, .9);
+    border-color: rgb(0, 157, 137);
+}
+
+/*右边容器样式*/
+.rightTab {
+    position: absolute;
+    left: 230px;
+    top: 10px;
+    right: 5px;
+    background: #fefefe;
+    bottom: 10px;
+    margin-left: 10px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    padding: 5px 5px;
+    overflow-x: hidden;
+}
+
+/*右边容器标题样式*/
+.rightTab h4 {
+    text-align: center;
+    background: #eee;
+    color: white;
+    background: rgb(0, 157, 137);
+    margin: 0;
+    padding: 10px 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/*右边容器表格样式*/
+.rightTab th {
+    text-align: center;
+}
+
+/*右边容器表格样式*/
+.rightTab table {
+    text-align: center;
+}
+
+/*普通按钮样式*/
+.btn-info {
+    background: rgb(0, 157, 137);
+    border-color: rgb(0, 157, 137);
+    margin: 0 3px;
+    outline: none !important;
+}
+
+/*普通按钮样式*/
+.btn-info:hover, .btn-info:active, .btn-info:focus {
+    background: rgba(0, 157, 137, .9);
+    border-color: rgb(0, 157, 137);
+}
+
+/*屏幕滚动条样式*/
+::-webkit-scrollbar {
+    width: 8px;
+    height: 5px;
+}
+
+/*屏幕滚动条样式*/
+::-webkit-scrollbar-track-piece {
+    background-color: #eee;
+    -webkit-border-radius: 6px;
+}
+
+/*屏幕滚动条样式*/
+::-webkit-scrollbar-thumb:vertical {
+    height: 5px;
+    background-color: #999;
+    -webkit-border-radius: 6px;
+}
+
+/*屏幕滚动条样式*/
+::-webkit-scrollbar-thumb:horizontal {
+    width: 5px;
+    background-color: #999;
+    -webkit-border-radius: 6px;
+}
+
+/*弹窗按钮样式*/
+.layui-layer-btn {
+    border-top: 1px solid #E9E7E7
+}
+
+/*普通按钮样式*/
+.normal_btn1, .normal_btn1:hover, .normal_btn1:active, .normal_btn1:visited {
+    margin-left: 10px;
+    background-color: #009d89 !important;
+    border-color: #009d89 !important;
+    outline: none !important;
+    color: #fff !important;
+}
+
+/*普通按钮样式*/
+.normal_btn0, .normal_btn0:hover, .normal_btn0:active, .normal_btn0:visited {
+    margin-left: 10px;
+    background-color: #fff !important;
+    border-color: #009d89 !important;
+    border: 1px solid #dedede !important;
+    color: #333 !important;
+    outline: none !important;
+}
+
+/*普通按钮样式*/
+.selectGroup div label {
+    margin-top: 5px;
+}
+
+/*弹窗按钮样式*/
+.layui-layer-btn .layui-layer-btn0 {
+    border-color: rgb(0, 157, 137) !important;
+    background-color: rgb(0, 157, 137) !important;
+}
+
+.btn {
+    outline: none !important;
+}
+
+/*警告按钮样式*/
+.btn-warnning, .btn-warnning:link, .btn-warnning:hover, .btn-warnning:active, .btn-warnning:visited {
+    background-color: rgba(255, 0, 0, 0.9) !important;
+    border-color: rgba(255, 0, 0, 0.9) !important;
+    margin: 0 3px;
+    outline: none;
+    color: #fff !important;
+    /*animation: warnning_twinkling 1.5s;*/
+    /*animation-iteration-count: infinite;*/
+}
+
+/*警告按钮样式*/
+.btn-warnning0, .btn-warnning0:link, .btn-warnning0:hover, .btn-warnning0:active, .btn-warnning0:visited {
+    background-color: rgba(255, 0, 0, 0.9) !important;
+    border-color: rgba(255, 0, 0, 0.9) !important;
+    margin: 0 3px;
+    outline: none;
+    color: #fff !important;
+    /*animation: warnning_twinkling 1.5s;*/
+    /*animation-iteration-count: infinite;*/
+}
+
+.btn-warnning1, .btn-warnning1:link, .btn-warnning1:hover, .btn-warnning1:active, .btn-warnning1:visited {
+    background-color: rgba(255, 0, 0, 0.9) !important;
+    border-color: rgba(255, 0, 0, 0.9) !important;
+    margin: 0 3px;
+    outline: none;
+    color: #fff !important;
+    /*animation: warnning_twinkling 1.5s;*/
+    /*animation-iteration-count: infinite;*/
+}
+
+/*地图模式警告站点提示样式*/
+@keyframes warnning_twinkling {
+    to {
+        /*transform: scale(1.2);*/
+        background: rgba(150, 0, 0, 0.9);
+        border-color: rgba(150, 0, 0, 0.9);
+    }
+}
+
+/*#searchAction, #searchAction1, #searchAction2, #searchAction3 {*/
+/*padding-left: 10px;*/
+/*margin-top: 10px;*/
+/*}*/
+
+/*#searchTxt, #searchTxt1, #searchTxt2, #searchTxt3 {*/
+/*width: 140px;*/
+/*display: inline;*/
+/*padding-left: 3px;*/
+/*border-radius: 3px;*/
+/*border: 1px solid #ccc;*/
+/*margin: 0 5px;*/
+/*}*/
+
+/*查询按钮样式*/
+.btn-query {
+    background: #1E9FFF !important;
+    border-color: rgb(30, 159, 255) !important;
+    color: #fff !important;
+}
+
+/*查询按钮样式*/
+.btn-query:hover, .role .btn-query:active, .role .btn-query:focus {
+    background: rgba(30, 159, 255, .9) !important;
+    border-color: rgb(30, 159, 255) !important;
+    color: #fff !important;
+}
+
+/*导出按钮样式*/
+.btn-export {
+    background: #276f00 !important;
+    border-color: #276f00 !important;
+    color: #fff !important;
+}
+
+/*导出按钮样式*/
+.btn-export:hover, .role .btn-export:active, .role .btn-export:focus {
+    background: #2e7508 !important;
+    border-color: #2e7508 !important;
+    color: #fff !important;
+}
+
+/*设置按钮样式*/
+.set {
+    background-color: #f0ad4e !important;
+    color: #fff !important;
+}
+
+/*设置按钮样式*/
+.set:hover, .set:active, .set:focus {
+    background: rgba(240, 173, 78, .9) !important;
+    border-color: rgb(240, 173, 78) !important;
+    color: #fff !important;
+}
+
+/*删除按钮样式*/
+.btn-del {
+    background-color: red !important;
+    color: #fff !important;
+    margin-left: 3px !important;
+}
+
+.btn-del:hover, .btn-del:active, .btn-del:focus {
+    background: rgba(255, 0, 12, .9);
+    border-color: red;
+    color: #fff
+}
+
+/*派单按钮样式*/
+.btn-put {
+    background: #00B83F !important;
+    color: #fff !important;
+}
+
+/*派单按钮样式*/
+.btn-put:hover, .btn-put:active, .btn-put:focus {
+    background: rgba(0, 184, 63, .9) !important;
+    border-color: #00B83F !important;
+    color: #fff !important;
+}
+
+/*派单按钮样式*/
+.pagination {
+    margin: 0 !important;
+}
+
+/*统一查询条件参数选择框*/
+.queryparam {
+    padding: 0 5px 5px 5px;
+    border-bottom: 1px solid rgb(0, 157, 137);
+}
+
+/*统一查询条件参数选择框样式*/
+.queryparam select {
+    height: 30px;
+    width: 116px;
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 5px;
+    font-size: 12px !important;
+}
+
+/*统一查询条件参数选择框样式*/
+.queryparam div {
+    margin-top: 10px;
+}
+
+/*统一查询条件参数选择框样式*/
+.select2-container .select2-selection--single {
+    height: 25px;
+    font-size: 12px;
+}
+
+/*统一查询条件参数选择框样式*/
+.select2-container--default .select2-results > .select2-results__options {
+    font-size: 12px;
+}
+
+.tabletitle {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.btime {
+    text-align: left;
+    width: calc(60% - 20px);
+    float: left;
+    margin: 0 10px;
+}
+
+.bunits {
+    text-align: right;
+    width: calc(40% - 20px);
+    float: left;
+    margin: 0 10px;
+}
+
+.maketabtime{
+    text-align: left;
+    width: calc(60% - 20px);
+    float: left;
+    margin: 0 10px;
+}
+
+.maketabcom{
+    text-align: right;
+    width: calc(40% - 20px);
+    float: left;
+    margin: 0 10px;
+}
+
+.raintable tr th, .raintable tr td {
+    padding: 5px 10px;
+    white-space: nowrap;
+}
+
+#raintab {
+    overflow: auto;
+    position: absolute;
+    height: calc(100% - 74px);
+    top: 55px;
+    width: 98%;
+    margin: 5px;
+}
+
+#raintab {
+    width: 98%;
+    margin: 5px;
+}
+
+/*雨情样式*/
+.tablediv {
+    position: absolute;
+    left: 3px;
+    bottom: 25px;
+    top: 60px;
+    right: 3px;
+    overflow: auto;
+}
+
+/*河道水情样式*/
+.tablediv1 {
+    position: absolute;
+    right: 3px;
+    bottom: 25px;
+    left: 3px;
+    top: 110px;
+    overflow: auto;
+}
+
+.tablediv2 {
+    position: absolute;
+    right: 0;
+    bottom: 25px;
+    left: 3px;
+    top: 110px;
+    overflow-y: auto;
+}
+
+.rivertable thead tr th, .reservoirtable thead tr th, .sandtable thead tr th, .soiltable thead tr th {
+    padding: 5px 0;
+}
+
+.bottomRemark{
+    position: absolute;
+    left: 3px;
+    right: 3px;
+    bottom: 0;
+}
+
+.select2-selection__rendered li{
+    font-size: 10px;
+}

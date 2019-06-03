@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../libraries/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css"/>
+    <link rel="stylesheet" href="../../css/form.css"/>
+</head>
+<body>
+
+<form  class="layerform">
+    <table class="table table-bordered table-striped layertable">
+        <tbody>
+        <tr>
+            <td class="text-right"><label>设备编号：</label></td>
+            <td><input type="text"></td>
+            <td class="text-right"><label>设备名称：</label></td>
+            <td><input type="text"></td>
+        </tr>
+        <tr>
+            <td class="text-right"><label>质保期：</label></td>
+            <td>
+                <input type="number" id="warranty_period" min="1" max="10" step="1" value="1" onkeypress="return event.keyCode>=48&&event.keyCode<=57" ng-pattern="/[^a-zA-Z]/">年
+           </td>
+            <td class="text-right"><label>安装时间：</label></td>
+            <td>
+                <div class="input-group date">
+                    <input type="text" class="form-control input-sm"  id="installation_time"><span
+                        class="input-group-addon"><i
+                        class="glyphicon glyphicon-time"></i></span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="text-right"><label>所属测站：</label></td>
+            <td><select class="form-control">
+                <option>请选择</option>
+                <option>测站1</option>
+                <option>测站2</option>
+                <option>测站3</option>
+            </select></td>
+            <td class="text-right"><label>报废日期：</label></td>
+            <td>
+                <div class="input-group">
+                    <input type="text" class="form-control input-sm"  id="discarded_time" readonly>
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="text-right"><label>安装位置：</label></td>
+            <td colspan="3"><input type="text"></td>
+        </tr>
+        <tr>
+            <td class="text-right"><label>备注：</label></td>
+            <td  colspan="3"><textarea style="width:100%;" rows="3" ></textarea></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+
+<script src="../../libraries/jquery-1.11.1.min.js"></script>
+<script src="../../libraries/bootstrap.min.js"></script>
+<script src="../../libraries/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script src="../../libraries/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript" src="../../js/common.js"></script>
+<script src="../../libraries/layer/layer.js"></script>
+<script src="../../js/operation/adddevice.js"></script>
+</body>
+</html>

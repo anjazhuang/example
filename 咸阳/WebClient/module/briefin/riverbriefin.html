@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简报管理</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../libraries/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" href="../../css/select2/select2.min.css" type="text/css">
+    <link rel="stylesheet" href="../../css/datatable/jquery.dataTables.css" type="text/css">
+    <link rel="stylesheet" href="../../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../../css/loading.css">
+    <link rel="stylesheet" href="briefin.css">
+</head>
+<body>
+<div id="rainTab">
+
+    <div class="load-wrapp" id="load-rainwrapp">
+        <div class="load-4">
+            <div class="ring-1"></div>
+        </div>
+    </div>
+    <div class="brieftoolbar">
+        <div class="brieftoolbarLeft">
+            <div style="margin: 5px 10px;"><span><strong>查询时间:</strong></span></div>
+            <div>
+                <div class="input-group date briefin-date" id="river-start-time">
+                    <input type="text" class="form-control input-sm"><span
+                        class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                </div>
+            </div>
+            <!--<div style="margin: 5px 10px;"><span><strong>至</strong></span></div>-->
+            <!--<div>-->
+                <!--<div class="input-group date briefin-date" id="river-end-time">-->
+                    <!--<input type="text" class="form-control input-sm"><span-->
+                        <!--class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div style="margin: 5px 10px;"><span><strong>报汛等级:</strong></span></div>
+            <div>
+                <select id="levelSelect" multiple style="width: 500px">
+                    <!--<option value="">全部</option>-->
+                    <option value="1">中央报汛站</option>
+                    <option value="2">省级重点报汛站</option>
+                    <option value="3">省级一般报汛站</option>
+                    <option value="4">其它报汛站</option>
+                    <option value="5">山洪站</option>
+                </select></div>
+        </div>
+        <div style="float:left;width: 30%;text-align: right">
+            <button id="runRiverBtn" class="btn btn-primary briefin-btn">生成简报</button>
+            <!--<button id="xportRainBtn" class="btn btn-primary briefin-btn" onclick="aclick(this)">导出</button>-->
+            <button class="btn btn-primary briefin-btn"><a href="#" onclick="aclick(this)"
+                                                           style="color: #fff;text-decoration:none;">
+                <span class=" glyphicon glyphicon-download-alt"></span>&nbsp;导出</a>
+            </button>
+            <!--<button id="printRainBtn" class="btn btn-primary briefin-btn">打印表格</button>-->
+            <!--<button id="printRainJbBtn" class="btn btn-primary briefin-btn">打印简报</button>-->
+        </div>
+    </div>
+
+    <div class="resultline"></div>
+    <div id="resultconcent" class="hidden">
+        <p style="font-weight: bold;padding: 5px 0 0 20px;text-align: left">超起报流量：<span style="display: inline-block;width:40px; height: 22px;background-color: #ffd50c;vertical-align: middle;border-radius: 12px"></span> 超警戒流量：<span style="display: inline-block;width:40px; height: 22px;background-color: orange;vertical-align: middle;border-radius: 12px"></span> 超保证流量：<span style="display: inline-block;width:40px; height: 22px;background-color: red;border-radius: 12px;vertical-align: middle"></span></p>
+        <div id="resulttitle">河道水情简报</div>
+        <div id="resultDate" class="resultLeft"></div>
+        <div id="resultUnit" class="resultRight"></div>
+        <div id="resultTableDiv" style="top:140px"></div>
+    </div>
+</div>
+<div id="resulttablebottom"></div>
+</body>
+<script src="../../libraries/jquery-1.11.1.min.js"></script>
+<script src="../../libraries/bootstrap.min.js"></script>
+<script src="../../libraries/jquery.cookie.js"></script>
+<script src="../../libraries/layer/layer.js"></script>
+<script type="text/javascript" src="../../libraries/datatable/jquery.dataTables.js"></script>
+<script src="../../libraries/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script src="../../libraries/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../../libraries/Select2/js/select2.min.js"></script>
+<script type="text/javascript" src="../../js/datatables-init.js"></script>
+<script src="../../js/common.js"></script>
+<script type="text/javascript" src="../../js/config/server-config.js"></script>
+<script src="../../libraries/downExcel_lib.js"></script>
+<script type="text/javascript" src="../../js/briefin/riverbriefin.js"></script>
+</html>

@@ -1,0 +1,805 @@
+/*背景颜色*/
+body {
+    background: #fff;
+}
+
+/*地图*/
+.map {
+    height: 100vh;
+    width: 100%;
+    z-index: 1;
+}
+
+.anlymap {
+    width: 700px;
+    height: 470px;
+    margin: auto;
+}
+
+#analy_btn,#export_btn {
+    background: #009d89;
+    color: white;
+    border: none;
+    line-height: 30px;
+    padding: 0 24px;
+}
+
+#legend_body tr>td{
+    padding-left: 5px;
+}
+
+/*地图样式*/
+.mapmode_left {
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    left: 30px;
+}
+
+/*地图左侧按钮*/
+.mapmode_left_button_div {
+    margin: 10px 0;
+}
+
+/*地图左侧按钮*/
+.mapmode_left_button_div button {
+    margin: 0 5px;
+    background-color: #4c76ab !important;
+    border-color: #4c76ab !important;
+    opacity: 0.75;
+    outline: none;
+    width: 40px;
+    height: 45px;
+    font-size: 15px;
+}
+
+/*地图左侧按钮*/
+.mapmode_left_button_div button:hover, .mapmode_left_button_div button:active, .mapmode_left_button_div button:disabled {
+    background-color: #4c76ab !important;
+    border-color: #4c76ab !important;
+    opacity: 1;
+    outline: none;
+}
+
+/*地图左侧按钮*/
+.mapmode_body {
+    position: absolute;
+    z-index: 999;
+    top: 5px;
+    right: 15px;
+}
+
+/*地图左侧按钮*/
+.legend_body {
+    position: absolute;
+    z-index: 998;
+    bottom: 15px;
+    right: 15px;
+}
+
+/*地图左侧按钮*/
+.mapmode_laybody {
+    position: absolute;
+    z-index: 999;
+    top: 65px;
+    left: 10px;
+}
+
+/*地图左侧按钮*/
+.mapmode_button_div {
+    margin: 10px 0;
+}
+
+/*地图左侧按钮*/
+.mapmode_button_div button {
+    margin: 0 5px;
+    /*background-color: #009d89;*/
+    /*border-color: #009d89;*/
+    opacity: 0.85;
+    outline: none;
+    width: 100px;
+    height: 50px;
+    font-size: 18px;
+}
+
+/*地图左侧按钮*/
+.mapmode_button_div button:hover, .mapmode_button_div button:active, .mapmode_button_div button:disabled {
+    /*background-color: #009d89 !important;*/
+    /*border-color: #009d89 !important;*/
+    opacity: 1;
+    outline: none;
+}
+
+/*站点按钮*/
+.station_btn, .station_btn:link, .station_btn:hover, .station_btn:active, .station_btn:visited {
+    margin: 10px 0;
+    outline: none;
+    display: block;
+    width: 85px;
+    border: none;
+    height: 30px;
+    line-height: 20px;
+    font-size: 13px;
+    color: #fff !important;
+}
+
+/*站点按钮样式*/
+.station_btn_visable {
+    opacity: 1;
+}
+
+/*站点按钮样式*/
+.station_btn_hide {
+    opacity: 0.6;
+    background-color: #8D8D8D !important;
+}
+
+/*水位站按钮样式*/
+#waterstation_btn {
+    background-color: #e75816;
+}
+
+/*雨量站按钮样式*/
+#rainlstation_btn {
+    background-color: #e60012;
+}
+
+/*墒情站按钮样式*/
+#soilstation_btn {
+    background-color: #dca103;
+}
+
+/*报警站按钮样式*/
+#warning_btn {
+    background-color: red;
+}
+
+/*区县按钮样式*/
+#towns_btn {
+    background-color: #276f00;
+    padding: 6px 4px;
+}
+
+/*河流按钮样式*/
+#stream_btn {
+    background-color: #0a5cff;
+}
+
+/*乡镇按钮样式*/
+#villages_btn {
+    background-color: #3f8f31;
+}
+
+/*村庄按钮样式*/
+#country_btn {
+    background-color: #099281;
+}
+
+/*水系按钮样式*/
+#river_btn {
+    background-color: #2b8be2;
+}
+
+/*公路按钮样式*/
+#road_btn {
+    background-color: #c77800;
+}
+
+/*地形按钮样式*/
+#terrain_btn {
+    background-color: #5620da;
+}
+
+/*水位按钮样式*/
+#hydrologystation_btn {
+    background-color: #690a06;
+}
+
+#reservoirhydrology_btn {
+    background-color: #b36c69;
+}
+
+#floodstation_btn {
+    background-color: #8a6d3b;
+}
+
+.mapmode_content_div {
+    margin-top: 20px;
+}
+
+.mapmode_item_div {
+    position: relative;
+    border: 1px solid #ddd;
+    margin: 5px 15px;
+    min-height: 495px;
+    padding-bottom: 30px;
+}
+
+.mapmode_item_title {
+    border-bottom: 1px solid #5e5e5e;
+    font-weight: bold;
+}
+
+.mapmode_item_title span {
+    font-size: 14px;
+    line-height: 30px;
+}
+
+/*输入框样式*/
+input[type=search] {
+    margin-right: 80px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding-left: 3px;
+    height: 30px;
+}
+
+/*搜索样式*/
+.mapmode_item_search {
+    position: absolute;
+    top: 45px;
+    right: 8px;
+    z-index: 10;
+}
+
+/*搜索样式*/
+.mapmode_item_search span {
+    padding-right: 10px;
+}
+
+/*搜索样式*/
+.mapmode_item_search input {
+    height: 30px;
+    width: 250px;
+}
+
+/*普通按钮样式*/
+.normal_btn, .normal_btn:hover, .normal_btn:active {
+    margin-left: 10px;
+    background-color: #009d89 !important;
+    border-color: #009d89 !important;
+    outline: none;
+}
+
+/*.nav-tabs {
+    border-bottom: 1px solid #5e5e5e !important;
+}*/
+
+/*tab样式*/
+.nav-tabs li {
+    margin-bottom: 0;
+    width: 33.33%;
+    /*border-right: 1px solid #e0e0e0;*/
+    /*width: 50%;*/
+}
+
+/*tab样式*/
+.three-tab li {
+    margin-bottom: 0;
+    width: 33.33%;
+    border-right: 1px solid #e0e0e0;
+}
+
+/*tab样式*/
+.three-tab li:last-child {
+    border: 0;
+}
+
+/*tab样式*/
+.nav-tabs li a {
+    border-radius: 0;
+    height: 35px;
+    line-height: 35px;
+    padding: 0 15px;
+    color: #009d89;
+    border: none;
+    text-align: center;
+    margin-right: 0 !important;
+}
+
+/*tab样式*/
+.nav-tabs li.active a, .nav-tabs li.active a:hover, .nav-tabs li.active a:focus {
+    background-color: #009d89 !important;
+    color: #FFF !important;
+    text-align: center !important;
+}
+
+/*tab样式鼠标移动*/
+.nav-tabs li a:hover {
+    background-color: #fff;
+}
+
+/*弹窗表格样式*/
+.mapmode_item_table {
+    /*margin: 5px 10px;*/
+    font-size: 12px;
+    text-align: center;
+    padding-top: 10px;
+    position: relative;
+    /*min-height: 553px;*/
+}
+
+/*弹窗表格样式*/
+.mapmode_item_table table th, .mapmode_item_table table td {
+    height: 35px;
+    text-align: center;
+    vertical-align: middle !important;
+}
+
+/*弹窗表格筛选样式*/
+.dataTables_filter label {
+    float: right;
+    margin-bottom: 10px;
+}
+
+/*弹窗表格筛选样式*/
+.dataTables_filter label span {
+    font-size: 14px;
+    padding-right: 2px;
+}
+
+.dataTables_wrapper .dataTables_filter {
+    float: left;
+}
+
+/*弹窗表格样式*/
+.form-control {
+    display: inline-block !important;
+    width: 160px !important;
+    margin-bottom: 3px;
+}
+
+/*弹窗表格样式*/
+.dataTables_wrapper .row .col-xs-6 {
+    width: 100%;
+}
+
+/*弹窗表格样式*/
+#stationdata_table {
+    text-align: center;
+}
+
+/*
+.layui-layer-max {
+    display: none!important;
+}
+*/
+/*弹窗表格样式*/
+.popover {
+    max-width: 3000px;
+    /*width: 475px;*/
+    /*height: 360px;*/
+    position: absolute;
+    z-index: 9999;
+}
+
+/*弹窗表格样式*/
+.popover-title {
+    border-bottom: 1px solid #ddd;
+}
+
+/*弹窗表格样式*/
+.popover-content {
+    padding: 0;
+    margin: 0 -1px;
+}
+
+/*弹窗表格样式*/
+.layer_content_item {
+    padding: 5px 0;
+    height: 285px;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+}
+
+/*弹窗饼状图样式*/
+#stationnetwork_pie {
+    padding: 15px 0;
+    height: 240px;
+}
+
+/*弹窗柱状图样式*/
+#stationnetwork_bar {
+    padding: 10px 0;
+}
+
+/*弹窗饼状图样式*/
+#stationnetwork_bar div, #stationnetwork_pie div {
+    margin: 0 auto;
+}
+
+/*表格样式*/
+.table_thead_bgcolor {
+    color: #fff;
+    background-color: #00695c;
+    line-height: 30px;
+    text-align: center;
+}
+
+/*表格点击下拉子表格按钮样式*/
+td.details-control {
+    background: url('../../img/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+
+/*表格点击下拉子表格按钮样式*/
+tr.shown td.details-control {
+    background: url('../../img/details_close.png') no-repeat center center;
+}
+
+/*子表格样式*/
+.table_child {
+    margin: 10px 0;
+    padding: 0 15px;
+    width: 100%;
+}
+
+/*子表格样式*/
+.table_child thead th, .table_child td {
+    padding: 0 5px !important;
+}
+
+/*弹窗表格样式*/
+.mapmode_item_table_title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 32px;
+    padding: 5px 0;
+}
+
+/*站网统计表格样式*/
+#stationnetwork_statistics_table tbody th, #stationnetwork_statistics_table tbody td {
+    padding: 1px 5px;
+}
+
+/*站网统计表格样式*/
+#statistics_table, #drought_statistics_table, #alarmtype_table {
+    padding-top: 10px;
+}
+
+/*今日实时数据弹窗样式*/
+.getInfoWindowView_font {
+    line-height: 45px;
+    font-size: 14px;
+    color: #0C0C0C;
+    padding-left: 10px;
+}
+
+/*
+.layui-layer-setwin .layui-layer-max {
+    display: none;
+}
+*/
+/*地图tab样式*/
+.map-tab {
+    list-style-type: none;
+    width: 80px;
+    float: left;
+    border: 0;
+    width: 33.33%;
+    background-color: #fff;
+    border-left: 1px solid #ccc;
+}
+
+/*地图tab样式*/
+.map-tab a {
+    color: #009d89;
+    text-decoration: none;
+}
+
+/*地图tab样式*/
+#mapmode_item_tab_ul li:first-child {
+    border-left: none;
+}
+
+/*显示器滚动条样式*/
+::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+}
+
+/*显示器滚动条样式*/
+::-webkit-scrollbar-track-piece {
+    background-color: #eee;
+    -webkit-border-radius: 6px;
+}
+
+/*显示器滚动条样式*/
+::-webkit-scrollbar-thumb:vertical {
+    height: 3px;
+    background-color: #eee;
+    -webkit-border-radius: 6px;
+}
+
+/*显示器滚动条样式*/
+::-webkit-scrollbar-thumb:horizontal {
+    width: 3px;
+    background-color: #eee;
+    -webkit-border-radius: 6px;
+}
+
+/*当前tab切换样式*/
+.map-tab-active {
+    background-color: #009d89;
+}
+
+/*当前tab切换样式*/
+.map-tab-active a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/*图表样式*/
+#curve-echarts {
+    margin-top: 20px;
+    height: 340px;
+}
+
+/*测站信息表格样式*/
+.stationinfo_table_div {
+    margin: 12px 0;
+    /*width: 450px;*/
+    /*height: 246px;*/
+    /*border: 1px solid #ccc;*/
+}
+
+/*测站信息表格样式*/
+.stationinfodata_table_div_noborder {
+    margin: 12px 0 0 0;
+    /*width: 450px;*/
+    /*height: 250px;*/
+    border: none;
+}
+
+/*测站信息表格样式*/
+.dataTables_wrapper {
+    margin-top: -2px;
+    padding: 0 10px;
+}
+
+/*测站信息表格样式*/
+.stationinfo_table_div div {
+    padding: 0;
+}
+
+/*测站信息表格样式*/
+#stationinfo_table td, #stationinfo_table1 td, #stationinfo_table2 td, #stationinfo_table3 td,#stationinfoshuiku td{
+    text-align: center;
+    line-height: 25px;
+}
+
+/*测站信息表格样式*/
+#stationinfo_table thead th, #stationinfo_table1 thead th ,#stationinfo_table2 thead th,#stationinfo_table3 thead th{
+    text-align: center;
+    line-height: 25px;
+    background-color: #eaeaea;
+    color: #060606;
+}
+
+/*隐藏样式*/
+.noshow {
+    display: none;
+}
+
+/*报警样式*/
+.css_animation {
+    height: 20px;
+    width: 20px;
+    border-radius: 15px;
+    background: rgba(255, 0, 0, 0.9);
+    transform: scale(1);
+    animation: myfirst 2s;
+    animation-iteration-count: infinite;
+}
+
+/*报警闪烁动画*/
+@keyframes myfirst {
+    to {
+        transform: scale(2);
+        background: rgba(0, 0, 0, 0);
+    }
+}
+
+/*浏览器滚动条样式*/
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+/*浏览器滚动条样式*/
+::-webkit-scrollbar-track-piece {
+    background-color: #eee;
+    -webkit-border-radius: 6px;
+}
+
+/*浏览器滚动条样式*/
+::-webkit-scrollbar-thumb:vertical {
+    height: 5px;
+    background-color: #999;
+    -webkit-border-radius: 6px;
+}
+
+/*浏览器滚动条样式*/
+::-webkit-scrollbar-thumb:horizontal {
+    width: 5px;
+    background-color: #999;
+    -webkit-border-radius: 6px;
+}
+
+/*按钮样式*/
+.btn-info {
+    background: rgb(0, 157, 137) !important;
+    border-color: rgb(0, 157, 137) !important;
+    margin: 0 3px !important;
+    outline: none !important;
+}
+
+/*按钮样式*/
+.btn-info:hover, .btn-info:active, .btn-info:focus {
+    background: rgba(0, 157, 137, .9) !important;
+    border-color: rgb(0, 157, 137) !important;
+}
+
+/*查询条件框样式*/
+.chooseBox, .selectGroup {
+    width: 100%;
+    margin: 10px auto;
+}
+
+/*查询条件框样式*/
+.chooseBox .list-inline li {
+    width: 49%;
+}
+
+/*查询条件框标题样式*/
+.selectGroup div label {
+    /*width: 15% !important;*/
+    /*line-height: 30px !important;*/
+}
+
+/*等值分析弹窗样式*/
+.selectGroup div select {
+    width: 159px !important;
+}
+
+/*等值分析弹窗样式*/
+.analysis_time_div {
+    display: inline-block;
+}
+
+/*等值分析弹窗输入框样式*/
+.analysis_time_div input {
+    display: inline-block !important;
+    width: 124px !important;
+    height: 34px;
+}
+
+.input-group-addon {
+    padding: 8px 12px;
+}
+
+/*等值分析弹窗样式*/
+.analysis_time_div span {
+    width: 38px;
+    display: inline-block;
+    margin-left: -1px;
+}
+
+/*等值分析弹窗按钮样式*/
+.layui-layer-btn .layui-layer-btn0 {
+    border-color: rgb(0, 157, 137) !important;
+    background-color: rgb(0, 157, 137) !important;
+}
+
+/*等值分析弹窗样式*/
+.analysis_tabs_li_a {
+    padding: 0 !important;
+    line-height: 35px !important;
+    height: 35px !important;
+}
+
+/*等值分析弹窗样式*/
+.d_analysis_div {
+    /*min-height: 260px !important;*/
+}
+
+/*搜索按钮样式*/
+#searchTxt, #searchTxt1, #searchTxt2, #searchTxt3 {
+    width: 150px;
+}
+
+/*等值分析弹窗样式*/
+.chooseBox .tab {
+    height: 190px;
+    overflow: hidden;
+}
+
+/*故障按钮样式*/
+.errortBtngroup {
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    text-align: center;
+}
+
+/*故障按钮样式*/
+.errortBtngroup button:first-child {
+    background: rgb(0, 157, 137);
+    color: #fff;
+    border: none;
+}
+
+/*故障按钮样式*/
+.errortBtngroup button:last-child {
+    background: #eee;
+    color: #404040;
+    border: none;
+    margin-left: 10px;
+}
+
+/*查询条件框样式*/
+.tab .ztreeBox {
+    height: 184px;
+}
+
+.analysisi_chose {
+    display: inline-block;
+    margin: 5px 0 10px 5px;
+}
+
+.btn-disabled, .btn-disabled:hover,.btn-disabled:active,.btn-disabled:visited  {
+    background-color: #aaaaaa !important;
+    border-color: #aaaaaa!important;
+}
+
+.rainBtn, .rainBtn:hover,.rainBtn:active,.rainBtn:visited  {
+    background-color: #0044cc !important;
+    border-color: #0044cc !important;
+}
+
+.waterBtn, .waterBtn:hover,.waterBtn:active,.waterBtn:visited  {
+    background-color: #0a5cff !important;
+    border-color: #0a5cff !important;
+}
+
+.soilBtn, .soilBtn:hover,.soilBtn:active,.soilBtn:visited  {
+    background-color: #e75816 !important;
+    border-color: #e75816 !important;
+}
+
+.ywBtn, .ywBtn:hover,.ywBtn:active,.ywBtn:visited  {
+    background-color: #276f00 !important;
+    border-color: #276f00 !important;
+}
+
+.warnBtn, .warnBtn:hover,.warnBtn:active,.warnBtn:visited  {
+    background-color: red !important;
+    border-color: red !important;
+}
+
+.analysisBtn, .analysisBtn:hover,.analysisBtn:active,.analysisBtn:visited  {
+    background-color: #02009d !important;
+    border-color: #02009d !important;
+}
+
+.popover-title {
+    /* padding: 8px 14px; */
+    text-align: center;
+    margin: 0;
+    line-height: 30px;
+    font-weight: bold;
+    font-size: 14px;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #ebebeb;
+    border-radius: 5px 5px 0 0;
+}
+
+#zoomSet{
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.avg{
+    width: 100px;
+}

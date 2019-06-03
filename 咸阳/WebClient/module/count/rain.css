@@ -1,0 +1,99 @@
+/*表格样式*/
+table.dataTable tbody th,
+table.dataTable tbody td {
+    /*padding: 8px 10px;*/
+    padding: 5px 5px;
+}
+
+/*右边数据容器表格样式*/
+.rightTab th {
+    text-align: center;
+}
+
+/*右边数据容器表格样式*/
+.rightTab table {
+    text-align: center;
+}
+
+/*表格子表格点击下拉按钮*/
+td.details-control {
+    background: url('../../img/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+
+/*表格子表格点击下拉按钮*/
+tr.shown td.details-control {
+    background: url('../../img/details_close.png') no-repeat center center;
+}
+
+/*表格子表格*/
+td.details-control-child {
+    background: url('../../img/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+
+/*表格子表格*/
+tr.shown td.details-control-child {
+    background: url('../../img/details_close.png') no-repeat center center;
+}
+
+/*表格子表格*/
+.table_child {
+    margin: 15px 0;
+    padding: 0 15px;
+    width: 50%;
+}
+
+/*表格样式*/
+#rain_table {
+    margin: 5px 0;
+}
+
+/*表格样式*/
+#rain_table tr td {
+    padding: 3px 5px;
+}
+
+/*输入框样式*/
+.input-group {
+    margin-bottom: 10px;
+}
+
+/*同步操作按钮样式*/
+.btn-synchro {
+    background: #055eae !important;
+    color: #fff;
+}
+
+.btn-synchro:hover, .btn-synchro:active, .btn-synchro:focus {
+    background: rgba(5, 94, 174, .9) !important;
+    color: #fff;
+}
+
+/*.tablediv{*/
+/*position: absolute;*/
+/*top: 60px;*/
+/*left: 0;*/
+/*right: 0;*/
+/*bottom: 0;*/
+/*overflow: auto;*/
+/*}*/
+
+#timeRaintable thead > tr > th, #timerainCttable thead > tr > th,#timeraindCttable thead > tr > th, #timerainmCttable thead > tr > th,
+#reRaintable thead > tr > th,#riverRaintable thead > tr > th,#yearRaintable thead > tr > th{
+    padding: 5px 0;
+}
+
+#timerainCttable tbody > tr > td, #timeraindCttable tbody > tr > td, #timerainmCttable tbody > tr > td {
+    padding: 3px 0;
+}
+
+.btn-export a {
+    color: white;
+    display: inline-block;
+    width: 100%
+}
+
+.select2-selection__rendered li{
+    font-size: 10px;
+}

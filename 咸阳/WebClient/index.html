@@ -1,0 +1,384 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+    <!-- meta character set -->
+    <meta charset="utf-8">
+    <!-- Always force latest IE rendering engine or request Chrome Frame -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>咸阳水文局水雨情查询报警平台</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/b.tabs.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/switch/iconfont.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="module/setting/setting.css" type="text/css">
+</head>
+
+<body>
+<header id="navigation" class="navbar-inverse navbar-fixed-top">
+    <div class="container0">
+        <div class="navbar-header">
+            <!-- responsive nav button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <img src="img/logo.png" id="logo-img"/>
+            <label class="navbar-brand">咸阳水文局水雨情报警查询系统</label>
+        </div>
+        <nav class="collapse navbar-collapse navbar-left" role="navigation" id="menunav">
+            <!--  <ul id="nav" class="nav navbar-nav">
+                  <li class="menuSideBar" data-url="module/map/map.html"><a href="javascript:;" id="map-menu"><span
+                          class="glyphicon glyphicon-globe"></span>&nbsp;<label>地图模式</label></a></li>
+                  <li class="menuSideBar" data-url="module/monitor/monitor.html">
+                      <a href="javascript:;" id="data-menu"><span class="glyphicon glyphicon-th-list"></span>&nbsp;<label>监测数据</label></a>
+                  </li>
+                  <li class="dropdown">
+                      <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" id="analysis-menu">
+                          <span class="glyphicon glyphicon-stats"></span>&nbsp;<label>统计分析</label>
+                          <b class="caret"></b>
+                      </a>
+                      <ul class="dropdown-menu menuSideBar">
+                          <li data-url="module/count/collectRain.html"><a href="javascript:;" id="collect-menu">汇总雨量统计</a>
+                          </li>
+                          <li data-url="module/count/timeRain.html"><a href="javascript:;" id="time-menu">时段雨量统计</a></li>
+                          <li data-url="module/count/monthRain.html"><a href="javascript:;" id="month-menu">月年雨量统计</a>
+                          </li>
+                          <li data-url="module/count/rainfall.html"><a href="javascript:;" id="contrast-menu">雨量对比</a></li>
+                          <li data-url="module/count/rivervalue.html"><a href="javascript:;" id="value-menu">水情特征值</a></li>
+                      </ul>
+                  </li>
+                  <li class="menuSideBar" data-url=" "><a href="javascript:;" id="briefing-menu"><span class="glyphicon glyphicon-book"></span>&nbsp;<label>简报管理</label></a></li>
+                  <li class="menuSideBar" data-url="module/warning/warning.html"><a href="javascript:;" id="warning-menu"><span
+                          class="glyphicon glyphicon-exclamation-sign"></span>&nbsp;<label>报警信息</label></a></li>
+                  <li class="dropdown">
+                      <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" id="operation-menu">
+                          <span class="glyphicon glyphicon-wrench"></span>&nbsp;<label>运行维护</label>
+                          <b class="caret"></b>
+                      </a>
+                      <ul class="dropdown-menu menuSideBar" style="text-align:center;">
+                          <li data-url="module/operation/station.html"><a href="javascript:;" id="station-menu">站点管理</a>
+                          </li>
+                          <li data-url="module/operation/device.html"><a href="javascript:;" id="device-menu">设备登记</a>
+                          </li>
+                          <li data-url=" "><a href="javascript:;" id="plan-menu">制定方案</a></li>
+                          <li data-url=" "><a href="javascript:;" id="record-menu">档案记录</a></li>
+                          <li data-url=" "><a href="javascript:;" id="assess-menu">维护评估</a></li>
+                          <li data-url=" "><a href="javascript:;" id="early-menu">预警机制</a></li>
+                      </ul>
+                  </li>
+                  <li class="menuSideBar">
+                  <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" id="power-menu">
+                      <span class="glyphicon glyphicon-wrench"></span>&nbsp;<label>权限管理</label>
+                      <b class="caret"></b>
+                  </a>
+                      <ul class="dropdown-menu menuSideBar" style="text-align:center;">
+                          <li data-url="module/user/user.html"><a href="javascript:;" id="user-menu">用户管理</a>
+                          </li>
+                          <li data-url="module/user/role.html"><a href="javascript:;" id="role-menu">角色管理</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li class="menuSideBar" data-url=""><a href="javascript:;" id="setting-menu"><span
+                          class="glyphicon glyphicon-cog"></span>&nbsp;<label>系统参数</label></a></li>
+              </ul>-->
+        </nav>
+        <nav class="collapse navbar-collapse navbar-right">
+            <ul class="nav navbar-nav">
+                <li class="dropdown" id="userinfo">
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-user" style="padding-right: 10px"></i>
+                        <span id="user" class="username"></span>
+                        <!-- <b class="caret"></b>-->
+                    </a>
+                    <!-- <ul class="dropdown-menu menuSideBar" style="margin-top: 6px;margin-right: 5px;">
+                         <li id="userdata">
+                             <a href="javascript:;" data-toggle="popover"><span
+                                     style="font-weight: bold;line-height: 20px;">用户信息</span></a>
+                         </li>
+                         <li>
+                             <a href="javascript:;" onclick="logout()" id="time-menu"><span
+                                     style="font-weight: bold;line-height: 20px;">注销</span></a>
+                         </li>
+                     </ul>-->
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<div class="content-box">
+    <!--<div class="nth-tabs" id="editor-tabs"></div>-->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active noclose"><a href="#bTabs_index" data-toggle="tab">首页</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade in active" id="bTabs_index">
+            <!--<iframe allowfullscreen src="module/map/map.html" width="100%" scrolling="yes"></iframe>-->
+            <div class="welcomeIndex"></div>
+            <div class="copyright">
+                版权所有 2018 北京圣世信通科技发展有限公司 陕西省咸阳水文水资源勘测局
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="libraries/jquery-1.11.1.min.js"></script>
+<script src="libraries/jquery.cookie.js"></script>
+<script src="libraries/bootstrap.min.js"></script>
+<script src="js/index.js"></script>
+<script src="libraries/layer/layer.js"></script>
+<script src="libraries/tab/b.tabs.js"></script>
+<script src="js/config/server-config.js"></script>
+<script src="js/tab.js"></script>
+
+</body>
+
+<div id="d_modifypwd" class="hidden">
+    <div>
+        <div class="col-xs-4 itemname"><span>旧密码:</span></div>
+        <div class="col-xs-8"><input type="password" id="oldPassword"/></div>
+    </div>
+    <div>
+        <div class="col-xs-4 itemname"><span>新密码:</span></div>
+        <div class="col-xs-8"><input type="password" id="newPassword"/></div>
+    </div>
+    <div>
+        <div class="col-xs-4 itemname"><span>确认密码:</span></div>
+        <div class="col-xs-8"><input type="password" id="confirmPassword"/></div>
+    </div>
+</div>
+
+<!--<div id="d_userinfo" class="hidden">
+    <table class="table table-bordered table-striped userinfotable">
+        <tbody>
+        &lt;!&ndash;<tr class="text-center">
+            <td colspan="2" class="userinfotable_head">用户信息</td>
+        </tr>&ndash;&gt;
+        <tr>
+            <td class="text-right" width="50%"><label>用户名:</label></td>
+            <td><span id="user_name"></span></td>
+        </tr>
+        <tr>
+            <td class="text-right"><label>账号:</label></td>
+            <td><span id="user_Account"></span></td>
+        </tr>
+
+        <tr>
+            <td class="text-right"><label>行政区域:</label></td>
+            <td><span id="user_AreaName"></span></td>
+        </tr>
+        <tr>
+            <td class="text-right"><label>角色 :</label></td>
+            <td><span id="user_RoleName"></span></td>
+        </tr>
+        <tr>
+            <td class="text-right"><label>系统权限:</label></td>
+            <td><span id="user_SystemRole"></span></td>
+        </tr>
+        </tbody>
+    </table>
+</div>-->
+
+<!--简报模板-->
+<div class="mould_body_div" style="display: none">
+    <div class="mould_body_div_margin">
+        <table class="table table-bordered table-striped">
+            <tr class="text-center">
+                <td colspan="2" class="settting_title">雨情简报</td>
+            </tr>
+            <tr>
+                <td class="text-right text-middle"><label class="mould_label">模板内容：</label></td>
+                <td>
+                    <textarea row id="rain_textarea" class="mould_textarea"></textarea>
+                </td>
+            </tr>
+            <tr style="display: none;" class="text-center">
+                <td colspan="2" class="settting_title">河道水情简报</td>
+            </tr>
+            <tr style="display: none;">
+                <td class="text-right text-middle"><label class="mould_label">模板内容：</label></td>
+                <td>
+                    <textarea id="river_textarea" class="mould_textarea"></textarea>
+                </td>
+            </tr>
+            <tr style="display: none;" class="text-center">
+                <td colspan="2" class="settting_title">水库水情简报</td>
+            </tr>
+            <tr style="display: none;">
+                <td class="text-right text-middle"><label class="mould_label">模板内容：</label></td>
+                <td>
+                    <textarea id="reservoir_textarea" class="mould_textarea"></textarea>
+                </td>
+            </tr>
+            <!--<tr class="text-center">-->
+                <!--<td colspan="2" class="settting_title">墒情简报</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td class="text-right text-middle"><label class="mould_label">模板内容：</label></td>-->
+                <!--<td>-->
+                    <!--<textarea id="soil_textarea" class="mould_textarea"></textarea>-->
+                <!--</td>-->
+            <!--</tr>-->
+        </table>
+    </div>
+</div>
+
+
+<!--系统参数-->
+<div class="setting_body_div" style="display: none">
+    <div class="setting_body_div_margin">
+        <table class="table table-bordered table-striped">
+            <tbody>
+            <tbody>
+            <tr class="text-center" id="setParams">
+                <td colspan="2" class="settting_title">系统参数</td>
+            </tr>
+            <tr>
+                <td class="text-right"><label>用户登录有效期(单位：秒):</label></td>
+                <td class="settting_content_input"><input type="number" minlength="7" id="SESSION_TIME"
+                                                          oninput="if(value.length>7) value=value.slice(0,7)"
+                />
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right"><label>小雨范围:</label></td>
+                <td class="settting_content_input"><input type="number" id="RAIN_LEVEL1"/>-<input type="number" id="RAIN_LEVEL11"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right"><label>中雨范围:</label></td>
+                <td class="settting_content_input"><input type="number" id="RAIN_LEVEL2"/>-<input type="number" id="RAIN_LEVEL22"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right"><label>大雨范围:</label></td>
+                <td class="settting_content_input"><input type="number" id="RAIN_LEVEL3"/>-<input type="number" id="RAIN_LEVEL33"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right"><label>暴雨范围:</label></td>
+                <td class="settting_content_input"><input type="number" id="RAIN_LEVEL4"/>-<input type="number" id="RAIN_LEVEL44"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right"><label>大暴雨范围:</label></td>
+                <td class="settting_content_input"><input type="number" id="RAIN_LEVEL5"/>-<input type="number" id="RAIN_LEVEL55"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right"><label>特大暴雨范围:</label></td>
+                <td class="settting_content_input"><input type="number" id="RAIN_LEVEL6"/>-<input type="number" id="RAIN_LEVEL66"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right"><label>地图报警刷新时间:</label></td>
+                <td class="settting_content_input"><input type="number" id="WARNING_TIME"/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!--报警阀值-->
+<div class="warnning_body_div" style="display: none;padding: 15px 15px; font-size: 14px;">
+    <table class="table table-bordered table-striped">
+        <tbody>
+        <tr class="text-center">
+            <td colspan="2" class="settting_title">通用报警设置</td>
+        </tr>
+        <tr>
+            <td class="text-right"><label>启用报警：</label></td>
+            <td class="settting_content_input">
+                <div style="line-height: 0.7;padding-left: 9px">
+                    <i class="icon iconfont icon-kaiguan1" id="enbledwarn"></i>
+                    <!--<i class="icon iconfont icon-kaiguan2"></i>-->
+                </div>
+                <!--<input type="checkbox" style="height: 20px; width: 40px" id="warnbtn">-->
+            </td>
+        </tr>
+        <tr class="text-center">
+            <td colspan="2" class="settting_title">雨量报警阀值设置</td>
+        </tr>
+        <tr>
+            <td class="text-right"><label>1h雨量报警界限（单位：毫米）：</label></td>
+            <td class="settting_content_input">
+                <input type="number" step="0.1" id="oneh"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="text-right"><label>3h雨量报警界限（单位：毫米）：</label></td>
+            <td class="settting_content_input">
+                <input type="number" step="0.1" id="threeh"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="text-right"><label>6h雨量报警界限（单位：毫米）：</label></td>
+            <td class="settting_content_input">
+                <input type="number" step="0.1" id="sixh"/>
+            </td>
+        </tr>
+        <tr class="text-center">
+            <td colspan="2" class="settting_title">水位报警阀值设置</td>
+        </tr>
+        <tr>
+            <td class="text-right"><label>水位变幅异常值（单位：米）：</label></td>
+            <td class="settting_content_input">
+                <input type="number" step="0.001" id="rw"/>
+                <button style="width:80px;margin:4px;background-color:#009d89;color:white" type="button" id="warningSetting">特殊设置</button>
+            </td>
+        </tr>
+        <tr class="text-center">
+            <td colspan="2" class="settting_title">墒情报警阀值设置</td>
+        </tr>
+        <tr>
+            <td class="text-right"><label>重量含水量安全范围（单位：%）：</label></td>
+            <td class="settting_content_input"><input type="number" step="0.001" id="soilrate"/> - <input
+                    type="number" step="0.001"  id="soilrate1"/>
+            </td>
+        </tr>
+        <tr class="text-center">
+            <td colspan="2" class="settting_title">蒸发量报警阀值设置</td>
+        </tr>
+        <tr>
+            <td class="text-right"><label>蒸发量报警界限（单位：毫米）：</label></td> <td class="settting_content_input"><input type="number"> </td>
+        </tr>
+        <tr class="text-center">
+            <td colspan="2" class="settting_title">水温报警阀值设置</td>
+        </tr>
+        <tr>
+            <td class="text-right"><label>水温报警界限（单位：摄氏度）：</label></td> <td class="settting_content_input"><input type="number"> </td>
+        </tr>
+        <tr class="text-center">
+            <td colspan="2" class="settting_title">运维报警阈值设置</td>
+        </tr>
+        <tr>
+            <td class="text-right"><label>安全上报时间间隔（单位：时）:</label></td>
+            <td class="settting_content_input">
+                <input type="number" step="1" class="wun"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="text-right"><label>安全电压范围（单位：V）:</label></td>
+            <td class="settting_content_input">
+                <input type="number" step="1" class="wvo"/> -
+                <input type="number" step="1" class="wvo1"/>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</html>

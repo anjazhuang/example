@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>维修计划</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../libraries/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" href="../../css/datatable/jquery.dataTables.css" type="text/css">
+    <link rel="stylesheet" href="../../css/select2/select2.min.css" type="text/css">
+    <link rel="stylesheet" href="../../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../../css/form.css"/>
+    <link rel="stylesheet" href="maintenceplan.css"/>
+</head>
+<body>
+<div class="content-box clearfix">
+    <section class="leftNav">
+        <h4>查询条件</h4>
+        <div class="selectGroup">
+            <!--<div>-->
+                <!--<label>维护类型:</label>-->
+                <!--<select class="form-control">-->
+                    <!--<option>全部</option>-->
+                    <!--<option>机房维护</option>-->
+                    <!--<option>测站维护</option>-->
+                <!--</select>-->
+            <!--</div>-->
+            <div>
+                <label>计划状态:</label>
+                <select id="state" class="form-control">
+                    <option value="">全部</option>
+                    <option value="0">未执行</option>
+                    <option value="1">正在执行</option>
+                    <option value="2">完成</option>
+                    <option value="3">逾期</option>
+                </select>
+            </div>
+            <div class="text-center btnGroup">
+                <button class="btn btn-query btn-block"  id="selectPaln"><span
+                        class="glyphicon glyphicon-search"></span>&nbsp;查询
+                </button>
+                <button class="btn btn-put btn-block" onclick="customizedPlan()"><span
+                        class="glyphicon glyphicon-list-alt"></span>&nbsp;新增维护计划
+                </button>
+            </div>
+        </div>
+    </section>
+    <div class="rightTab">
+        <h4>维护计划列表</h4>
+        <table id="planlist" class="stripe row-border order-column nowrap table-bordered" width="100%"
+               cellspacing="0">
+            <thead>
+            <tr class="text-center">
+                <th>序号</th>
+                <!--<th>维护类型</th>-->
+                <th style="width: 500px;">计划内容</th>
+                <th>开始日期</th>
+                <th>结束日期</th>
+                <th>创建时间</th>
+                <th>计划状态</th>
+                <th>运维人员</th>
+                <th>联系电话</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<!--详情弹窗-->
+<div class="detailplan" style="display: none">
+    <div class="col-md-6 col-lg-6">
+        <table class="table table-bordered table-striped maintenance">
+            <tr>
+                <th>行政区域</th>
+                <td><span id="AreaName_span"></span></td>
+            </tr>
+            <tr>
+                <th>维护站点</th>
+                <td><span id="STNM_span"></span></td>
+            </tr>
+            <tr>
+                <th>开始时间</th>
+                <td><span id="startTime_span"></span></td>
+            </tr>
+            <tr>
+                <th>结束时间</th>
+                <td><span id="endTime_span"></span></td>
+            </tr>
+            <tr>
+                <th>维护人员</th>
+                <td><span id="maintName_span"></span></td>
+            </tr>
+            <tr>
+                <th colspan="2" class="text-center">计划内容</th>
+            </tr>
+            <tr>
+                <td colspan="2" style="height: 60px;">
+                    <div id="contnt_span"></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-lg-6 col-md-6" >
+        <table class="table table-bordered table-striped" width="100%"
+               cellspacing="0" id="detailsTable">
+            <thead>
+            <tr>
+                <th style="line-height: 25px;text-align: center;">日期</th>
+                <th style="line-height: 25px;text-align: center;">内容</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!--维护操作-->
+<div class="protect" style="display: none">
+    <div class="col-md-6 col-lg-6">
+        <table class="table table-bordered table-striped text-center">
+            <tr>
+                <th class="text-center">行政区域</th>
+                <td class="text-center">
+                    <span id="OpAreaName_span"></span>
+                </td>
+            </tr>
+            <tr>
+                <th class="text-center">维护站点</th>
+                <td class="text-center">
+                     <span id="OpSTNM_span"></span>
+                </td>
+            </tr>
+            <tr>
+                <th class="text-center">开始时间</th>
+                <td class="text-center">
+                    <span id="OpstartTime_span"></span>
+                </td>
+            </tr>
+            <tr>
+                <th class="text-center">结束时间</th>
+                <td class="text-center">
+                    <span id="OpendTime_span"></span>
+                </td>
+            </tr>
+            <tr>
+                <th class="text-center">维护人员</th>
+                <td><span id="OpmaintName_span"></span></td>
+            </tr>
+            <tr>
+                <th colspan="2" class="text-center">计划内容</th>
+            </tr>
+            <tr>
+                <td colspan="2" class="text-center" style="height: 128px">
+                    <div id="Opcontnt_span"></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-6 col-lg-6">
+        <div id="operate">
+            <div class="remarksbox">
+                <h5>添加日志</h5>
+                <textarea id="journal" placeholder="添加日志" name="添加日志"></textarea>
+            </div>
+<!--            <button id="uploadpic" type="button" style="margin: 10px 0;background: #316AC5;color: #fff;border-radius: 3px;border: none;line-height: 25px;"><span class="glyphicon glyphicon-plus"></span> 选择图片</button>-->
+            <div class="photos">
+                <span class="img-add"></span>
+                <span style="position: relative;" class="addbtnbox"><i
+                        class="glyphicon glyphicon-plus addbtn"></i><input
+                        type="file"
+                        id="addpic"
+                        multiple="multiple"
+                        accept="image/*"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--新增维护计划-->
+<form class="customized" style="display: none">
+    <table class="table table-bordered table-striped">
+<!--        <tr>
+            <th class="text-right" style="width:108px;vertical-align: middle">维护类型:</th>
+            <td><select class="form-control">
+                <option>1</option>
+            </select></td>
+        </tr>-->
+        <tr>
+            <th width="35%" class="text-right" style="vertical-align: middle">行政区域:</th>
+            <td><select class="form-control adminArea" id="AreaName">
+            </select></td>
+        </tr>
+        <tr>
+            <th class="text-right" style="vertical-align: middle">维修站点:</th>
+            <td><select class="form-control" id="repairst" name="维修站点">
+                <option>请选择</option>
+            </select></td>
+        </tr>
+        <tr>
+            <th class="text-right" style="vertical-align: middle">开始时间:</th>
+            <td>
+                <div class="input-group date" id="s-date">
+                    <input type="text" class="form-control input-sm" id="startTime"><span
+                        class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th class="text-right" style="vertical-align: middle">结束时间:</th>
+            <td>
+                <div class="input-group date" id="e-date">
+                    <input type="text" class="form-control input-sm" id="endTime"><span
+                        class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th class="text-right" style="vertical-align: middle">计划内容:</th>
+            <td><textarea style="width: 100%;height: 100px" id="contnt" name="计划内容"></textarea></td>
+        </tr>
+        <tr>
+            <th class="text-right" style="vertical-align: middle">指派维护人员:</th>
+            <td><select class="form-control" id="maintainer" name="派维护人员">
+                <option>全部</option>
+            </select></td>
+        </tr>
+    </table>
+</form>
+<script src="../../libraries/jquery-1.11.1.min.js"></script>
+<script src="../../libraries/bootstrap.min.js"></script>
+<script src="../../libraries/jquery.cookie.js"></script>
+<script src="../../libraries/moment-2.8.3/moment.min.js"></script>
+<script src="../../libraries/datatable/jquery.dataTables.js"></script>
+<script src="../../libraries/datatable/dataTables.fixedColumns.js"></script>
+<script src="../../libraries/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script src="../../libraries/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript" src="../../js/common.js"></script>
+<script type="text/javascript" src="../../js/config/server-config.js"></script>
+<script src="../../libraries/layer/layer.js"></script>
+<script src="../../libraries/Select2/js/select2.min.js"></script>
+<script src="../../js/operation/maintenceplan.js"></script>
+</body>
+</html>

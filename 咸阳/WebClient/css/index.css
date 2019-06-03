@@ -1,0 +1,195 @@
+.popover {
+    max-width: 700px;
+}
+.select2-container--default .select2-results > .select2-results__options {
+    max-height: 240px;
+}
+.select2-selection__rendered li{
+    font-size: 10px;
+}
+
+/*框架内容主体容器样式*/
+.content-box {
+    margin-top: 55px;
+}
+
+/*框架导航栏样式*/
+.navbar-brand {
+    margin-left: -10px;
+    /*margin-top: 5px;*/
+    font-size: 22px;
+}
+
+/*用户信息表格样式*/
+.userinfotable {
+    margin-top: 8px;
+    width: 220px;
+    font-size: 14px;
+}
+
+/*用户信息表格样式*/
+.userinfotable_head {
+    background-color: #009d89;
+    color: #fff;
+}
+
+/*用户信息表格样式*/
+.userinfotable tbody tr td label {
+    padding-right: 10px;
+    color: #3F3F3F;
+}
+
+/*用户信息表格样式*/
+.userinfotable tbody tr td span {
+    padding-left: 5px;
+}
+
+/*框架内容主体容器自适应样式*/
+@media screen and (min-width: 1200px) and (max-width: 1900px) {
+    .navbar-brand {
+        margin-top: 0;
+    }
+
+    .content-box {
+        margin-top: 45px;
+    }
+
+    label {
+        margin-bottom: 0;
+    }
+
+    .navbar-brand {
+        margin-left: -10px;
+        /*margin-top: 5px;*/
+        font-size: 25px;
+    }
+}
+
+/*框架内容logo样式*/
+#logo-img {
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 35px;
+    height: 30px;
+    display: inline-block;
+    float: left;
+}
+
+/*框架内容主体容器自适应样式*/
+@media screen and (min-width: 1200px) and (max-width: 1900px) {
+    .navbar-brand {
+        font-size: 18px;
+    }
+
+    #logo-img {
+        margin-left: 10px;
+        margin-top: 8px;
+        width: 30px;
+        height: 25px;
+        display: inline-block;
+        float: left;
+    }
+}
+
+/*框架内容导航栏下拉样式*/
+#navigation .dropdown-menu {
+    min-width: 128px;
+}
+
+/*框架内容导航栏下拉自适应样式*/
+@media screen and (min-width: 1200px) and (max-width: 1900px) {
+    #navigation .dropdown-menu {
+        min-width: 115px;
+    }
+
+}
+
+/*框架内容导航栏下拉样式*/
+footer {
+    background: #404040;
+    color: #fff;
+    line-height: 40px;
+    font-size: 13px;
+}
+
+/*框架内容导航栏样式*/
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    padding-right: 10px;
+}
+
+/*弹窗样式*/
+.layui-layer-btn .layui-layer-btn0 {
+    border-color: rgb(0, 157, 137) !important;
+    background-color: rgb(0, 157, 137) !important;
+}
+
+/*框架内容导航栏下拉样式*/
+.dropdown-menu li a {
+    text-align: center;
+}
+
+#d_modifypwd {
+
+}
+
+/*密码框样式*/
+#d_modifypwd div {
+    padding: 5px;
+}
+
+/*密码框样式*/
+#d_modifypwd div .itemname {
+    text-align: right;
+    padding-right: 15px;
+}
+
+/*密码框样式*/
+#d_modifypwd div div span {
+    line-height: 30px;
+    font-size: 14px;
+}
+
+/*密码框样式*/
+#d_modifypwd div div input {
+    padding: 10px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    width: 180px;
+}
+
+/*首页样式*/
+.welcomeIndex {
+    margin-top: -20px;
+    height: 91.8vh;
+    overflow-y: auto;
+    background-image: url("../img/index.jpg");
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    padding-top: 15%;
+}
+
+/*欢迎页样式*/
+.welcomeIndex h1 {
+    color: white;
+    font-weight: bold;
+}
+
+/*版权样式*/
+.copyright {
+    position: fixed;
+    bottom: 0;
+    height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+    text-align: center;
+    left: 0;
+    right: 0;
+    color: #fff;
+}
+
+/*菜单栏字体样式*/
+#menunav label {
+    cursor: pointer;
+}

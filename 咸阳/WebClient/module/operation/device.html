@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>设备登记</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../css/datatable/jquery.dataTables.css" type="text/css">
+    <link rel="stylesheet" href="../../css/select2/select2.min.css" type="text/css">
+    <link rel="stylesheet" href="../../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../../libraries/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css"/>
+    <link rel="stylesheet" href="../../css/form.css"/>
+</head>
+<body>
+<div class="content-box clearfix">
+    <section class="leftNav">
+        <h4>查询条件</h4>
+        <div class="selectGroup">
+            <div>
+                <label>设备编号:</label>
+                <div class="input-group" id="device_coding" style="z-index: 0;">
+                    <input type="text" class="form-control" id="deviceCode">
+                </div>
+            </div>
+            <div>
+                <label>设备名称:</label>
+                <div class="input-group" id="device_name" style="z-index: 0;">
+                    <input type="text" class="form-control" id="deviceName">
+                </div>
+            </div>
+            <div>
+                <label>所属测站:</label>
+                <select class="form-control" id="station">
+                </select>
+            </div>
+            <div class="text-center btnGroup">
+                <button class="btn btn-query btn-block" id="searchBtn"><span class="glyphicon glyphicon-search"></span> 查询</button>
+                <button class="btn btn-put btn-block" id="device_add_btn"><span class="glyphicon glyphicon-plus"></span> 添加设备</button>
+                <!--<button class="btn btn-export btn-block"><span class="glyphicon glyphicon-save"></span> 导出设备</button>
+                <button class="btn btn-export btn-block"><span class="glyphicon glyphicon-open"></span> 导入设备</button>-->
+            </div>
+        </div>
+    </section>
+    <div class="rightTab">
+        <h4>设备列表</h4>
+        <table id="device_table" class="stripe row-border order-column nowrap table-bordered" width="100%"
+               cellspacing="0">
+            <thead style="line-height: 30px;">
+            <tr class="text-center">
+                <th>序号</th>
+                <th>设备编号</th>
+                <th>设备名称</th>
+                <th>所属测站</th>
+                <th>安装时间</th>
+                <th>质保期</th>
+                <th>报废时间</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+
+<form  class="layerform" style="display: none" id="adddevice">
+    <table class="table table-bordered table-striped layertable" id="devicetable">
+        <tbody>
+        <tr>
+            <td class="text-right"><label>设备编号：</label></td>
+            <td><input type="text" style="width: 90%;" id="deviceCodeInput" name="设备编号"><i style="color: red;padding-left: 3px">*</i></td>
+            <td class="text-right"><label>设备名称：</label></td>
+            <td><input type="text" style="width: 90%;" id="deviceNameInput" name="设备名称"><i style="color: red;padding-left: 3px">*</i></td>
+        </tr>
+        <tr>
+            <td class="text-right"><label>质保期：</label></td>
+            <td>
+                <input style="width: 85%;" name="质保期" type="number" id="warranty_period" min="1" max="10" step="1" value="1" onkeypress="return event.keyCode>=48&&event.keyCode<=57" ng-pattern="/[^a-zA-Z]/">年<i style="color: red;padding-left: 3px">*</i>
+            </td>
+            <td class="text-right"><label>安装时间：</label></td>
+            <td>
+                <span class="input-group date pull-left" style="width: 90%;">
+                    <input type="text" class="form-control input-sm"  id="installation_time" style="width:100%;" name="安装时间"><span
+                        class="input-group-addon">
+                    <i class="glyphicon glyphicon-time"></i></span>
+                </span>
+                <i style="color: red;padding-left: 3px">*</i>
+            </td>
+        </tr>
+        <tr>
+            <td class="text-right"><label>所属测站：</label></td>
+            <td><select  style="width: 90%;" id="stnm" name="所属测站">
+            </select><i style="color: red;padding-left: 3px">*</i></td>
+            <td class="text-right"><label>报废日期：</label></td>
+            <td>
+                <span class="input-group pull-left" style="width: 90%;">
+                    <input type="text" class="form-control input-sm"  id="discarded_time" style="width:100%;" readonly name="报废日期">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td class="text-right"><label>安装位置：</label></td>
+            <td colspan="3">
+                <input type="text" style="width: 100%;" id="devicepath" name="安装位置">
+            </td>
+        </tr>
+        <tr>
+            <td class="text-right"><label>备注：</label></td>
+            <td  colspan="3"><textarea id="remarks" style="width:100%;" rows="3" class="form-control" name="备注"></textarea></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+
+<script src="../../libraries/jquery-1.11.1.min.js"></script>
+<script src="../../libraries/bootstrap.min.js"></script>
+<script src="../../libraries/jquery.cookie.js"></script>
+<script src="../../libraries/moment-2.8.3/moment.min.js"></script>
+<script src="../../libraries/datatable/jquery.dataTables.js"></script>
+<script src="../../libraries/datatable/dataTables.fixedColumns.js"></script>
+<script src="../../libraries/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script src="../../libraries/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../../libraries/layer/layer.js"></script>
+<script src="../../libraries/Select2/js/select2.min.js"></script>
+<script src="../../js/config/server-config.js"></script>
+<script src="../../js/common.js"></script>
+<script type="text/javascript" src="../../js/datatables-init.js"></script>
+<script type="text/javascript" src="../../js/operation/device.js"></script>
+</body>
+</html>

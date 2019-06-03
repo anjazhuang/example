@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户管理</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../css/datatable/jquery.dataTables.css" type="text/css">
+    <link rel="stylesheet" href="../../css/select2/select2.min.css" type="text/css">
+    <link rel="stylesheet" href="../../css/common.css" type="text/css">
+    <link rel="stylesheet" href="user.css">
+    <link rel="stylesheet" href="../../css/form.css"/>
+</head>
+<body>
+<div class="content-box clearfix">
+    <section class="leftNav">
+        <h4>查询条件</h4>
+        <div class="selectGroup">
+            <div>
+                <label>用户名:</label>
+                <input type="text" class="form-control" id="username0">
+            </div>
+            <div>
+                <label>账号:</label>
+                <input type="text" class="form-control" id="account0">
+            </div>
+            <div>
+                <label>行政区域:</label>
+                <select class="form-control combobox" id="adminArea">
+                </select>
+            </div>
+            <div>
+                <label>系统权限:</label>
+                <select class="form-control" id="system0">
+                    <option value="">全部</option>
+                    <option value="USER">普通用户</option>
+                    <option value="OPERATION">运维人员</option>
+                </select>
+            </div>
+
+            <div class="text-center btnGroup">
+                <button class="btn btn-query btn-block" onclick="queryUser()"><span
+                        class="glyphicon glyphicon-search"></span>&nbsp;查询
+                </button>
+                <button class="btn btn-put btn-block" id="createUser" onclick="setUser()"><span
+                        class="glyphicon glyphicon-user"></span>&nbsp;创建用户
+                </button>
+            </div>
+        </div>
+    </section>
+    <div class="rightTab">
+        <h4>用户列表</h4>
+        <table id="example" class="stripe row-border order-column nowrap table-bordered" width="100%" cellspacing="0">
+            <thead>
+            <tr class="text-center">
+                <th>序号</th>
+                <th>用户名</th>
+                <th>账号</th>
+                <th>行政区域</th>
+                <th>角色</th>
+                <th>系统权限</th>
+                <th style="width: 220px">联系电话</th>
+                <th style="width: 50%">备注</th>
+                <th style="width: 100px">操作</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<form class="layerform" style="display: none" id="userform">
+    <table class="table table-bordered table-striped layertable">
+        <tbody>
+        <tr>
+            <td class="text-right"><label>用户名：</label></td>
+            <td><input type="text" id="username"></td>
+        </tr>
+        <tr>
+            <td class="text-right"><label>账号：</label></td>
+            <td><input type="text" id="account"></td>
+        </tr>
+
+        <tr class="setpsd">
+            <td class="text-right"><label>密码：</label></td>
+            <td><input type="password" id="psd"></td>
+        </tr>
+        <tr class="confirmpsd">
+            <td class="text-right"><label>确认密码：</label></td>
+            <td><input type="password" id="psd2"></td>
+        </tr>
+        <tr>
+            <td class="text-right"><label>角色名：</label></td>
+            <td><select id="roleid"></select></td>
+        </tr>
+        <tr>
+            <td class="text-right"><label>行政区域：</label></td>
+            <td><select id="area">
+            </select></td>
+        </tr>
+        <tr class="confirmpsd1">
+            <td class="text-right"><label>联系电话：</label></td>
+            <td><input type="text" id="phone"></td>
+        </tr>
+        <tr>
+            <td class="text-right"><label>系统权限：</label></td>
+            <td class="text-left" id="system"><input type="radio" value="USER" name="user" checked>普通用户
+                <input type="radio" value="OPERATION" name="user">运维人员
+            </td>
+        </tr>
+        <tr>
+            <td class="text-right"><label>备注：</label></td>
+            <td class="text-left"><textarea style="width:100%;" id="remark"></textarea></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+<script src="../../libraries/jquery-1.11.1.min.js"></script>
+<script src="../../libraries/bootstrap.min.js"></script>
+<script src="../../libraries/jquery.cookie.js"></script>
+<script src="../../libraries/moment-2.8.3/moment.min.js"></script>
+<script src="../../libraries/datatable/jquery.dataTables.js"></script>
+<script src="../../libraries/datatable/dataTables.fixedColumns.js"></script>
+<script src="../../libraries/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script src="../../libraries/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript" src="../../js/common.js"></script>
+<script type="text/javascript" src="../../js/config/server-config.js"></script>
+<script src="../../libraries/layer/layer.js"></script>
+<script src="../../libraries/Select2/js/select2.min.js"></script>
+<script src="../../js/user/user.js"></script>
+</body>
+</html>

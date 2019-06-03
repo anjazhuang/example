@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>工作考核</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../css/datatable/jquery.dataTables.css" type="text/css">
+    <link rel="stylesheet" href="../../libraries/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" href="../../css/select2/select2.min.css" type="text/css">
+    <link rel="stylesheet" href="../../css/common.css" type="text/css">
+    <link rel="stylesheet" href="evaluation.css" type="text/css">
+</head>
+<body>
+<div class="content-box clearfix">
+    <div class="rightTab" style="left: 0">
+        <ul class="nav nav-tabs chooseTabul ">
+            <li class="active col-lg-6 col-md-6"><a href="#managentservice" data-toggle="tab"><span
+                    class="glyphicon glyphicon-list-alt"></span> 管理业务工作考核</a></li>
+            <li class="col-lg-6 col-md-6"><a href="#operationperson" data-toggle="tab"><span
+                    class="glyphicon glyphicon-user"></span> 运维人员工作考核</a></li>
+        </ul>
+        <div class="chooseTabbox tab-content">
+            <div class="tab-pane fade in active" id="managentservice">
+                <div class="col-lg-7 col-md-7">
+                    <h4 style="background: #2b8be2;"><span id="AreaName"></span>上报率统计</h4>
+                    <div class="box">
+                        <!--<select class="normaloperationselect">-->
+                        <!--<option>-->
+                        <!--今日-->
+                        <!--</option>-->
+                        <!--</select>-->
+                        <div class="box-chosetime">
+                            <label style="display: inline-block">选择时间:</label>
+                            <div style="display: inline-block;width: 180px;vertical-align: middle">
+                                <div class="input-group date" id="city_ct">
+                                    <input type="text" class="form-control input-sm"><span
+                                        class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                                </div>
+                            </div>
+                            <label style="display: inline-block;margin-left: 10px">报汛等级:</label>
+                            <div style="display: inline-block;width: 684px;vertical-align: middle">
+                                <select id="levelSelect" multiple style="width: 600px">
+                                    <!--<option value="">全部</option>-->
+                                    <option value="1">中央报汛站</option>
+                                    <option value="2">省级重点报汛站</option>
+                                    <option value="3">省级一般报汛站</option>
+                                    <option value="4">其它报汛站</option>
+                                    <option value="5">山洪站</option>
+                                </select></div>
+                            <button id="rate-query" class="btn btn-primary">查询</button>
+                        </div>
+                        <div id="normaloperationrate"></div>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-5">
+                    <h4 style="background: #e75816;">运维效率评估<a href="#" onclick="aclick(this)"
+                                                              style="color: #fff;text-decoration:none;"><span id="export-btn" class="glyphicon glyphicon-save pull-right" style="padding-right: 10px;cursor: pointer" title="导出"></span> </a></h4>
+                    <div class="box0">
+                        <table class="table table-bordered table-striped" id="efficiencytab" width="100%">
+                            <thead>
+                            <tr>
+                                <th>行政区域</th>
+                                <th>平均维修时间(h)</th>
+                                <th>平均响应时间(h)</th>
+                                <th>修复保证率(%)</th>
+                            </tr>
+                            </thead>
+                            <tbody id="efficiency">
+                            <!--<tr>-->
+                            <!--<td>市辖区</td>-->
+                            <!--<td>5h</td>-->
+                            <!--<td>3.5h</td>-->
+                            <!--<td>91%</td>-->
+                            <!--</tr>-->
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <h4 style="background: #00b4cf;">全市故障站统计趋势分析</h4>
+                    <div class="box0">
+                        <div id="errorstationanalysis"></div>
+                    </div>
+                </div>
+                <!--&lt;!&ndash;<div class="col-lg-6 col-md-6">&ndash;&gt;-->
+                <!--&lt;!&ndash;sd&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--<div class="col-lg-6 col-md-6">-->
+
+                <!--</div>-->
+            </div>
+            <div class="tab-pane fade" id="operationperson">
+                <div class="col-md-2 col-lg-2">
+                    <section style="" class="query-box">
+                        <h4>查询条件</h4>
+                        <div class="selectGroup">
+                            <div>
+                                <label>维护人员:</label>
+                                <div class="input-group" id="device_coding">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div>
+                                <label>行政区域:</label>
+                                <select class="form-control" id="adminarea"></select>
+                            </div>
+                            <div>
+                                <label>开始日期:</label>
+                                <div class="input-group date" id="s-date">
+                                    <input type="text" class="form-control input-sm"><span
+                                        class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                                </div>
+                                <label>结束日期:</label>
+                                <div class="input-group date" id="e-date">
+                                    <input type="text" class="form-control input-sm"><span
+                                        class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                                </div>
+                            </div>
+                            <div class="text-center btnGroup">
+                                <button id="selectAssessment" class="btn btn-query btn-block"><span
+                                        class="glyphicon glyphicon-search"></span>
+                                    查询
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-md-10 col-lg-10 peoCheck">
+                    <h4>运维人员考核</h4>
+                    <table id="operation_table" class="stripe row-border order-column nowrap table-bordered"
+                           width="100%"
+                           cellspacing="0">
+                        <thead style="line-height: 30px;">
+                        <tr class="text-center">
+                            <th>序号</th>
+                            <th>姓名</th>
+                            <th>行政区域</th>
+                            <th>维修数量</th>
+                            <!--<th>维修质量</th>-->
+                            <th>维修工作时长</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--运维工作人员工作考核详情弹窗-->
+<div id="personinfo" style="display: none">
+    <table class="table table-bordered table-striped">
+        <tr class="text-center">
+            <th style="text-align: center;">姓名</th>
+            <td style="width: 220px" id="o_name">小明</td>
+            <th style="text-align: center">行政区域</th>
+            <td id="o_city"></td>
+        </tr>
+        <tr class="text-center">
+            <th style="text-align: center">维修工作时长</th>
+            <td id="o_workrate"></td>
+            <th style="text-align: center">维修数量</th>
+            <td id="o_quality"></td>
+        </tr>
+    </table>
+    <!--<ul class="chooseTabul nav nav-tabs">-->
+    <!--<li class="active"><a href="#historyrepairecords" data-toggle="tab" style="text-align: center">历史维修记录</a></li>-->
+    <!--&lt;!&ndash;<li class="col-lg-3 col-md-3"><a href="#repairecordstime" data-toggle="tab">维修时间统计</a></li>&ndash;&gt;-->
+    <!--&lt;!&ndash;<li class="col-lg-3 col-md-3"><a href="#routerecords" data-toggle="tab">出行路线记录</a></li>&ndash;&gt;-->
+    <!--&lt;!&ndash;<li class="col-lg-3 col-md-3"><a href="#repairecordsanalysis" data-toggle="tab">维修记录分析</a></li>&ndash;&gt;-->
+    <!--</ul>-->
+    <h4 class="history-repair">历史维修记录</h4>
+    <div>
+        <div id="historyrepairecords">
+            <table class="stripe row-border order-column nowrap table-bordered text-center" id="operationperson_tab">
+                <thead>
+                <tr style="line-height: 40px">
+                    <th class="text-center">
+                        维修单编号
+                    </th>
+                    <th class="text-center">
+                        测站编码
+                    </th>
+                    <th class="text-center">
+                        测站名称
+                    </th>
+                    <th class="text-center">
+                        行政区域
+                    </th>
+                    <th class="text-center">
+                        优先级
+                    </th>
+                    <th class="text-center">
+                        创建时间
+                    </th>
+                    <th class="text-center">
+                        操作
+                    </th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+        <!--<div class="tab-pane fade" id="repairecordstime">2</div>-->
+        <!--<div class="tab-pane fade" id="routerecords">3</div>-->
+        <!--<div class="tab-pane fade" id="repairecordsanalysis">4</div>-->
+    </div>
+</div>
+
+<div class="repaired" style="display: none">
+    <div class="col-md-6 col-lg-6">
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th style="width: 100px">维修单编号</th>
+                <td id="operaterTaskNo"></td>
+            </tr>
+            <tr>
+                <th>行政区域</th>
+                <td id="operaterAddvcd"></td>
+            </tr>
+            <tr>
+                <th>测站编号</th>
+                <td id="operaterStcd"></td>
+            </tr>
+            <tr>
+                <th>测站名称</th>
+                <td id="operaterStmn"></td>
+            </tr>
+            <tr>
+                <th>维修人员</th>
+                <td id="operaterName"></td>
+            </tr>
+            <tr>
+                <th>优先级</th>
+                <td id="operaterPriorityName"></td>
+            </tr>
+            <tr>
+                <th colspan="2" class="text-center">报修描述</th>
+            </tr>
+            <tr>
+                <td id="operaterContent" colspan="2" class="text-center"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-lg-6 col-md-6">
+        <div id="process" style="display: none" class="process">
+
+            <!--<div class="child"><span></span>-->
+            <!--<p class="state">维修完成</p>-->
+            <!--<p class="tm"></p>-->
+            <!--</div>-->
+
+            <!--<div class="child"><span></span>-->
+            <!--<p class="state">维修完成</p>-->
+            <!--<p class="tm"></p>-->
+            <!--</div>-->
+            <!--<ul>-->
+            <!--<li><span>日志</span>-->
+            <!--<p><span></span></li>-->
+            <!--<li></li>-->
+            <!--</ul>-->
+        </div>
+        <div id="operate">
+            <div class="remarksbox">
+                <h5>添加日志</h5>
+                <textarea id="journal" placeholder="添加日志"></textarea>
+            </div>
+            <button type="button"><span class="glyphicon glyphicon-plus"></span> 选择图片</button>
+            <div class="photos">
+                <span class="img-add"></span>
+                <span style="position: relative;" class="addbtnbox"><i
+                        class="glyphicon glyphicon-plus addbtn"></i><input
+                        type="file"
+                        id="addpic"
+                        multiple="multiple"
+                        accept="image/*"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../../libraries/jquery-1.11.1.min.js"></script>
+<script src="../../libraries/bootstrap.min.js"></script>
+<script src="../../libraries/jquery.cookie.js"></script>
+<script src="../../libraries/moment-2.8.3/moment.min.js"></script>
+<script src="../../libraries/datatable/jquery.dataTables.js"></script>
+<script src="../../libraries/datatable/dataTables.fixedColumns.js"></script>
+<script src="../../libraries/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script src="../../libraries/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../../libraries/layer/layer.js"></script>
+<script src="../../libraries/echarts/echarts.min.js"></script>
+<script src="../../libraries/Select2/js/select2.min.js"></script>
+<script src="../../js/common.js"></script>
+<script src="../../js/config/server-config.js"></script>
+<script type="text/javascript" src="../../js/datatables-init.js"></script>
+<script src="../../libraries/Select2/js/select2.min.js"></script>
+<script src="../../js/operation/moment.js"></script>
+<script src="../../libraries/downExcel_lib.js"></script>
+<script type="text/javascript" src="../../js/operation/evaluation.js"></script>
+</body>
+</html>

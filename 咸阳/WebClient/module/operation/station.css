@@ -1,0 +1,73 @@
+.layui-layer-btn {
+    border-top: 1px solid #E9E7E7
+}
+
+.layui-layer-btn .layui-layer-btn0 {
+    border-color: rgb(0, 157, 137) !important;
+    background-color: rgb(0, 157, 137) !important;
+}
+
+table.dataTable tbody th,
+table.dataTable tbody td {
+    /*padding: 8px 10px;*/
+    padding: 5px 5px;
+}
+
+table.dataTable thead th,
+table.dataTable thead td {
+    /*padding: 10px 18px;*/
+    padding: 10px 3px;
+}
+
+.select2-container .select2-selection--single {
+    height: 25px;
+    font-size: 12px;
+}
+
+.select2-container--default .select2-results > .select2-results__options {
+    font-size: 12px;
+}
+
+.riwaterheight, .rewaterheight {
+    display: none;
+    width: 120px;
+    margin-left: 10px;
+}
+
+.riwaterheight input, .rewaterheight input {
+    margin-left: 5px;
+}
+
+#sttp {
+    width: 90%;
+}
+
+/*照片上传样式*/
+.weui-uploader__input-box {
+    border: 1px solid #ccc;
+    width: 100px;
+    height: 92px;
+    display: inline-block;
+    text-align: center;
+    color: #ccc;
+    padding-top: 34px;
+}
+
+.weui-uploader__input {
+    width: 30px;
+    opacity: 0;
+    height: 0;
+}
+
+.photosbox {
+    display: inline-block;
+    width: 100px;
+}
+
+#fileDiv {
+    display: inline-block;
+}
+
+.select2-selection__rendered li {
+    font-size: 10px;
+}

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简报管理</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../libraries/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" href="../../css/select2/select2.min.css" type="text/css">
+    <link rel="stylesheet" href="../../css/datatable/jquery.dataTables.css" type="text/css">
+    <link rel="stylesheet" href="../../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../../css/loading.css">
+    <link rel="stylesheet" href="briefin.css">
+</head>
+<body>
+<!--<div id="rainTab">-->
+
+<!--<div class="load-wrapp" id="load-rainwrapp">-->
+<!--<div class="load-4">-->
+<!--<div class="ring-1"></div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="brieftoolbar">-->
+<!--<div class="brieftoolbarLeft">-->
+<!--<div style="margin: 5px 10px;"><span><strong>查询时间:</strong></span></div>-->
+<!--<div>-->
+<!--<div class="input-group date briefin-date" id="start-time">-->
+<!--<input type="text" class="form-control input-sm"><span-->
+<!--class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div style="margin: 5px 10px;"><span><strong>至</strong></span></div>-->
+<!--<div>-->
+<!--<div class="input-group date briefin-date" id="end-time">-->
+<!--<input type="text" class="form-control input-sm"><span-->
+<!--class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div style="margin: 5px 10px;"><span><strong>报汛等级:</strong></span></div>-->
+<!--<div>-->
+<!--<select id="levelSelect" multiple style="width: 500px">-->
+<!--&lt;!&ndash;<option value="">全部</option>&ndash;&gt;-->
+<!--<option value="1">中央报汛站</option>-->
+<!--<option value="2">省级重点报汛站</option>-->
+<!--<option value="3">省级一般报汛站</option>-->
+<!--<option value="4">其它报汛站</option>-->
+<!--<option value="5">山洪站</option>-->
+<!--</select></div>-->
+<!--</div>-->
+<!--<div style="float:left;width: 30%;text-align: right">-->
+<!--<button id="runRainBtn" class="btn btn-primary briefin-btn">生成简报</button>-->
+<!--&lt;!&ndash;<button id="xportRainBtn" class="btn btn-primary briefin-btn" onclick="aclick(this)">导出</button>&ndash;&gt;-->
+<!--<button  class="btn btn-primary briefin-btn"><a  href="#" onclick="aclick(this)" style="color: #fff;text-decoration:none;">-->
+<!--<span class=" glyphicon glyphicon-download-alt"></span>&nbsp;导出</a>-->
+<!--</button>-->
+<!--&lt;!&ndash;<button id="printRainBtn" class="btn btn-primary briefin-btn">打印表格</button>&ndash;&gt;-->
+<!--&lt;!&ndash;<button id="printRainJbBtn" class="btn btn-primary briefin-btn">打印简报</button>&ndash;&gt;-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<div class="resultline"></div>-->
+<!--<div id="resultconcent" class="hidden">-->
+<!--<div id="resulttitle">雨情简报</div>-->
+<!--<div id="resultDate" class="resultLeft"></div>-->
+<!--<div id="resultUnit" class="resultRight"></div>-->
+<!--<div id="resultTableDiv"></div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div id="resulttablebottom"></div>-->
+<div class="content-box clearfix">
+    <section class="leftNav">
+        <h4>查询条件</h4>
+        <div>
+            <label>开始时间:</label>
+            <div class="input-group date" id="start-time">
+                <input type="text" class="form-control input-sm"><span
+                    class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+            </div>
+        </div>
+        <div>
+            <label>结束时间:</label>
+            <div class="input-group date" id="end-time">
+                <input type="text" class="form-control input-sm"><span
+                    class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+            </div>
+        </div>
+        <div style="margin-bottom: 10px">
+            <label>报汛等级:</label>
+            <div>
+                <select id="levelSelect" multiple style="width: 100%">
+                    <!--<option value="">全部</option>-->
+                    <option value="1">中央报汛站</option>
+                    <option value="2">省级重点报汛站</option>
+                    <option value="3">省级一般报汛站</option>
+                    <option value="4">其它报汛站</option>
+                    <option value="5">山洪站</option>
+                </select>
+            </div>
+        </div>
+        <div style="float:left;width: 77%;text-align: right">
+            <button id="runRainBtn" class="btn btn-primary briefin-btn">生成简报</button>
+            <!--<button id="xportRainBtn" class="btn btn-primary briefin-btn" onclick="aclick(this)">导出</button>-->
+            <button class="btn btn-primary briefin-btn"><a href="#" onclick="aclick(this)"
+                                                           style="color: #fff;text-decoration:none;">
+                <span class=" glyphicon glyphicon-download-alt"></span>&nbsp;导出</a>
+            </button>
+            <!--<button id="printRainBtn" class="btn btn-primary briefin-btn">打印表格</button>-->
+            <!--<button id="printRainJbBtn" class="btn btn-primary briefin-btn">打印简报</button>-->
+        </div>
+        <!--<div class="selectGroup">-->
+        <!--<div class="text-center btnGroup">-->
+        <!--<button class="btn btn-query  btn-block" id="tongji"><span class="glyphicon glyphicon-search"></span>&nbsp;统计分析-->
+        <!--</button>-->
+        <!--<button class="btn btn-export btn-block" id="exportFile"><a style="color: #fff" download="时段降雨量表.xls"-->
+        <!--href="#"-->
+        <!--onclick="aclick(this)">-->
+        <!--<span class=" glyphicon glyphicon-download-alt"></span>&nbsp;导出</a>-->
+        <!--</button>-->
+        <!--</div>-->
+        <!--</div>-->
+    </section>
+    <div class="rightTab">
+        <div class="load-wrapp" id="load-rainwrapp">
+            <div class="load-4">
+                <div class="ring-1"></div>
+            </div>
+        </div>
+        <div id="resultconcent" class="hidden">
+            <div id="resulttitle">雨情简报</div>
+            <div id="resultDate" class="resultLeft"></div>
+            <div id="resultUnit" class="resultRight"></div>
+            <div id="resultTableDiv" style="top:69px;height: calc(100% - 102px)"></div>
+        </div>
+        <div id="resulttablebottom"></div>
+    </div>
+
+    <!--<table class="stripe row-border order-column nowrap table-bordered" cellspacing="0" width="100%">-->
+    <!--<thead>-->
+    <!--<tr>-->
+    <!--<th style="text-align: center">序号</th>-->
+    <!--<th style="text-align: center">测站编码</th>-->
+    <!--<th style="text-align: center">测站名称</th>-->
+    <!--<th style="text-align: center">行政区域</th>-->
+    <!--<th style="text-align: center">流域</th>-->
+    <!--<th style="text-align: center">水系</th>-->
+    <!--<th style="text-align: center">河流</th>-->
+    <!--<th style="text-align: center">最高水位</th>-->
+    <!--<th style="text-align: center">最低水位</th>-->
+    <!--</tr>-->
+    <!--</thead>-->
+    <!--<tbody>-->
+    <!--<tr class="text-center">-->
+    <!--<td>1</td>-->
+    <!--<td>AD123456</td>-->
+    <!--<td>测试站点1</td>-->
+    <!--<td>咸阳市</td>-->
+    <!--<td>黄河</td>-->
+    <!--<td>渭河</td>-->
+    <!--<td>渭河</td>-->
+    <!--<td>10</td>-->
+    <!--<td>10</td>-->
+    <!--</tr>-->
+    <!--<tr class="text-center">-->
+    <!--<td>2</td>-->
+    <!--<td>AD123456</td>-->
+    <!--<td>测试站点1</td>-->
+    <!--<td>咸阳市</td>-->
+    <!--<td>黄河</td>-->
+    <!--<td>渭河</td>-->
+    <!--<td>渭河</td>-->
+    <!--<td>10</td>-->
+    <!--<td>10</td>-->
+    <!--</tr>-->
+    <!--</tbody>-->
+    <!--</table>-->
+
+</div>
+
+</body>
+<script src="../../libraries/jquery-1.11.1.min.js"></script>
+<script src="../../libraries/bootstrap.min.js"></script>
+<script src="../../libraries/jquery.cookie.js"></script>
+<script src="../../libraries/layer/layer.js"></script>
+<script type="text/javascript" src="../../libraries/datatable/jquery.dataTables.js"></script>
+<script src="../../libraries/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script src="../../libraries/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../../libraries/Select2/js/select2.min.js"></script>
+<script type="text/javascript" src="../../js/datatables-init.js"></script>
+<script src="../../js/common.js"></script>
+<script type="text/javascript" src="../../js/config/server-config.js"></script>
+<script src="../../libraries/downExcel_lib.js"></script>
+<script type="text/javascript" src="../../js/briefin/rainbriefin.js"></script>
+</html>

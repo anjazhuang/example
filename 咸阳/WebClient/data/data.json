@@ -1,0 +1,32 @@
+{
+  "raincondition": [
+    { "id": 1, "region": "秦都区", "code": "600001", "station": "站00001","rainfall": "5mm"},
+    { "id": 2, "region": "渭城区", "code": "600002", "station": "站00002","rainfall": "9mm"},
+    { "id": 3, "region": "兴平市", "code": "600003", "station": "站00003","rainfall": "15mm"},
+    { "id": 4, "region": "三原县", "code": "600004", "station": "站00004","rainfall": "12mm"},
+    { "id": 5, "region": "永寿县", "code": "600005", "station": "站00005","rainfall": "18mm"}
+  ],
+  "comments": [
+    { "id": 1, "body": "some comment", "postId": 1 }
+  ],
+  "riverregime": [
+    { "id": 1, "river_course": "漆水河东段", "code": "601", "station": "站1","water_level": "3.2m","flow": "62.91㎡/s"},
+    { "id": 2, "river_course": "达溪河西段", "code": "602", "station": "站2","water_level": "2.1m","flow": "45.18㎡/s"},
+    { "id": 3, "river_course": "清峪河北段", "code": "603", "station": "站3","water_level": "1.8m","flow": "86.18㎡/s"},
+    { "id": 4, "river_course": "三水河南段", "code": "604", "station": "站4","water_level": "1.7m","flow": "27.18㎡/s"},
+    { "id": 5, "river_course": "黑河南段", "code": "605", "station": "站5","water_level": "6.5m","flow": "505.58㎡/s"},
+    { "id": 6, "river_course": "漆水河东段", "code": "606", "station": "站1","water_level": "3.2m","flow": "62.91㎡/s"},
+    { "id": 7, "river_course": "达溪河西段", "code": "607", "station": "站2","water_level": "2.1m","flow": "45.18㎡/s"},
+    { "id": 8, "river_course": "清峪河北段", "code": "608", "station": "站3","water_level": "1.8m","flow": "86.18㎡/s"},
+    { "id": 9, "river_course": "三水河南段", "code": "609", "station": "站4","water_level": "1.7m","flow": "27.18㎡/s"},
+    { "id": 10, "river_course": "黑河南段", "code": "610", "station": "站5","water_level": "6.5m","flow": "505.58㎡/s"}
+  ],
+  "reservoirregime": [
+    { "id": 1, "river_course": "乾陵水库", "code": "601", "station": "站1","water_level": "6.2m","flow": "62.91㎡/s"},
+    { "id": 2, "river_course": "泔河水库", "code": "602", "station": "站2","water_level": "2.5m","flow": "15.18㎡/s"},
+    { "id": 3, "river_course": "羊毛湾水库", "code": "603", "station": "站3","water_level": "1.9m","flow": "36.18㎡/s"},
+    { "id": 4, "river_course": "弓王水库", "code": "604", "station": "站4","water_level": "4.7m","flow": "17.18㎡/s"},
+    { "id": 5, "river_course": "大北沟水库", "code": "605", "station": "站5","water_level": "6.5m","flow": "75.58㎡/s"}
+  ]
+}
+

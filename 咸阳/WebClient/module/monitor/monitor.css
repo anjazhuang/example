@@ -1,0 +1,130 @@
+/*数据查询表格样式*/
+table.dataTable tbody th,
+table.dataTable tbody td {
+    /*padding: 8px 10px;*/
+    padding: 5px 5px;
+}
+
+/*数据查询表格样式*/
+table.dataTable thead th,
+table.dataTable thead td {
+    /*padding: 10px 18px;*/
+    padding: 10px 3px;
+}
+
+/*tab样式*/
+.navtab {
+    border: 1px solid rgb(0, 157, 137);
+    margin-bottom: 5px;
+}
+
+/*tab样式*/
+.rightTab .navtab .nav-tabs {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/*tab样式*/
+.rightTab .navtab .nav-tabs li {
+    width: 50%;
+    text-align: center;
+    cursor: pointer;
+    margin: 0;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+/*tab样式*/
+.rightTab .navtab .nav-tabs li a {
+    color: #333;
+    border-radius: 0;
+}
+
+/*tab样式*/
+.rightTab .navtab .nav-tabs li.active a {
+    background: rgb(0, 157, 137) !important;
+    color: #fff;
+}
+
+/*tab样式*/
+.showtab .datatype {
+    border-bottom: 1px solid #e1e1e1;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    padding-left: 5px;
+}
+
+/*右侧表格标题样式*/
+#rivertab h4, #reservoirtab h4, #raintab h4, #soiltab h4 {
+    font-size: 20px;
+    /*color: rgb(0, 157, 137);*/
+    text-align: center;
+    background: rgb(0, 157, 137);
+    color: white;
+    font-weight: bold;
+}
+
+/*数据类型选择样式*/
+#dataType {
+    width: 130px;
+    height: 30px;
+}
+
+/*数据类型选择样式*/
+.datatype {
+    margin-left: 4%;
+    font-size: 15px;
+    position: relative;
+    top: 25px;
+    z-index: 2;
+    width: 200px;
+    /*display: inline-block;*/
+    /*margin-top: 10px;*/
+}
+
+.timelabel {
+    padding-top: 5px;
+}
+
+.disabled-click {
+    cursor: not-allowed !important;
+    background: #e0e0e0 !important;
+    opacity: 0.5 !important;
+}
+
+.rivertable tbody tr > td {
+    min-width: 75px;
+}
+
+#exportFile a {
+    width: 100%;
+    color: #fff;
+    display: block;
+}
+
+.select2-container--default .select2-results > .select2-results__options {
+    max-height: 240px;
+}
+
+.stlcWidth {
+    max-width: 160px;
+   text-align: left;
+}
+
+.table-bordered tbody tr {
+    height: 30px;
+}
+
+.select2-selection__rendered li{
+    font-size: 10px;
+}
+
+.contrastbox{
+    padding: 5px 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+.contrastbox select{
+    width: 150px;
+}

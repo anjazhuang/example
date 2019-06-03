@@ -1,0 +1,60 @@
+/*数据表格加载条样式*/
+.load-wrapp {
+    /*float: left;*/
+    /*width: 100px;*/
+    /*height: 100px;*/
+    /*margin: 0 10px 10px 0;*/
+    /*padding: 20px 20px 20px;*/
+    /*border-radius: 5px;*/
+    /*text-align: center;*/
+    /*background-color: #d8d8d8;*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    z-index: 10;
+}
+
+/*数据表格加载条样式*/
+.load-wrapp p {
+    padding: 0 0 20px;
+}
+
+/*数据表格加载条样式*/
+.load-wrapp:last-child {
+    margin-right: 0;
+}
+
+/*数据表格加载条样式*/
+.ring-1 {
+    width: 10px;
+    height: 10px;
+    margin: 50% auto 0 auto;
+    padding: 10px;
+    border: 5px dashed #999;
+    border-radius: 100%;
+}
+
+/* =Animate the stuff
+------------------------ */
+/*数据表格加载条样式*/
+.load-4 .ring-1 {
+    animation: loadingD 1.0s .3s cubic-bezier(.17, .37, .43, .67) infinite;
+}
+
+/*数据表格加载条样式*/
+@keyframes loadingD {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+

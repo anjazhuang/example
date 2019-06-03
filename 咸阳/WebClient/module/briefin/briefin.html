@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简报管理</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../libraries/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" href="../../css/datatable/jquery.dataTables.css" type="text/css">
+    <link rel="stylesheet" href="../../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../../css/loading.css">
+    <link rel="stylesheet" href="briefin.css">
+</head>
+<body>
+    <div id="briefinTab">
+        <ul id="briefinTabUl" class="nav nav-tabs">
+            <li class="active">
+                <a href="#rainTab" data-toggle="tab"><span class="glyphicon glyphicon-flash tabicon"></span>雨情简报</a>
+            </li>
+            <li>
+                <a href="#riverTab" data-toggle="tab"><span class="glyphicon glyphicon-random tabicon"></span>河道水情简报</a>
+            </li>
+            <li>
+                <a href="#reservoirTab" data-toggle="tab"><span class="glyphicon glyphicon-tint tabicon"></span>水库水情简报</a>
+            </li>
+            <li>
+                <a href="#soilTab" data-toggle="tab"><span class="glyphicon glyphicon-road tabicon"></span>墒情简报</a>
+            </li>
+        </ul>
+
+        <div id="briefTabContent" class="tab-content">
+
+            <div class="tab-pane fade in active" id="rainTab">
+                <div class="selectGroup">
+                    <div style="display: inline-block"><span><strong>查询时间:</strong></span></div>
+                        <div style="display: inline-block">
+                            <div class="input-group date briefin-date" id="start-time">
+                                <input type="text" class="form-control input-sm"><span
+                                    class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                            </div>
+                        </div>
+                        <span><strong>至</strong></span>
+                        <div style="display: inline-block">
+                            <div class="input-group date briefin-date" id="end-time">
+                                <input type="text" class="form-control input-sm"><span
+                                    class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                            </div>
+                        </div>
+                        <div style="display: inline-block">
+                            <button id="runRainBtn" class="btn btn-primary briefin-btn">生成简报</button>
+                            <button id="printRainBtn" class="btn btn-primary briefin-btn">打印表格</button>
+                            <button id="printRainJbBtn" class="btn btn-primary briefin-btn">打印简报</button>
+                            <!--<button id="templetRainBtn" class="btn btn-primary briefin-btn">描述模板</button>-->
+                        </div>
+                </div>
+                <div class="load-wrapp" id="load-rainwrapp">
+                    <div class="load-4">
+                        <div class="ring-1"></div>
+                    </div>
+                </div>
+                <div id="resultconcent" class="hidden">
+                    <div class="titlediv">
+                        <div id="resultTitle" class="briefinTitle"></div>
+                    </div>
+                    <div id="resultTableDiv">
+                        <!--<table class="stripe row-border order-column  table-bordered" align="center" id="rainMes_table">-->
+                            <!--<thead>-->
+                            <!--<tr>-->
+                                <!--<th>行政区域</th>-->
+                                <!--<th>测站名称</th>-->
+                                <!--<th>测站编码</th>-->
+                                <!--<th>累计降雨量（mm）</th>-->
+                                <!--<th>流域名称</th>-->
+                                <!--<th>水系名称</th>-->
+                                <!--<th>河流名称</th>-->
+                            <!--</tr>-->
+                            <!--</thead>-->
+                        <!--</table>-->
+                    </div>
+                    <div id="resultMesDiv">
+
+                        <div id="resultCount">
+                            <div class="mes-title-div">
+                                <!--<div class="mes-title">
+                                    <span>统计信息</span>
+                                </div>
+                                <div id="raintable"></div>-->
+                                <table class="stripe row-border order-column table-bordered dataTable" align="center" id="rainCount_table">
+                                    <tr><th colspan="4">统计信息</th></tr>
+                                    <tr>
+                                        <td width="25%">总累计降雨量（mm）</td>
+                                        <td width="25%"><span id="rainTotal"></span></td>
+                                        <td width="25%">最大累计降雨量（mm）</td>
+                                        <td width="25%"><span id="rainMax"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>最小累计降雨量（mm）</td>
+                                        <td><span id="rainMin"></span></td>
+                                        <td>平均累计降雨量（mm）</td>
+                                        <td><span id="rainAvg"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">累计降雨量（mm）大于100的测站数量</td>
+                                        <td><span id="rainb100"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">累计降雨量（mm）在50 - 100之间的测站数量</td>
+                                        <td><span id="rainc100"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">累计降雨量（mm）在10 - 50之间的测站数量</td>
+                                        <td><span id="rainc50"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">累计降雨量（mm）小于10的测站数量</td>
+                                        <td><span id="rainc10"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">未上报数据的测站数量</td>
+                                        <td><span id="nulldata"></span></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="mes-title-div">
+                                <div id="rainMoudle">
+                                </div>
+                            </div>
+                        </div>
+
+                      <!--  <div id="resultothertablediv">
+                            <ul>
+                                <li>
+                                    <div class="mes-title">
+                                        <span>累计降雨量大于100（mm）的测站</span>
+                                    </div>
+                                    <table class="stripe row-border order-column  table-bordered" align="left" id="bcm100_table">
+                                        <thead>
+                                        <tr>
+                                            <th>测站名称</th>
+                                            <th>累计降雨量（mm）</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </li>
+
+                                <li>
+                                    <div class="mes-title">
+                                        <span>累计降雨量在50（mm）-100（mm）的测站</span>
+                                    </div>
+                                    <table class="stripe row-border order-column  table-bordered" align="left" id="cm100_table">
+                                        <thead>
+                                        <tr>
+                                            <th>测站名称</th>
+                                            <th>累计降雨量（mm）</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </li>
+
+                                <li>
+                                    <div class="mes-title">
+                                        <span>累计降雨量在10(mm)-50（mm）的测站</span>
+                                    </div>
+                                    <table class="stripe row-border order-column  table-bordered" align="left" id="cm50_table">
+                                        <thead>
+                                        <tr>
+                                            <th>测站名称</th>
+                                            <th>累计降雨量（mm）</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </li>
+
+                                <li>
+                                    <div class="mes-title">
+                                        <span>累计降雨量小于10（mm）的测站</span>
+                                    </div>
+                                    <table class="stripe row-border order-column  table-bordered" align="left" id="cm10_table">
+                                        <thead>
+                                        <tr>
+                                            <th>测站名称</th>
+                                            <th>累计降雨量（mm）</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </li>
+
+                            </ul>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="riverTab">
+                <div class="selectGroup">
+                    <div style="display: inline-block"><span><strong>查询时间:</strong></span></div>
+                    <div style="display: inline-block">
+                        <div class="input-group date briefin-date" id="river-start-time">
+                            <input type="text" class="form-control input-sm"><span
+                                class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                        </div>
+                    </div>
+                    <span><strong>至</strong></span>
+                    <div style="display: inline-block">
+                        <div class="input-group date briefin-date" id="river-end-time">
+                            <input type="text" class="form-control input-sm"><span
+                                class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                        </div>
+                    </div>
+                    <div style="display: inline-block">
+                        <button id="runRiverBtn" class="btn btn-primary briefin-btn">生成简报</button>
+                        <button id="printRiverBtn" class="btn btn-primary briefin-btn">打印表格</button>
+                        <button id="printRiverJbBtn" class="btn btn-primary briefin-btn">打印简报</button>
+                        <!--<button id="templetRiverBtn" class="btn btn-primary briefin-btn">描述模板</button>-->
+                    </div>
+                </div>
+                <div class="load-wrapp" id="load-riverwrapp">
+                    <div class="load-4">
+                        <div class="ring-1"></div>
+                    </div>
+                </div>
+                <div id="riverconcent" class="hidden">
+                    <div class="titlediv">
+                        <div id="riverTitle" class="briefinTitle"></div>
+                    </div>
+                    <div id="riverTableDiv">
+                    </div>
+                    <div id="riverMesDiv">
+                        <div id="riverCount">
+                            <div class="mes-title-div">
+                                <!--<div class="mes-title">
+                                    <span>统计信息</span>
+                                </div>
+                                <div id="rivertable"></div>-->
+                                <table class="stripe row-border order-column table-bordered dataTable" align="center" id="riverCount_table">
+                                    <tr><th colspan="4">统计信息</th></tr>
+                                    <tr>
+                                        <td width="25%">最高水位（m）</td>
+                                        <td width="25%"><span id="river_maxz"></span></td>
+                                        <td width="25%">最低水位（m）</td>
+                                        <td width="25%"><span id="river_minz"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">水位（m）高于1000的测站数量</td>
+                                        <td><span id="river_bz1000"></span></td>
+                                    <tr>
+                                        <td colspan="3">水位（m）在500 - 1000之间的测站数量</td>
+                                        <td><span id="river_z1000"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">水位（m）在300 - 500之间的测站数量</td>
+                                        <td><span id="river_z500"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">水位（m）在200 - 300之间的测站数量</td>
+                                        <td><span id="river_z300"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">水位（m）在100 - 200之间的测站数量</td>
+                                        <td><span id="river_z200"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">水位（m）低于1000的测站数量</td>
+                                        <td><span id="river_z100"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">未上报数据的测站数量</td>
+                                        <td><span id="river_unreported"></span></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="mes-title-div">
+                                <div id="riverMoudle"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="reservoirTab">
+                <div class="selectGroup">
+                    <div style="display: inline-block"><span><strong>查询时间:</strong></span></div>
+                    <div style="display: inline-block">
+                        <div class="input-group date briefin-date" id="reservoir-start-time">
+                            <input type="text" class="form-control input-sm"><span
+                                class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                        </div>
+                    </div>
+                    <span><strong>至</strong></span>
+                    <div style="display: inline-block">
+                        <div class="input-group date briefin-date" id="reservoir-end-time">
+                            <input type="text" class="form-control input-sm"><span
+                                class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                        </div>
+                    </div>
+                    <div style="display: inline-block">
+                        <button id="runReservoirBtn" class="btn btn-primary briefin-btn">生成简报</button>
+                        <button id="printReservoirBtn" class="btn btn-primary briefin-btn">打印表格</button>
+                        <button id="printReservoirJbBtn" class="btn btn-primary briefin-btn">打印简报</button>
+                        <!--<button id="templetReservoirBtn" class="btn btn-primary briefin-btn">描述模板</button>-->
+                    </div>
+                </div>
+                <div class="load-wrapp" id="load-reservoirwrapp">
+                    <div class="load-4">
+                        <div class="ring-1"></div>
+                    </div>
+                </div>
+                <div id="reservoirconcent" class="hidden">
+                    <div class="titlediv">
+                        <div id="reservoirTitle" class="briefinTitle"></div>
+                    </div>
+                    <div id="reservoirTableDiv">
+                    </div>
+                    <div id="reservoirMesDiv">
+                        <div id="reservoirCount">
+                            <div class="mes-title-div">
+                                <!--<div class="mes-title">
+                                    <span>统计信息</span>
+                                </div>
+                                <div id="reservoirtable"></div>-->
+                                <table class="stripe row-border order-column table-bordered dataTable" align="center" id="reservoirCount_table">
+                                    <tr><th colspan="4">统计信息</th></tr>
+                                    <tr>
+                                        <td width="25%">最高水位（m）</td>
+                                        <td width="25%"><span id="reservoir_maxz"></span></td>
+                                        <td width="25%">最低水位（m）</td>
+                                        <td width="25%"><span id="reservoir_minz"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">水位（m）高于1000的测站数量</td>
+                                        <td><span id="reservoir_bz1000"></span></td>
+                                    <tr>
+                                        <td colspan="3">水位（m）在500 - 1000之间的测站数量</td>
+                                        <td><span id="reservoir_z1000"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">水位（m）在300 - 500之间的测站数量</td>
+                                        <td><span id="reservoir_z500"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">水位（m）在200 - 300之间的测站数量</td>
+                                        <td><span id="reservoir_z300"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">水位（m）在100 - 200之间的测站数量</td>
+                                        <td><span id="reservoir_z200"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">水位（m）低于1000的测站数量</td>
+                                        <td><span id="reservoir_z100"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">未上报数据的测站数量</td>
+                                        <td><span id="reservoir_unreported"></span></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="mes-title-div">
+                                <div id="reservoirMoudle"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="tab-pane fade" id="soilTab">
+                <div class="selectGroup">
+                    <div style="display: inline-block"><span><strong>查询时间:</strong></span></div>
+                    <div style="display: inline-block">
+                        <div class="input-group date briefin-date" id="soil-start-time">
+                            <input type="text" class="form-control input-sm"><span
+                                class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                        </div>
+                    </div>
+                    <span><strong>至</strong></span>
+                    <div style="display: inline-block">
+                        <div class="input-group date briefin-date" id="soil-end-time">
+                            <input type="text" class="form-control input-sm"><span
+                                class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+
+                        </div>
+                    </div>
+                    <div style="display: inline-block">
+                        <button id="runSoilBtn" class="btn btn-primary briefin-btn">生成简报</button>
+                        <button id="printSoilBtn" class="btn btn-primary briefin-btn">打印表格</button>
+                        <button id="printSoilJbBtn" class="btn btn-primary briefin-btn">打印简报</button>
+                        <!--<button id="templetSoilBtn" class="btn btn-primary briefin-btn">描述模板</button>-->
+                    </div>
+                </div>
+                <div class="load-wrapp" id="load-soilwrapp">
+                    <div class="load-4">
+                        <div class="ring-1"></div>
+                    </div>
+                </div>
+                <div id="soilconcent" class="hidden">
+                    <div class="titlediv">
+                        <div id="soilTitle" class="briefinTitle"></div>
+                    </div>
+                    <div id="soilTableDiv">
+                        <!--<table class="stripe row-border order-column  table-bordered" align="center" id="soilMes_table">-->
+                            <!--<thead>-->
+                            <!--<tr>-->
+                                <!--<th rowspan="2">行政区域</th>-->
+                                <!--<th rowspan="2">测站名称</th>-->
+                                <!--<th rowspan="2">测站编码</th>-->
+                                <!--<th rowspan="1" colspan="4">重量含水量（%）</th>-->
+                                <!--<th rowspan="2">流域名称</th>-->
+                                <!--<th rowspan="2">水系名称</th>-->
+                                <!--<th rowspan="2">河流名称</th>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<th rowspan="1" colspan="1">10cm</th>-->
+                                <!--<th rowspan="1" colspan="1">20cm</th>-->
+                                <!--<th rowspan="1" colspan="1">40cm</th>-->
+                                <!--<th rowspan="1" colspan="1">均值</th>-->
+                            <!--</tr>-->
+                            <!--</thead>-->
+                        <!--</table>-->
+                    </div>
+                    <div id="soilMesDiv">
+                        <div id="soilCount">
+                            <div class="mes-title-div">
+                                <!--<div class="mes-title">
+                                    <span>统计信息</span>
+                                </div>-->
+                                <table class="stripe row-border order-column table-bordered dataTable" align="center" id="soilCount_table">
+                                    <tr>
+                                        <th colspan="4">统计信息</th>
+                                    </tr>
+                                    <tr>
+                                        <td width="25%">最大相对湿度均值（%）</td>
+                                        <td width="25%"><span id="soilMax"></span></td>
+                                        <td width="25%">最小相对湿度均值（%）</td>
+                                        <td width="25%"><span id="soilMin"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">平均相对湿度均值（%）</td>
+                                        <td><span id="soilAvg"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">相对湿度均值（%）大于60的测站数量</td>
+                                        <td><span id="soilLevel1"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">相对湿度均值（%）在50 - 60之间的测站数量</td>
+                                        <td><span id="soilLevel2"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">相对湿度均值（%）在40 - 50之间的测站数量</td>
+                                        <td><span id="soilLevel3"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">相对湿度均值（%）在30 - 40之间的测站数量</td>
+                                        <td><span id="soilLevel4"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">相对湿度均值（%）小于30的测站数量</td>
+                                        <td><span id="soilLevel5"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">未上报数据的测站数量</td>
+                                        <td><span id="soilLevel6"></span></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="mes-title-div">
+                                <div id="soilMoudle"></div>
+                            </div>
+
+                        </div>
+
+                       <!-- <div id="soilothertablediv">
+                            <ul>
+                                <li>
+                                    <div class="mes-title">
+                                        <span>重量含水量均值（%）大于60的测站数量</span>
+                                    </div>
+                                    <table class="stripe row-border order-column  table-bordered" align="left" id="soillevel1_table">
+                                        <thead>
+                                        <tr>
+                                            <th rowspan="2">测站名称</th>
+                                            <th colspan="4" rowspan="1">重量含水量（%）</th>
+                                        </tr>
+                                        <tr>
+                                            <th rowspan="1"  colspan="1">10cm</th>
+                                            <th rowspan="1"  colspan="1">20cm</th>
+                                            <th rowspan="1"  colspan="1">40cm</th>
+                                            <th rowspan="1"  colspan="1">均值</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </li>
+
+                                <li>
+                                    <div class="mes-title">
+                                        <span>重量含水量均值（%）在50-60之间的测站数量</span>
+                                    </div>
+                                    <table class="stripe row-border order-column  table-bordered" align="left" id="soillevel2_table">
+                                        <thead>
+                                        <tr>
+                                            <th rowspan="2">测站名称</th>
+                                            <th colspan="4" rowspan="1">重量含水量（%）</th>
+                                        </tr>
+                                        <tr>
+                                            <th rowspan="1"  colspan="1">10cm</th>
+                                            <th rowspan="1"  colspan="1">20cm</th>
+                                            <th rowspan="1"  colspan="1">40cm</th>
+                                            <th rowspan="1"  colspan="1">均值</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </li>
+
+                                <li>
+                                    <div class="mes-title">
+                                        <span>重量含水量均值（%）在40-50之间的测站数量</span>
+                                    </div>
+                                    <table class="stripe row-border order-column  table-bordered" align="left" id="soillevel3_table">
+                                        <thead>
+                                        <tr>
+                                            <th rowspan="2">测站名称</th>
+                                            <th colspan="4" rowspan="1">重量含水量（%）</th>
+                                        </tr>
+                                        <tr>
+                                            <th rowspan="1"  colspan="1">10cm</th>
+                                            <th rowspan="1"  colspan="1">20cm</th>
+                                            <th rowspan="1"  colspan="1">40cm</th>
+                                            <th rowspan="1"  colspan="1">均值</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </li>
+
+                                <li>
+                                    <div class="mes-title">
+                                        <span>重量含水量均值（%）在30-40之间的测站数量</span>
+                                    </div>
+                                    <table class="stripe row-border order-column  table-bordered" align="left" id="soillevel4_table">
+                                        <thead>
+                                        <tr>
+                                            <th rowspan="2">测站名称</th>
+                                            <th colspan="4" rowspan="1">重量含水量（%）</th>
+                                        </tr>
+                                        <tr>
+                                            <th rowspan="1"  colspan="1">10cm</th>
+                                            <th rowspan="1"  colspan="1">20cm</th>
+                                            <th rowspan="1"  colspan="1">40cm</th>
+                                            <th rowspan="1"  colspan="1">均值</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </li>
+
+                                <li>
+                                    <div class="mes-title">
+                                        <span>重量含水量均值（%）小于30的测站数量</span>
+                                    </div>
+                                    <table class="stripe row-border order-column  table-bordered" align="left" id="soillevel5_table">
+                                        <thead>
+                                        <tr>
+                                            <th rowspan="2">测站名称</th>
+                                            <th colspan="4" rowspan="1">重量含水量（%）</th>
+                                        </tr>
+                                        <tr>
+                                            <th rowspan="1"  colspan="1">10cm</th>
+                                            <th rowspan="1"  colspan="1">20cm</th>
+                                            <th rowspan="1"  colspan="1">40cm</th>
+                                            <th rowspan="1"  colspan="1">均值</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </li>
+
+                            </ul>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../../libraries/jquery-1.11.1.min.js"></script>
+<script src="../../libraries/bootstrap.min.js"></script>
+<script src="../../libraries/jquery.cookie.js"></script>
+<script src="../../libraries/layer/layer.js"></script>
+<script type="text/javascript" src="../../libraries/datatable/jquery.dataTables.js"></script>
+<script src="../../libraries/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script src="../../libraries/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript" src="../../js/datatables-init.js"></script>
+<script src="../../js/common.js"></script>
+<script type="text/javascript" src="../../js/config/server-config.js"></script>
+<script type="text/javascript" src="../../js/briefin/briefin.js"></script>
+</html>
